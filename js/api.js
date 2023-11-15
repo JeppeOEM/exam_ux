@@ -1,15 +1,23 @@
-"use strict";
-
-window.addEventListener("DOMContentLoaded", () => {
-  document.addEventListener;
+addEventListener("DOMContentLoaded", () => {
+  let filter_btns = document.querySelectorAll(".t");
+  filter_btns.forEach((btn) => {
+    console.log(btn.dataset.filter);
+    btn.addEventListener("click", get_products);
+  });
 });
 
-async function get_products(category) {
+async function get_products(event) {
+  let category = event.target.dataset.filter;
+  console.log(category);
   let dynamic_category = "/";
+  sessionStorage.setItem("category", "all");
   if (category != "all") {
-    dynamic_category = convert_category(category);
+    sessionStorage.setItem("category", `${category}`);
+    dynamic_category = `/category/${category}`;
+    console.log(dynamic_category);
   }
   let response = await fetch(`https://fakestoreapi.com/products${dynamic_category}`);
+  console.log(response);
   let json = await response.json();
   console.log(json);
   await clone_items(json);
@@ -20,6 +28,7 @@ async function get_products(category) {
       const selected = event.target.closest("[id]");
       const category = selected.dataset.category;
       const item_id = selected.id;
+      localStorage.setItem("item_id", `${item_id}`);
       console.log(category);
       console.log(selected.dataset.category);
       redirect_single_item(item_id);
@@ -30,7 +39,7 @@ async function get_products(category) {
 }
 
 function redirect_single_item(item_id) {
-  window.location.href = `/item?id=${item_id.toString()}`;
+  window.location.href = "item.html";
 }
 
 async function clone_items(json) {
@@ -61,7 +70,6 @@ function remove_elements(class_name) {
     console.log("nothing to remove");
   }
 }
-
 function convert_category(category) {
   let output;
   switch (category) {

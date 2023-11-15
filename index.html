@@ -7,8 +7,9 @@
     <link rel="stylesheet" href="sass/base.css" />
     <link rel="stylesheet" href="sass/index.css" />
     <link rel="stylesheet" href="sass/header.css" />
-    <script defer src="js/html_components.js"></script>
-    <script defer src="js/login/register.js"></script>
+    <script type="module" src="js/Cart.js"></script>
+    <script type="module" src="js/register.js"></script>
+    <script type="module" src="js/html_components.js"></script>
   </head>
   <!-- imported header header.html -->
   <header id="header"></header>
@@ -29,7 +30,7 @@
             <article class="category">category 4</article>
           </section>
         </div>
-        <form class="register" action="/login" method="POST">
+        <form class="register" method="POST">
           <input class="input" name="email" type="email" placeholder="email" required />
           <input
             class="input"
@@ -50,6 +51,15 @@
           <input type="submit" value="Register" />
         </form>
       </section>
+      <section>
+        <form class="login" method="POST">
+          <input class="input" name="login_email" type="email" placeholder="email" required />
+          <input class="input" name="login_password" type="password" placeholder="password" required />
+          <input type="submit" value="login" />
+        </form>
+      </section>
+
+      <button onclick="test()">TEST</button>
     </main>
     <footer id="footer"></footer>
   </body>

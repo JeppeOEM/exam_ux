@@ -1,5 +1,37 @@
-var urlParams = new URLSearchParams(window.location.search);
-var id = urlParams.get("id");
+import { Cart } from "./Cart.js";
 
-// Now 'id' contains the value passed from the previous page
-console.log(id);
+document.addEventListener("DOMContentLoaded", function () {
+  build_page();
+  let cart = Cart();
+});
+
+async function build_page() {
+  let item = await load_item();
+  console.log(item.description);
+  console.log(item.category);
+  console.log(item.title);
+  console.log(item.title);
+  document.querySelector(".item_title").innerText = item.title;
+  document.querySelector(".item_image").src = item.image;
+  document.querySelector(".item_image").alt = item.title;
+  document.querySelector(".item_price").innerText = item.price;
+  document.querySelector(".item_rate").innerText = item.rating["rate"];
+  document.querySelector(".item_count").innerText = item.rating["count"];
+  document.querySelector(".item_description").innerText = item.description;
+}
+
+async function load_item() {
+  let item_id = localStorage.getItem("item_id");
+  console.log(item_id);
+  let response = await fetch(`https://fakestoreapi.com/products/${item_id}`);
+  let json = await response.json();
+  console.log(json);
+  return json;
+}
+
+function add_to_cart() {
+  let d = "dd";
+  localStorage.setItem("cart", [{ d }, { d }]);
+  let cart = localStorage.getItem("cart");
+  console.log(cart);
+}
