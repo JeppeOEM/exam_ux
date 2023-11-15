@@ -1,4 +1,4 @@
-class Item {
+export class Item {
   constructor(name, price, quantity) {
     this.name = name;
     this.price = price;
@@ -10,7 +10,6 @@ class Item {
   }
 }
 
-// Define the Cart class
 export class Cart {
   constructor() {
     this.items = [];
@@ -34,5 +33,17 @@ export class Cart {
       console.log(`${item.name} - Quantity: ${item.quantity} - Total: $${item.getTotal()}`);
     });
     console.log(`Total Price: $${this.getTotalPrice()}`);
+  }
+}
+
+export function init_cart() {
+  const is_cart = localStorage.getItem("cart");
+  console.log(is_cart);
+  if (is_cart == null) {
+    console.log("hit");
+    const cart = new Cart();
+    console.log(cart);
+    const serialized_cart = JSON.parse(cart);
+    localStorage.setItem("cart", serialized_cart);
   }
 }

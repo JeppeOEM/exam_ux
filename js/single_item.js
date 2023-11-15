@@ -1,8 +1,10 @@
-import { Cart } from "./Cart.js";
+import { Cart, Item, init_cart } from "./Cart.js";
 
 document.addEventListener("DOMContentLoaded", function () {
   build_page();
-  let cart = Cart();
+  init_cart();
+  let cart = localStorage.getItem("cart");
+  console.log(cart);
 });
 
 async function build_page() {
