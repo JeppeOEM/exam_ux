@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function () {
+export function load_html() {
   fetch("header.html")
     .then((response) => response.text())
     .then((html) => {
@@ -10,4 +10,4 @@ document.addEventListener("DOMContentLoaded", function () {
     .then((html) => {
       document.getElementById("footer").innerHTML = html;
     });
-});
+}

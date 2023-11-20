@@ -1,10 +1,26 @@
-import { Cart, Item, init_cart } from "./Cart.js";
+import { items_total, init_cart, add_to_cart, } from "./cart.js";
+import { load_html } from "./html_components.js";
+
+const this_item = {
+  id: null,
+  title: null,
+  price: null,
+  img: null,
+};
 
 document.addEventListener("DOMContentLoaded", function () {
-  build_page();
+  load_html();
   init_cart();
+  items_total();
+
   let cart = localStorage.getItem("cart");
   console.log(cart);
+
+  build_page();
+  document.querySelector(".add_cart").addEventListener("click", () => {
+    add_to_cart("dd", item);
+
+  });
 });
 
 async function build_page() {
@@ -20,6 +36,10 @@ async function build_page() {
   document.querySelector(".item_rate").innerText = item.rating["rate"];
   document.querySelector(".item_count").innerText = item.rating["count"];
   document.querySelector(".item_description").innerText = item.description;
+  this_item.title = item.title;
+  this_item.img = item.image;
+  this_item.price = item.price;
+  this_item.id = item.id;
 }
 
 async function load_item() {
@@ -29,11 +49,4 @@ async function load_item() {
   let json = await response.json();
   console.log(json);
   return json;
-}
-
-function add_to_cart() {
-  let d = "dd";
-  localStorage.setItem("cart", [{ d }, { d }]);
-  let cart = localStorage.getItem("cart");
-  console.log(cart);
 }

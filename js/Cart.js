@@ -1,49 +1,63 @@
-export class Item {
-  constructor(name, price, quantity) {
-    this.name = name;
-    this.price = price;
-    this.quantity = quantity;
-  }
-
-  getTotal() {
-    return this.price * this.quantity;
+export function init_cart(key) {
+  if (!localStorage.getItem(key)) {
+    localStorage.setItem(key, JSON.stringify([]));
   }
 }
 
-export class Cart {
-  constructor() {
-    this.items = [];
-  }
-
-  addItem(item) {
-    this.items.push(item);
-  }
-
-  removeItem(itemName) {
-    this.items = this.items.filter((item) => item.name !== itemName);
-  }
-
-  getTotalPrice() {
-    return this.items.reduce((total, item) => total + item.getTotal(), 0);
-  }
-
-  displayCart() {
-    console.log("Shopping Cart:");
-    this.items.forEach((item) => {
-      console.log(`${item.name} - Quantity: ${item.quantity} - Total: $${item.getTotal()}`);
-    });
-    console.log(`Total Price: $${this.getTotalPrice()}`);
-  }
+export function items_total(key) {
+  const items = get_cart(key);
+  const len = items.length;
+  const total = document.querySelector(".total");
+  total.innerText = len;
 }
 
-export function init_cart() {
-  const is_cart = localStorage.getItem("cart");
-  console.log(is_cart);
-  if (is_cart == null) {
-    console.log("hit");
-    const cart = new Cart();
-    console.log(cart);
-    const serialized_cart = JSON.parse(cart);
-    localStorage.setItem("cart", serialized_cart);
+export function add_to_cart(key, item) {
+  const item_list = get_cart(key);
+  item_list.push(item);
+  localStorage.setItem(key, JSON.stringify(item_list));
+}
+export function get_cart(key) {
+  const data = localStorage.getItem(key);
+  return JSON.parse(data);
+}
+
+export function decrease_item(key, item_title) {
+  const data = localStorage.getItem(key);
+  let index = data.findIndex((item) => {
+    item.title === item_title;
+  });
+  //findIndex will return -1 if there is not match
+  if (indexToRemove !== -1) {
+    //splice(starting index, number of indexes)
+    array.splice(indexToRemove, 1);
   }
+
+  return JSON.parse(data);
+}
+
+export function increase_item(key, item_title) {
+  const data = localStorage.getItem(key);
+  let index = data.findIndex((item) => {
+    item.title === item_title;
+  });
+  //findIndex will return -1 if there is not match
+  if (indexToRemove !== -1) {
+    //splice(starting index, number of indexes)
+    array.splice(indexToRemove, 1);
+  }
+
+  return JSON.parse(data);
+}
+
+export function set_item_count(key, count_obj) {
+  localStorage.setItem(key, JSON.stringify(count_obj));
+}
+
+export function get_item_count(key, count_obj) {
+  localStorage.setItem(key, JSON.stringify(count_obj));
+}
+
+export function clear_cart() {
+  localStorage.clear();
+  console.log(localStorage.getItem("dd"));
 }

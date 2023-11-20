@@ -9,11 +9,14 @@
     <link rel="stylesheet" href="sass/header.css" />
     <link rel="stylesheet" href="sass/shop.css" />
     <script type="module" src="js/html_components.js"></script>
-    <script type="module" src="js/api.js"></script>
+    <script type="module" src="js/cart.js"></script>
+    <script type="module" src="js/pages/shop_page.js"></script>
   </head>
   <div id="header"></div>
   <body>
     <main>
+      <p class="total"></p>
+
       <button class="t" data-filter="all">all products</button>
       <button class="t" data-filter="men's clothing">Men's clothing</button>
       <button class="t" data-filter="women's clothing">Women's clothing</button>
@@ -31,6 +34,7 @@
         </template>
       </section>
     </main>
-    <div id="footer"></div>
+    <!-- imported footer footer.html -->
+    <footer id="footer"></footer>
   </body>
 </html>

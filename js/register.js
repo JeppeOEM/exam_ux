@@ -1,32 +1,42 @@
-document.addEventListener("DOMContentLoaded", function () {
-  document.querySelector(".register").addEventListener("submit", function (event) {
-    event.preventDefault();
-    const formData = new FormData(this);
-    const email = formData.get("email");
-    const password = formData.get("password");
-    const retype_password = formData.get("retype_password");
-    console.log(email);
-    console.log(password);
-    // let is_email_registered = email_check(email);
-    // console.log(is_email_registered);
-    let is_validated = validate_credentials(password, retype_password, email);
+var form = document.getElementById("contactForm").addEventListener("submit", function (event) {
+  // Prevent the default form submission behavior
+  event.preventDefault();
 
-    // save_user(email, password);
-  });
+  // Your custom handling logic goes here
+  // For example, you can send the form data to a server using AJAX
 
-  document.querySelector(".login").addEventListener("submit", function (event) {
-    event.preventDefault();
-    const formData = new FormData(this);
-    const email = formData.get("login_email");
-    const password = formData.get("login_password");
-    console.log(email);
-    console.log(password);
-    sessionStorage.setItem("key", "value");
-    let data = sessionStorage.getItem("key");
-    sessionStorage.removeItem("key");
-    // Remove all saved data from sessionStorage
-    sessionStorage.clear();
-  });
+  // Display a simple message for demonstration purposes
+  alert("Form submitted without page reload!");
+});
+
+// Add submit event listener
+
+document.querySelector(".register").addEventListener("submit", function (event) {
+  event.preventDefault();
+  const formData = new FormData(this);
+  let get_email = formData.get("email");
+  let get_password = formData.get("password");
+  let retype_password = formData.get("retype_password");
+  console.log(get_email);
+  console.log(get_password);
+  // let is_email_registered = email_check(email);
+  // console.log(is_email_registered);
+  let is_validated = validate_credentials(get_password, retype_password, get_email);
+
+  // save_user(email, password);
+});
+
+document.querySelector(".login").addEventListener("submit", function (event) {
+  event.preventDefault();
+  const formData = new FormData(this);
+  let email = formData.get("login_email");
+  let password = formData.get("login_password");
+  console.log(email);
+  console.log(password);
+  sessionStorage.setItem("key", "value");
+  let data = sessionStorage.getItem("key");
+  sessionStorage.removeItem("key");
+  sessionStorage.clear();
 });
 
 async function login(email, password) {
@@ -35,11 +45,11 @@ async function login(email, password) {
   console.log(login);
 }
 
-async function email_check(email) {
-  console.log(email);
-  let response = await fetch(`http://localhost:3000/users?email=${email}`);
-  let email = await response.json();
-  console.log(email);
+async function email_check(mail) {
+  console.log(mail);
+  let response = await fetch(`http://localhost:3000/users?email=${mail}`);
+  let json = await response.json();
+  console.log(json);
 }
 
 function validate_credentials(password, retyped_password, email) {
@@ -89,11 +99,32 @@ async function save_user(email, password) {
     },
     body: JSON.stringify(data),
   };
-
-  let response = await fetch("http://localhost:3000/users", options);
-  response = await response.status();
-  console.log(response);
+  try {
+    let response = await fetch("http://localhost:3000/users", options);
+    response = await response.status();
+    console.log(response);
+  } catch (error) {
+    console.log(error);
+  }
 }
 function test() {
   save_user("ddsds@dd.dk", "lolololD!88");
+}
+
+function log_in(email, password) {
+  sessionStorage.setItem("email", email);
+  sessionStorage.setItem("password", password);
+}
+function log_out() {
+  sessionStorage.clear();
+}
+
+function is_logged_in() {
+  const email = sessionStorage.getItem("email") ?? null;
+  const password = sessionStorage.getItem("password") ?? null;
+  if (email !== null && password !== null) {
+    console.log("User is logged in");
+  } else {
+    console.log("User is not logged in");
+  }
 }

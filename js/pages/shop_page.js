@@ -1,9 +1,16 @@
+import { init_cart, add_to_cart, get_cart } from "../cart.js";
+import { load_html } from "../html_components.js";
 addEventListener("DOMContentLoaded", () => {
   let filter_btns = document.querySelectorAll(".t");
   filter_btns.forEach((btn) => {
     console.log(btn.dataset.filter);
     btn.addEventListener("click", get_products);
   });
+  load_html();
+  init_cart("dd");
+  // items_total("dd");
+
+  console.log(get_cart("dd"));
 });
 
 async function get_products(event) {
@@ -54,6 +61,7 @@ async function clone_items(json) {
     clone.querySelector(".product_image").src = obj.image;
     clone.querySelector(".product_image").alt = obj.title;
     clone.querySelector(".price").textContent = obj.price;
+
     // clone.querySelector(".description").textContent = obj.description;
     product_grid.appendChild(clone);
   });
