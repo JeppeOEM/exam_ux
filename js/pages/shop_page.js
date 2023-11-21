@@ -1,20 +1,31 @@
+"use strict";
 import { init_cart, add_to_cart, get_cart } from "../cart.js";
+import { is_logged_in } from "../functions/is_logged_in.js";
 import { load_html } from "../html_components.js";
-addEventListener("DOMContentLoaded", () => {
-  let filter_btns = document.querySelectorAll(".t");
+import { breadcrumb } from "../functions/breadcrumb.js";
+addEventListener("DOMContentLoaded", (event) => {
+  const filter_btns = document.querySelectorAll(".t");
   filter_btns.forEach((btn) => {
     console.log(btn.dataset.filter);
     btn.addEventListener("click", get_products);
   });
+  // is_logged_in();
   load_html();
   init_cart("dd");
-  // items_total("dd");
-
+  const category = sessionStorage.getItem("category");
+  get_products(event, category);
   console.log(get_cart("dd"));
 });
 
-async function get_products(event) {
-  let category = event.target.dataset.filter;
+function redirect_all() {
+  sessionStorage.setItem("category", null);
+}
+
+async function get_products(event, category = null) {
+  try {
+    category = event.target.dataset.filter;
+  } catch (error) {}
+
   console.log(category);
   let dynamic_category = "/";
   sessionStorage.setItem("category", "all");
@@ -23,6 +34,7 @@ async function get_products(event) {
     dynamic_category = `/category/${category}`;
     console.log(dynamic_category);
   }
+  breadcrumb(category);
   let response = await fetch(`https://fakestoreapi.com/products${dynamic_category}`);
   console.log(response);
   let json = await response.json();
@@ -41,7 +53,7 @@ async function get_products(event) {
       redirect_single_item(item_id);
     });
   });
-
+  sessionStorage.setItem("category", category);
   return json;
 }
 
@@ -77,22 +89,4 @@ function remove_elements(class_name) {
   } catch {
     console.log("nothing to remove");
   }
-}
-function convert_category(category) {
-  let output;
-  switch (category) {
-    case "mens":
-      output = "/category/men's clothing";
-      break;
-    case "womens":
-      output = "/category/women's clothing";
-      break;
-    case "jewelery":
-      output = "/category/jewelery";
-      break;
-    case "electronics":
-      output = "/category/electronics";
-      break;
-  }
-  return output;
 }

@@ -1,6 +1,6 @@
-import { items_total, init_cart, add_to_cart, } from "./cart.js";
-import { load_html } from "./html_components.js";
-
+import { items_total, init_cart, add_to_cart } from "../cart.js";
+import { load_html } from "../html_components.js";
+import { breadcrumb } from "../functions/breadcrumb.js";
 const this_item = {
   id: null,
   title: null,
@@ -12,14 +12,13 @@ document.addEventListener("DOMContentLoaded", function () {
   load_html();
   init_cart();
   items_total();
-
+  breadcrumb(sessionStorage.getItem("category"));
   let cart = localStorage.getItem("cart");
   console.log(cart);
 
   build_page();
   document.querySelector(".add_cart").addEventListener("click", () => {
     add_to_cart("dd", item);
-
   });
 });
 

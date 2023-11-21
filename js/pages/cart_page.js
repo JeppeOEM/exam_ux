@@ -1,6 +1,7 @@
 import { items_total, init_cart, add_to_cart, get_cart, increase_item, decrease_item, clear_cart } from "../cart.js";
 import { load_html } from "../html_components.js";
 
+
 document.addEventListener("DOMContentLoaded", function () {
   load_html();
   init_cart();

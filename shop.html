@@ -12,27 +12,46 @@
     <script type="module" src="js/cart.js"></script>
     <script type="module" src="js/pages/shop_page.js"></script>
   </head>
-  <div id="header"></div>
+
   <body>
+    <div id="header"></div>
     <main>
       <p class="total"></p>
-
-      <button class="t" data-filter="all">all products</button>
-      <button class="t" data-filter="men's clothing">Men's clothing</button>
-      <button class="t" data-filter="women's clothing">Women's clothing</button>
-      <button class="t" data-filter="electronics">Electronics</button>
-      <button class="t" data-filter="jewlery">Jewlery</button>
-
+      <h2 class="category">Mens Clothing</h2>
+      <nav class="filters">
+        <span class="breadcrumb"></span>
+        <div>
+          <span>Sort by: </span>
+          <select name="alphabetic" id="">
+            <option value="asc">Alphabetic A-Z</option>
+            <option value="desc">Alphabetic Z-A</option>
+          </select>
+          <select name="price" id="">
+            <option value="high">Price High-Low</option>
+            <option value="low">Price Low-High</option>
+          </select>
+        </div>
+      </nav>
       <section id="product-grid">
         <template>
           <article id="" class="grid_item" data-category="">
-            <h5 class="name"></h5>
-            <img class="product_image" src="" alt="" />
-            <p class="price"></p>
+            <figure>
+              <img class="product_image" src="" alt="" />
+              <div class="push_down">
+                <h5 class="name text_left"></h5>
+                <p class="text_left">price: <span class="price"></span></p>
+              </div>
+            </figure>
+
             <!-- <p class="description"></p> -->
           </article>
         </template>
       </section>
+      <button class="t" data-filter="all">all products</button>
+      <button class="t" data-filter="men's clothing">Men's clothing</button>
+      <button class="t" data-filter="women's clothing">Women's clothing</button>
+      <button class="t" data-filter="electronics">Electronics</button>
+      <button class="t" data-filter="jewelery">Jewlery</button>
     </main>
     <!-- imported footer footer.html -->
     <footer id="footer"></footer>

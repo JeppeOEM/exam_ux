@@ -7,10 +7,10 @@
     <link rel="stylesheet" href="sass/base.css" />
     <link rel="stylesheet" href="sass/index.css" />
     <link rel="stylesheet" href="sass/header.css" />
-
+    <script type="module" src="js/login/backend.js" defer></script>
     <script type="module" src="js/pages/front_page.js"></script>
     <script type="module" src="js/cart.js"></script>
-    <script src="js/register.js" defer></script>
+    <script type="module" src="js/register.js" defer></script>
   </head>
   <!-- imported header header.html -->
   <header id="header"></header>
@@ -41,22 +41,8 @@
 
         <form class="register" method="POST">
           <input class="input" name="email" type="email" placeholder="email" required />
-          <input
-            class="input"
-            name="password"
-            type="password"
-            placeholder="password"
-            minlength="8"
-            maxlength="20"
-            required />
-          <input
-            class="input"
-            name="retype_password"
-            type="password"
-            placeholder="password"
-            minlength="8"
-            maxlength="20"
-            required />
+          <input class="input" name="password" type="password" placeholder="password" required />
+          <input class="input" name="retype_password" type="password" placeholder="password" required />
           <input type="submit" value="Register" />
         </form>
       </section>

@@ -1,19 +1,13 @@
-header {
-  background-color: #333;
-  color: #fff;
-}
-
 .navbar {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 15px 40px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  justify-content: center;
   z-index: 2;
   position: fixed;
   width: 100%;
   top: 0;
   left: 0;
+  background-color: #144A7F;
 }
 .navbar ul {
   list-style: none;
@@ -25,7 +19,7 @@ header {
   padding: 0 15px;
 }
 .navbar ul li a {
-  font-size: 1rem;
+  color: white;
   transition: 0.3s;
 }
 .navbar ul li a:hover {
@@ -33,5 +27,6 @@ header {
 }
 
 a img.cart_icon {
+  margin-left: 25px;
   width: 50px;
 }/*# sourceMappingURL=header.css.map */
