@@ -1,19 +1,22 @@
 export function breadcrumb(category) {
   let sub;
-  console.log("category", category);
+  console.log("breadcrumb", category);
+
   if (category === "men's clothing") {
-    sub = "men";
+    sub = "Men /";
   } else if (category === "women's clothing") {
-    sub = "women";
+    sub = "Women /";
+  } else if (category === "all" || category == "null") {
+    category = "";
   }
-  console.log(category);
+
   const path = document.querySelector(".breadcrumb");
 
   // Create elements
   const allLink = document.createElement("a");
   allLink.id = "all";
   allLink.href = "index.html";
-  allLink.textContent = "all products";
+  allLink.textContent = "All products";
   allLink.addEventListener("click", () => {
     sessionStorage.setItem("category", null);
   });
@@ -44,14 +47,16 @@ export function breadcrumb(category) {
     path.appendChild(subLink);
   }
   function no_sub_category() {
+    console.log("no sub");
     path.innerHTML = "";
     path.appendChild(allLink);
     const category_link = document.createElement("a");
     category_link.id = "clothing";
     category_link.href = "shop.html";
-    category_link.textContent = "clothing";
+    category_link.textContent = ` / ${category}`;
     category_link.addEventListener("click", () => {
       sessionStorage.setItem("category", `${category}`);
     });
+    path.appendChild(category_link);
   }
 }

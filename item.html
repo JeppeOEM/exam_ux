@@ -31,12 +31,36 @@
 
             <p class="item_description"></p>
             <div class="button">
-              <button class="add_cart" onclick="add_to_cart()">add to cart</button>
+              <button class="add_cart">add to cart</button>
             </div>
           </section>
         </div>
       </section>
       <p class="total"></p>
+      <aside>
+        <h5>Item added to basket</h5>
+
+        <section id="product-grid">
+          <template>
+            <article id="" class="grid_item" data-category="">
+              <figure>
+                <img class="product_image" src="" alt="" />
+                <div class="push_down">
+                  <h5 class="name text_left"></h5>
+                  <p class="text_left">price: <span class="price"></span></p>
+                </div>
+              </figure>
+              <!-- <p class="description"></p> -->
+            </article>
+          </template>
+        </section>
+        <div class="button">
+          <a href="/checkout">Go to checkout</a>
+        </div>
+        <div class="button">
+          <button class="continue">Continue shopping</button>
+        </div>
+      </aside>
     </main>
     <!-- imported footer footer.html -->
     <footer id="footer"></footer>
