@@ -7,7 +7,7 @@
   width: 100%;
   top: 0;
   left: 0;
-  background-color: #144A7F;
+  background-color: #144a7f;
 }
 .navbar ul {
   list-style: none;
@@ -81,7 +81,7 @@ a img.user_icon {
 }
 
 .dropdown-content a:hover {
-  background-color: #051E34;
+  background-color: #051e34;
 }
 
 .dropdown:hover .dropdown-content {
@@ -90,4 +90,4 @@ a img.user_icon {
 
 .hamburger {
   display: block;
-}/*# sourceMappingURL=header.css.map */
+} /*# sourceMappingURL=header.css.map */
