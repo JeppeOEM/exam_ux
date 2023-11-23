@@ -10,6 +10,14 @@ export function focused_element() {
 
   function get_focused() {
     const focus = document.activeElement;
+
+    if (focus.tagName === "LI" && focus.querySelector(".dropdown_btn")) {
+      const btn = focus.querySelector("button");
+      const dropdownContent = focus.querySelector(".dropdown-content");
+      dropdownContent.style.display = "block";
+      console.log(btn, "CLICKED");
+    }
+
     if (focus.tagName === "LI") {
       const btn = focus.querySelector("button");
       btn.click();
@@ -19,7 +27,7 @@ export function focused_element() {
 
   document.addEventListener("keydown", function (event) {
     // Check if the pressed key is Enter (keyCode 13)
-    if (event.key === 13) {
+    if (event.key === "Enter") {
       // Trigger the click event on the button with the specified ID
       get_focused();
     }

@@ -1,5 +1,5 @@
 "use strict";
-import { init_cart, add_to_cart, get_cart } from "../cart.js";
+import { init_cart, add_to_cart, get_cart } from "../functions/cart.js";
 import { is_logged_in } from "../functions/is_logged_in.js";
 import { load_html } from "../html_components.js";
 import { get_products } from "../functions/get_products.js";

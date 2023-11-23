@@ -2,6 +2,7 @@ import { breadcrumb } from "../functions/breadcrumb.js";
 
 export async function get_products(event, category, load = "") {
   console.log(category);
+
   if (load === "load_category") {
     console.log("Value of category before condition:", category);
     //if sessionStorage.getItem() is empty null is returned
@@ -24,11 +25,19 @@ export async function get_products(event, category, load = "") {
   }
   console.log("this category", category);
   breadcrumb(category);
-  let response = await fetch(`https://fakestoreapi.com/products${dynamic_category}`);
-  console.log(response);
-  let json = await response.json();
-  console.log(json);
-  await clone_items(json);
+  let item_array;
+  if (category === "clothing") {
+    item_array = await fetch_clothing();
+    console.log("after", item_array);
+    // item_array = sorted_list(item_array, "alphabetic");
+  } else {
+    let response = await fetch(`https://fakestoreapi.com/products${dynamic_category}`);
+    item_array = await response.json();
+    item_array = sorted_list(item_array, "alphabetic", -1);
+    console.log(item_array);
+  }
+  await clone_items(item_array);
+
   let items = document.querySelectorAll(".grid_item");
   //callback functions are passed without parameters
   items.forEach((item) => {
@@ -43,7 +52,49 @@ export async function get_products(event, category, load = "") {
     });
   });
   sessionStorage.setItem("category", category);
-  return json;
+  return item_array;
+}
+async function fetch_clothing() {
+  const response_men = await fetch(`https://fakestoreapi.com/products/category/men's clothing/`);
+  const response_women = await fetch(`https://fakestoreapi.com/products/category/women's clothing/`);
+  console.log(response_men);
+  console.log(response_women);
+  const json_men = await response_men.json();
+  const json_women = await response_women.json();
+  const combined = [...json_men, ...json_women];
+  console.log("before", combined);
+  return combined;
+}
+function sorted_list(list, type, direction = 1) {
+  // direction = 1 does not change output
+  // direction = -1 reverses output
+  let sorted;
+  if (type === "alphabetic") {
+    sorted = list.sort(alphabetic);
+  } else if (type === "price") {
+    sorted = list.sort(price);
+  }
+  console.log(sorted);
+  console.log("sorted_list", sorted);
+
+  return sorted;
+
+  function alphabetic(product_a, product_b) {
+    if (product_a.title.toUpperCase() < product_b.title.toUpperCase()) {
+      return -1 * direction;
+    } else {
+      return 1 * direction;
+    }
+  }
+
+  function price(product_a, product_b) {
+    console.log(`sort is ${settings.sortBy}`);
+    if (parseFloat(product_a.price) < parseFloat(product_b.price)) {
+      return -1 * direction;
+    } else {
+      return 1 * direction;
+    }
+  }
 }
 
 async function clone_items(json) {

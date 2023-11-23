@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="sass/item.css" />
     <link rel="stylesheet" href="sass/header.css" />
     <script type="module" src="js/html_components.js"></script>
-    <script type="module" src="js/cart.js"></script>
+
     <script type="module" src="js/pages/item_page.js"></script>
   </head>
   <body>
@@ -32,6 +32,7 @@
             <p class="item_description"></p>
             <div class="button">
               <button class="add_cart">add to cart</button>
+              <button class="clear_cart">clear cart</button>
             </div>
           </section>
         </div>
@@ -39,10 +40,9 @@
       <p class="total"></p>
       <aside>
         <h5>Item added to basket</h5>
-
-        <section id="product-grid">
+        <section id="cart">
           <template>
-            <article id="" class="grid_item" data-category="">
+            <article class="cart_item" data-category="">
               <figure>
                 <img class="product_image" src="" alt="" />
                 <div class="push_down">
@@ -50,10 +50,14 @@
                   <p class="text_left">price: <span class="price"></span></p>
                 </div>
               </figure>
+              <button class="minus" aria-label="decrease item amount">-</button>
+              <span aria-atomic="true" aria-label="item amount" class="amount"></span>
+              <button class="plus" aria-label="decrease item amount">+</button>
               <!-- <p class="description"></p> -->
             </article>
           </template>
         </section>
+
         <div class="button">
           <a href="/checkout">Go to checkout</a>
         </div>
