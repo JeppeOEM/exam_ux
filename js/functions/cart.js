@@ -35,6 +35,7 @@ export async function show_current_items() {
   });
 
   function update_count_html() {
+    console.log("UPDATE FUCING COUNT");
     for (let key in count) {
       console.log(count[key]);
 
@@ -51,7 +52,10 @@ export async function show_current_items() {
     console.log("DSSSSSSSSSSSSSSS", json);
     json.forEach((obj) => {
       const clone = template.content.cloneNode(true);
+      console.log("obj", obj);
+      console.log("clone", clone);
       //id's must start with a letter
+      console.log(clone.querySelector(".cart_item"));
       clone.querySelector(".cart_item").id = "c" + obj.id;
       clone.querySelector(".cart_item").setAttribute("data-category", obj.category);
       clone.querySelector(".name").textContent = obj.title;

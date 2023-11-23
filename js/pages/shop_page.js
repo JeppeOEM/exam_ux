@@ -1,5 +1,18 @@
 "use strict";
-import { init_cart, count, show_current_items } from "../functions/cart.js";
+import {
+  init_cart,
+  add_to_cart,
+  remove_duplicates,
+  count_items,
+  increase_item,
+  decrease_item,
+  clear_cart,
+  delete_item,
+  count,
+  show_current_items,
+} from "../functions/cart.js";
+
+import { breadcrumb } from "../functions/breadcrumb.js";
 import { is_logged_in } from "../functions/is_logged_in.js";
 import { load_html } from "../html_components.js";
 import { get_products } from "../functions/get_products.js";
@@ -12,8 +25,9 @@ addEventListener("DOMContentLoaded", (event) => {
     const category = sessionStorage.getItem("category");
     get_products(event, category, "load_category");
     focused_element();
-    document.querySelector("#lol").addEventListener("click", (event) => {
-      console.log("lol");
+    document.querySelector(".add_cart").addEventListener("click", () => {
+      // add_to_cart("dd", this_item);
+
       show_current_items();
     });
 
