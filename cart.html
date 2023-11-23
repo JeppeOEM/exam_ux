@@ -3,25 +3,25 @@
   <template>
     <article class="cart_item" data-category="">
       <figure>
-        <img class="product_image" src="" alt="" />
-        <div class="push_down">
+        <img tabindex="-1" class="product_image" src="" alt="" />
+        <div tabindex="-1" class="push_down">
           <h5 class="name text_left"></h5>
           <p class="text_left">price: <span class="price"></span></p>
         </div>
       </figure>
-      <button class="delete_item" aria-label="decrease item amount">🗑️</button>
-      <span class="item_buttons">
-        <button class="minus" aria-label="decrease item amount">-</button>
-        <span aria-atomic="true" aria-label="item amount" class="amount"></span>
-        <button class="plus" aria-label="decrease item amount">+</button>
+      <button tabindex="0" class="delete_item" aria-label="decrease item amount">🗑️</button>
+      <span tabindex="1" class="item_buttons">
+        <button tabindex="0" class="minus" aria-label="decrease item amount">-</button>
+        <span tabindex="-1" aria-atomic="true" aria-label="item amount" class="amount"></span>
+        <button tabindex="0" class="plus" aria-label="decrease item amount">+</button>
       </span>
     </article>
   </template>
 </section>
 
 <div class="button">
-  <a href="/checkout">Go to checkout</a>
+  <a tabindex="0" href="/checkout.html">Go to checkout</a>
 </div>
-<div class="button">
-  <button class="continue">Continue shopping</button>
+<div tabindex="-1" class="button">
+  <button tabindex="0" class="continue">Continue shopping</button>
 </div>

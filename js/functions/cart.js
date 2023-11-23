@@ -1,15 +1,19 @@
 export let count = {};
 
-export async function show_current_items() {
+export async function show_current_items(init = false) {
   const cart = localStorage.getItem("dd");
   let items = JSON.parse(cart);
+
   count = count_items(items);
   const aside = document.querySelector("aside");
   const filtered_list = remove_duplicates(items);
-  console.log(filtered_list);
+
   await clone_items(filtered_list);
   update_count_html(count);
-  aside.classList.add("show");
+  if (init) {
+  } else {
+    aside.classList.add("show");
+  }
   const minus = document.querySelectorAll(".minus");
   const plus = document.querySelectorAll(".plus");
   minus.forEach((btn) => {
@@ -18,16 +22,16 @@ export async function show_current_items() {
       let id = selected.id;
       //remove letter that was added before the numeric id
       id = id.substring(1);
-      console.log(event.target);
       items = decrease_item(id, "dd", count);
       count = count_items(items);
-      let count_equal_one = update_count_html();
+      update_count_html();
     });
   });
   plus.forEach((btn) => {
     btn.addEventListener("click", (event) => {
-      add_to_cart("dd", this_item);
-      items = localStorage.getItem("dd");
+      const selected = event.target.closest("[id]");
+      let id = selected.id;
+      items = increase_item(id, "dd", count);
       items = JSON.parse(items);
       count = count_items(items);
       update_count_html();
@@ -35,27 +39,20 @@ export async function show_current_items() {
   });
 
   function update_count_html() {
-    console.log("UPDATE FUCING COUNT");
     for (let key in count) {
-      console.log(count[key]);
-
       const amount = document.querySelector(`#c${key} .amount`);
       amount.innerText = count[key];
-      console.log(amount);
     }
-    console.log("ccccc", count);
   }
   async function clone_items(json) {
     const product_grid = document.querySelector("#cart");
     const template = document.querySelector("template");
     remove_elements("cart_item");
-    console.log("DSSSSSSSSSSSSSSS", json);
+
     json.forEach((obj) => {
       const clone = template.content.cloneNode(true);
-      console.log("obj", obj);
-      console.log("clone", clone);
+
       //id's must start with a letter
-      console.log(clone.querySelector(".cart_item"));
       clone.querySelector(".cart_item").id = "c" + obj.id;
       clone.querySelector(".cart_item").setAttribute("data-category", obj.category);
       clone.querySelector(".name").textContent = obj.title;
@@ -104,35 +101,27 @@ export function add_to_cart(key, item) {
   const item_list = get_cart(key);
   item_list.push(item);
   localStorage.setItem(key, JSON.stringify(item_list));
-  console.log(localStorage.getItem(key));
 }
 export function get_cart(key) {
-  console.log("keeeeeeeeeeey", key);
-  const data = localStorage.getItem(key);
-  return JSON.parse(data);
+  const items = localStorage.getItem(key);
+  return JSON.parse(items);
 }
 
 export function decrease_item(id, key, counted) {
   // the items id is is used as an key in the count object
-  console.log("id", counted[id]);
 
-  console.log(id, key);
-  let data = localStorage.getItem(key);
-  data = JSON.parse(data);
-  console.log(data);
+  let items = localStorage.getItem(key);
+  items = JSON.parse(items);
 
-  let index = data.findIndex((item) => {
+  let index = items.findIndex((item) => {
     item.id = parseInt(item.id);
     id = parseInt(id);
-    console.log(item.id, id);
+
     if (item.id === id) {
-      console.log("success");
-      console.log(id);
       return true; // Return true when a match is found
     }
     return false; // Return false otherwise
   });
-  console.log(index);
 
   // findIndex will return -1 if there is not a match
   if (index !== -1) {
@@ -141,43 +130,33 @@ export function decrease_item(id, key, counted) {
       const product = document.querySelector(`#c${id}`);
       product.remove();
     }
-    console.log(typeof index);
-    console.log(data, "fucking index", index);
-    // splice(starting index, number of indexes)
-    data.splice(index, 1);
-    localStorage.setItem(key, JSON.stringify(data));
-    console.log(data);
 
-    return data;
+    // splice(starting index, number of indexes)
+    items.splice(index, 1);
+    localStorage.setItem(key, JSON.stringify(items));
+    console.log(items);
+
+    return items;
   }
 }
 
 export function increase_item(id, key, item) {
   console.log(id, key);
-  let data = localStorage.getItem(key);
-  data = JSON.parse(data);
-  let index = data.findIndex((item) => {
-    item.id === id;
-  });
-  console.log(typeof "data");
-  //findIndex will return -1 if there is not match
-  if (index !== -1) {
-    //insert at beginning of array
-    data.unshift(item);
-  }
+  let items = localStorage.getItem(key);
+  items = JSON.parse(items);
 
-  return data;
+  return items;
 }
 
 export function delete_item(id, key) {
   let items = localStorage.getItem(key);
-  console.log(items, "issssssssssssssssssssssssstems");
+
   items = JSON.parse(items);
-  console.log(typeof id);
+
   const filtered = items.filter((item) => {
     return item.id !== parseInt(id);
   });
-  console.log(filtered);
+
   const product = document.querySelector(`#c${id}`);
   product.remove();
   localStorage.setItem(key, JSON.stringify(filtered));
@@ -185,11 +164,9 @@ export function delete_item(id, key) {
 
 export function clear_cart() {
   localStorage.clear();
-  console.log(localStorage.getItem("dd"));
 }
 
 export function count_items(items) {
-  console.log(items, "ITEEEEEEEEEMS");
   let counts = {};
   items.forEach((item) => {
     let key = item.id;

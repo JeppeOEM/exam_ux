@@ -3,9 +3,58 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Single item</title>
+    <link rel="stylesheet" href="sass/base.css" />
+    <link rel="stylesheet" href="sass/header.css" />
+    <link rel="stylesheet" href="sass/checkout.css" />
+    <script type="module" src="js/html_components.js"></script>
+
+    <script type="module" src="js/pages/checkout_page.js"></script>
   </head>
-  <body>
-    <h2>dsdas</h2>
+  <body><button class="add_cart">add to cart</button>
+    <!-- imported header header.html -->
+    <header id="header">                      </header>
+    <main>
+      <section class="item_section">
+        <span class="breadcrumb"></span>
+
+        <h5>Item added to basket</h5>
+                              <button class="add_cart">add to cart</button>
+        <section id="cart">
+          <template>
+            <article class="cart_item" data-category="">
+              <figure>
+                
+                <img tabindex="-1" class="product_image" src="" alt="" />
+                <div tabindex="-1" class="push_down">
+                  <h5 class="name text_left"></h5>
+                  <p class="text_left">price: <span class="price"></span></p>
+                </div>
+              </figure>
+              <button tabindex="0" class="delete_item" aria-label="decrease item amount">🗑️</button>
+              <span tabindex="1" class="item_buttons">
+                <button tabindex="0" class="minus" aria-label="decrease item amount">-</button>
+                <span tabindex="-1" aria-atomic="true" aria-label="item amount" class="amount"></span>
+                <button tabindex="0" class="plus" aria-label="decrease item amount">+</button>
+              </span>
+            </article>
+          </template>
+        </section>
+
+        <div class="button">
+          <a tabindex="0" href="/checkout.html">Go to checkout</a>
+        </div>
+        <div tabindex="-1" class="button">
+          <button tabindex="0" class="continue">Continue shopping</button>
+        </div>
+          </section>
+        </div>
+      </section>
+      <p class="total"></p>
+      <!-- imported cart cart.html -->
+      <aside id="cart"></aside>
+    </main>
+    <!-- imported footer footer.html -->
+    <footer id="footer"></footer>
   </body>
 </html>
