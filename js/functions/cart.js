@@ -17,6 +17,7 @@ export function add_to_cart(key, item) {
   const item_list = get_cart(key);
   item_list.push(item);
   localStorage.setItem(key, JSON.stringify(item_list));
+  console.log(localStorage.getItem(key));
 }
 export function get_cart(key) {
   console.log("keeeeeeeeeeey", key);
@@ -24,11 +25,15 @@ export function get_cart(key) {
   return JSON.parse(data);
 }
 
-export function decrease_item(id, key) {
+export function decrease_item(id, key, counted) {
+  // the items id is is used as an key in the count object
+  console.log("id", counted[id]);
+
   console.log(id, key);
   let data = localStorage.getItem(key);
   data = JSON.parse(data);
   console.log(data);
+
   let index = data.findIndex((item) => {
     item.id = parseInt(item.id);
     id = parseInt(id);
@@ -44,15 +49,20 @@ export function decrease_item(id, key) {
 
   // findIndex will return -1 if there is not a match
   if (index !== -1) {
+    if (counted[id] === 1) {
+      // if one item left remove product from cart
+      const product = document.querySelector(`#c${id}`);
+      product.remove();
+    }
     console.log(typeof index);
     console.log(data, "fucking index", index);
     // splice(starting index, number of indexes)
     data.splice(index, 1);
     localStorage.setItem(key, JSON.stringify(data));
     console.log(data);
-  }
 
-  return data;
+    return data;
+  }
 }
 
 export function increase_item(id, key, item) {
@@ -72,12 +82,18 @@ export function increase_item(id, key, item) {
   return data;
 }
 
-export function set_item_count(key, count_obj) {
-  localStorage.setItem(key, JSON.stringify(count_obj));
-}
-
-export function get_item_count(key, count_obj) {
-  localStorage.setItem(key, JSON.stringify(count_obj));
+export function delete_item(id, key) {
+  let items = localStorage.getItem(key);
+  console.log(items, "issssssssssssssssssssssssstems");
+  items = JSON.parse(items);
+  console.log(typeof id);
+  const filtered = items.filter((item) => {
+    return item.id !== parseInt(id);
+  });
+  console.log(filtered);
+  const product = document.querySelector(`#c${id}`);
+  product.remove();
+  localStorage.setItem(key, JSON.stringify(filtered));
 }
 
 export function clear_cart() {
@@ -86,13 +102,13 @@ export function clear_cart() {
 }
 
 export function count_items(items) {
-  console.log(items);
+  console.log(items, "ITEEEEEEEEEMS");
   let counts = {};
   items.forEach((item) => {
     let key = item.id;
 
-    //if falsy, right side is returned and counts['key'] = 0+1
-    //if truthy left-side is returned counts[key] = counts[key]+1
+    //if falsy, right side of ?? is returned: counts['key'] = 0+1
+    //if truthy left-side of ?? is returned: counts[key] = counts[key]+1
     counts[key] = (counts[key] ?? 0) + 1;
   });
 

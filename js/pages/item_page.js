@@ -7,6 +7,7 @@ import {
   increase_item,
   decrease_item,
   clear_cart,
+  delete_item,
 } from "../functions/cart.js";
 import { load_html } from "../html_components.js";
 import { breadcrumb } from "../functions/breadcrumb.js";
@@ -16,6 +17,8 @@ const this_item = {
   price: null,
   image: null,
 };
+
+let counted = {};
 
 document.addEventListener("DOMContentLoaded", function () {
   load_html()
@@ -54,7 +57,7 @@ function update_count_obj(key, value) {
   counted[key] = value;
 }
 
-function update_count_html(counted) {
+function update_count_html() {
   for (let key in counted) {
     console.log(counted[key]);
 
@@ -62,13 +65,12 @@ function update_count_html(counted) {
     amount.innerText = counted[key];
     console.log(amount);
   }
-
   console.log("ccccc", counted);
 }
 async function show_current_items() {
   const cart = localStorage.getItem("dd");
-  const items = JSON.parse(cart);
-  const counted = count_items(items);
+  let items = JSON.parse(cart);
+  counted = count_items(items);
   const aside = document.querySelector("aside");
   const filtered_list = remove_duplicates(items);
   console.log(filtered_list);
@@ -81,16 +83,21 @@ async function show_current_items() {
     btn.addEventListener("click", (event) => {
       const selected = event.target.closest("[id]");
       let id = selected.id;
+      //remove letter that was added before the numeric id
       id = id.substring(1);
       console.log(event.target);
-      decrease_item(id, "dd");
-      const counted = count_items(cart);
-      update_count_html(counted);
+      items = decrease_item(id, "dd", counted);
+      counted = count_items(items);
+      let count_equal_one = update_count_html();
     });
   });
   plus.forEach((btn) => {
     btn.addEventListener("click", (event) => {
       add_to_cart("dd", this_item);
+      items = localStorage.getItem("dd");
+      items = JSON.parse(items);
+      counted = count_items(items);
+      update_count_html();
     });
   });
 }
@@ -108,6 +115,12 @@ async function clone_items(json) {
     clone.querySelector(".product_image").src = obj.image;
     clone.querySelector(".product_image").alt = obj.title;
     clone.querySelector(".price").textContent = obj.price;
+    clone.querySelector(".delete_item").addEventListener("click", (event) => {
+      const selected = event.target.closest("[id]");
+      let id = selected.id;
+      id = id.substring(1);
+      delete_item(id, "dd");
+    });
     // clone.querySelector(".description").textContent = obj.description;
     product_grid.appendChild(clone);
   });
