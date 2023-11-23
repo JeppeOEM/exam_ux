@@ -25,25 +25,7 @@ const this_item = {
 document.addEventListener("DOMContentLoaded", function () {
   load_html()
     .then(() => {
-      console.log("before cart");
       init_cart("dd");
-      // items_total();
-      console.log("LOOOOOOOL");
-      console.log(sessionStorage.getItem("category"));
-      breadcrumb(sessionStorage.getItem("category"));
-      let cart = localStorage.getItem("cart");
-      console.log(cart);
-
-      build_page();
-      document.querySelector(".add_cart").addEventListener("click", () => {
-        add_to_cart("dd", this_item);
-        console.log(this_item);
-        show_current_items();
-      });
-
-      document.querySelector(".clear_cart").addEventListener("click", () => {
-        clear_cart();
-      });
 
       const hide = document.querySelector(".continue");
 
@@ -54,39 +36,6 @@ document.addEventListener("DOMContentLoaded", function () {
     })
     .then(() => {});
 });
-
-async function build_page() {
-  let item = await load_item();
-  console.log(item.description);
-  console.log(item.category);
-  console.log(item.title);
-  console.log(item.title);
-  document.querySelector(".item_title").innerText = item.title;
-  document.querySelector(".item_image").src = item.image;
-  document.querySelector(".item_image").alt = item.title;
-  document.querySelector(".item_price").innerText = item.price;
-  document.querySelector(".item_rate").innerText = item.rating["rate"];
-  document.querySelector(".item_count").innerText = item.rating["count"];
-  document.querySelector(".item_description").innerText = item.description;
-  const breadcrumb = document.querySelector(".breadcrumb");
-  const split = item.title.split(" ");
-  const four_words = split.slice(0, 4);
-  const words = four_words.join(" ");
-  breadcrumb.innerText = breadcrumb.innerText + " " + words;
-  this_item.title = item.title;
-  this_item.img = item.image;
-  this_item.price = item.price;
-  this_item.id = item.id;
-}
-
-async function load_item() {
-  let item_id = localStorage.getItem("item_id");
-  console.log(item_id);
-  let response = await fetch(`https://fakestoreapi.com/products/${item_id}`);
-  let json = await response.json();
-  console.log(json);
-  return json;
-}
 
 export let count = {};
 
@@ -102,6 +51,7 @@ export async function show_current_items(init = false) {
   update_count_html(count);
   if (init) {
   } else {
+    console.log(aside, "show aside");
     aside.classList.add("show");
   }
   const minus = document.querySelectorAll(".minus");
@@ -136,7 +86,7 @@ export async function show_current_items(init = false) {
   }
   async function clone_items(json) {
     const product_grid = document.querySelector("#cart");
-    const template = document.querySelector("template");
+    const template = document.querySelector(".cart_template");
     remove_elements("cart_item");
 
     json.forEach((obj) => {
@@ -189,6 +139,8 @@ export function init_cart(key) {
 
 export function add_to_cart(key, item) {
   const item_list = get_cart(key);
+  console.log(item_list);
+  console.log(key, item);
   item_list.push(item);
   localStorage.setItem(key, JSON.stringify(item_list));
 }
@@ -278,25 +230,21 @@ export function count_items(items) {
   return counts;
 }
 export function remove_duplicates(items) {
-  let newArray = [];
+  let array = [];
 
-  // Declare an empty object
-  let uniqueObject = {};
+  let obj = {};
 
-  // Loop for the array elements
   for (let i in items) {
-    // Extract the title
-    let objTitle = items[i]["id"];
+    let title = items[i]["id"];
 
     // Use the title as the index
-    uniqueObject[objTitle] = items[i];
+    obj[title] = items[i];
   }
 
   // Loop to push unique object into array
-  for (let i in uniqueObject) {
-    newArray.push(uniqueObject[i]);
+  for (let i in obj) {
+    array.push(obj[i]);
   }
 
-  // Display the unique obj ects
-  return newArray;
+  return array;
 }

@@ -11,12 +11,16 @@ import {
 import { load_html } from "../html_components.js";
 
 document.addEventListener("DOMContentLoaded", function () {
-  load_html();
-  init_cart();
-  //   items_total();
+  breadcrumb(sessionStorage.getItem("category"));
   build_items();
 
-  document.querySelector(".clear").addEventListener("click", () => {
+  document.querySelector(".add_cart").addEventListener("click", () => {
+    add_to_cart("dd", this_item);
+    console.log(this_item);
+    show_current_items();
+  });
+
+  document.querySelector(".clear_cart").addEventListener("click", () => {
     clear_cart();
   });
 });

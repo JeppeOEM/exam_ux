@@ -23,36 +23,17 @@ const this_item = {
 };
 
 document.addEventListener("DOMContentLoaded", function () {
-  load_html()
-    .then(() => {
-      console.log("before cart");
-      init_cart("dd");
-      // items_total();
-      console.log("LOOOOOOOL");
-      console.log(sessionStorage.getItem("category"));
-      breadcrumb(sessionStorage.getItem("category"));
-      let cart = localStorage.getItem("cart");
-      console.log(cart);
+  //Repeating content in carts
+  build_page();
+  document.querySelector(".add_cart").addEventListener("click", () => {
+    add_to_cart("dd", this_item);
+    console.log("THIS FUCKING ITEM!!!!!!!!!!!!", this_item);
+    show_current_items();
+  });
 
-      build_page();
-      document.querySelector(".add_cart").addEventListener("click", () => {
-        add_to_cart("dd", this_item);
-        console.log(this_item);
-        show_current_items();
-      });
-
-      document.querySelector(".clear_cart").addEventListener("click", () => {
-        clear_cart();
-      });
-
-      const hide = document.querySelector(".continue");
-
-      hide.addEventListener("click", () => {
-        const aside = document.querySelector("aside");
-        aside.classList.remove("show");
-      });
-    })
-    .then(() => {});
+  document.querySelector(".clear_cart").addEventListener("click", () => {
+    clear_cart();
+  });
 });
 
 async function build_page() {
