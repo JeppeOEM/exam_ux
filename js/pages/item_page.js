@@ -55,12 +55,6 @@ document.addEventListener("DOMContentLoaded", function () {
     .then(() => {});
 });
 
-function update_count_obj(key, value) {
-  count[key] = value;
-}
-
-
-
 async function build_page() {
   let item = await load_item();
   console.log(item.description);
@@ -84,7 +78,6 @@ async function build_page() {
   this_item.price = item.price;
   this_item.id = item.id;
 }
-
 async function load_item() {
   let item_id = localStorage.getItem("item_id");
   console.log(item_id);
