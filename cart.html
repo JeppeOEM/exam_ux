@@ -1,34 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="sass/base.css" />
-    <!-- <link rel="stylesheet" href="sass/footer.css" /> -->
-    <link rel="stylesheet" href="sass/header.css" />
-    <link rel="stylesheet" href="sass/shop.css" />
-    <script type="module" src="js/html_components.js"></script>
-    <script type="module" src="js/cart.js"></script>
-    <script type="module" src="js/pages/cart_page.js"></script>
-  </head>
-  <div id="header"></div>
-  <body>
-    <button class="add_cart">+ddddddddddd</button>
-    <button class="clear">+clear</button>
-    <main></main>
-    <div id="footer"></div>
-    <section id="items_cart">
-      <template>
-        <article>
-          <h4 class="title_cart">title</h4>
-          <figure>
-            <img class="image_cart" src="" alt="" />
-          </figure>
-          <p class="price_cart"></p>
-          <span class="decrease">-</span><span class="quantity"></span><span class="increase">+</span>
-        </article>
-      </template>
-    </section>
-  </body>
-</html>
+<h5>Item added to basket</h5>
+<section id="cart">
+  <template>
+    <article class="cart_item" data-category="">
+      <figure>
+        <img class="product_image" src="" alt="" />
+        <div class="push_down">
+          <h5 class="name text_left"></h5>
+          <p class="text_left">price: <span class="price"></span></p>
+        </div>
+      </figure>
+      <button class="delete_item" aria-label="decrease item amount">🗑️</button>
+      <span class="item_buttons">
+        <button class="minus" aria-label="decrease item amount">-</button>
+        <span aria-atomic="true" aria-label="item amount" class="amount"></span>
+        <button class="plus" aria-label="decrease item amount">+</button>
+      </span>
+    </article>
+  </template>
+</section>
+
+<div class="button">
+  <a href="/checkout">Go to checkout</a>
+</div>
+<div class="button">
+  <button class="continue">Continue shopping</button>
+</div>

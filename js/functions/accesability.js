@@ -1,4 +1,5 @@
 export function focused_element() {
+
   document.addEventListener("keypress", function (event) {
     console.log("dddd");
     if (event.key === "Enter") {

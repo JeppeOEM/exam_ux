@@ -1,3 +1,86 @@
+export let count = {};
+
+export async function show_current_items() {
+  const cart = localStorage.getItem("dd");
+  let items = JSON.parse(cart);
+  count = count_items(items);
+  const aside = document.querySelector("aside");
+  const filtered_list = remove_duplicates(items);
+  console.log(filtered_list);
+  await clone_items(filtered_list);
+  update_count_html(count);
+  aside.classList.add("show");
+  const minus = document.querySelectorAll(".minus");
+  const plus = document.querySelectorAll(".plus");
+  minus.forEach((btn) => {
+    btn.addEventListener("click", (event) => {
+      const selected = event.target.closest("[id]");
+      let id = selected.id;
+      //remove letter that was added before the numeric id
+      id = id.substring(1);
+      console.log(event.target);
+      items = decrease_item(id, "dd", count);
+      count = count_items(items);
+      let count_equal_one = update_count_html();
+    });
+  });
+  plus.forEach((btn) => {
+    btn.addEventListener("click", (event) => {
+      add_to_cart("dd", this_item);
+      items = localStorage.getItem("dd");
+      items = JSON.parse(items);
+      count = count_items(items);
+      update_count_html();
+    });
+  });
+
+  function update_count_html() {
+    for (let key in count) {
+      console.log(count[key]);
+
+      const amount = document.querySelector(`#c${key} .amount`);
+      amount.innerText = count[key];
+      console.log(amount);
+    }
+    console.log("ccccc", count);
+  }
+  async function clone_items(json) {
+    const product_grid = document.querySelector("#cart");
+    const template = document.querySelector("template");
+    remove_elements("cart_item");
+    console.log("DSSSSSSSSSSSSSSS", json);
+    json.forEach((obj) => {
+      const clone = template.content.cloneNode(true);
+      //id's must start with a letter
+      clone.querySelector(".cart_item").id = "c" + obj.id;
+      clone.querySelector(".cart_item").setAttribute("data-category", obj.category);
+      clone.querySelector(".name").textContent = obj.title;
+      clone.querySelector(".product_image").src = obj.image;
+      clone.querySelector(".product_image").alt = obj.title;
+      clone.querySelector(".price").textContent = obj.price;
+      clone.querySelector(".delete_item").addEventListener("click", (event) => {
+        const selected = event.target.closest("[id]");
+        let id = selected.id;
+        id = id.substring(1);
+        delete_item(id, "dd");
+      });
+      // clone.querySelector(".description").textContent = obj.description;
+      product_grid.appendChild(clone);
+    });
+  }
+  function remove_elements(class_name) {
+    let elements = document.querySelectorAll(`.${String(class_name)}`);
+
+    try {
+      elements.forEach(function (ele) {
+        ele.parentNode.removeChild(ele);
+      });
+    } catch {
+      console.log("nothing to remove");
+    }
+  }
+}
+
 export function init_cart(key) {
   if (!localStorage.getItem(key)) {
     localStorage.setItem(key, JSON.stringify([]));
@@ -137,5 +220,3 @@ export function remove_duplicates(items) {
   // Display the unique obj ects
   return newArray;
 }
-
-export function alter_cart() {}

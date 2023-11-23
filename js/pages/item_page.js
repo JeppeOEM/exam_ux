@@ -8,7 +8,11 @@ import {
   decrease_item,
   clear_cart,
   delete_item,
+  count,
+  show_current_items,
 } from "../functions/cart.js";
+
+// import "../cart.js";
 import { load_html } from "../html_components.js";
 import { breadcrumb } from "../functions/breadcrumb.js";
 const this_item = {
@@ -17,8 +21,6 @@ const this_item = {
   price: null,
   image: null,
 };
-
-let counted = {};
 
 document.addEventListener("DOMContentLoaded", function () {
   load_html()
@@ -54,88 +56,10 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function update_count_obj(key, value) {
-  counted[key] = value;
+  count[key] = value;
 }
 
-function update_count_html() {
-  for (let key in counted) {
-    console.log(counted[key]);
 
-    const amount = document.querySelector(`#c${key} .amount`);
-    amount.innerText = counted[key];
-    console.log(amount);
-  }
-  console.log("ccccc", counted);
-}
-async function show_current_items() {
-  const cart = localStorage.getItem("dd");
-  let items = JSON.parse(cart);
-  counted = count_items(items);
-  const aside = document.querySelector("aside");
-  const filtered_list = remove_duplicates(items);
-  console.log(filtered_list);
-  await clone_items(filtered_list);
-  update_count_html(counted);
-  aside.classList.add("show");
-  const minus = document.querySelectorAll(".minus");
-  const plus = document.querySelectorAll(".plus");
-  minus.forEach((btn) => {
-    btn.addEventListener("click", (event) => {
-      const selected = event.target.closest("[id]");
-      let id = selected.id;
-      //remove letter that was added before the numeric id
-      id = id.substring(1);
-      console.log(event.target);
-      items = decrease_item(id, "dd", counted);
-      counted = count_items(items);
-      let count_equal_one = update_count_html();
-    });
-  });
-  plus.forEach((btn) => {
-    btn.addEventListener("click", (event) => {
-      add_to_cart("dd", this_item);
-      items = localStorage.getItem("dd");
-      items = JSON.parse(items);
-      counted = count_items(items);
-      update_count_html();
-    });
-  });
-}
-
-async function clone_items(json) {
-  const product_grid = document.querySelector("#cart");
-  const template = document.querySelector("template");
-  remove_elements("cart_item");
-  json.forEach((obj) => {
-    const clone = template.content.cloneNode(true);
-    //id's must start with a letter
-    clone.querySelector(".cart_item").id = "c" + obj.id;
-    clone.querySelector(".cart_item").setAttribute("data-category", obj.category);
-    clone.querySelector(".name").textContent = obj.title;
-    clone.querySelector(".product_image").src = obj.image;
-    clone.querySelector(".product_image").alt = obj.title;
-    clone.querySelector(".price").textContent = obj.price;
-    clone.querySelector(".delete_item").addEventListener("click", (event) => {
-      const selected = event.target.closest("[id]");
-      let id = selected.id;
-      id = id.substring(1);
-      delete_item(id, "dd");
-    });
-    // clone.querySelector(".description").textContent = obj.description;
-    product_grid.appendChild(clone);
-  });
-}
-function remove_elements(class_name) {
-  let elements = document.querySelectorAll(`.${String(class_name)}`);
-
-  try {
-    elements.forEach(function (ele) {
-      ele.parentNode.removeChild(ele);
-    });
-  } catch {
-    console.log("nothing to remove");
-  }
-}
 
 async function build_page() {
   let item = await load_item();

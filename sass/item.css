@@ -35,7 +35,7 @@ hr {
   width: 100%;
 }
 
-.button a, button {
+.button a {
   background-color: #082644;
   width: 100%;
   padding: 15px 0px;
@@ -44,9 +44,29 @@ hr {
   color: white;
   transition: 0.3s;
 }
-.button a:hover, button:hover {
+.button a:hover {
   background-color: #144A7F;
   cursor: pointer;
+}
+
+.button button {
+  background-color: #082644;
+  width: 100%;
+  padding: 15px 0px;
+  text-align: center;
+  border-radius: 5px;
+  color: white;
+  transition: 0.3s;
+}
+.button button:hover {
+  background-color: #144A7F;
+  cursor: pointer;
+}
+
+.item_buttons button {
+  width: -moz-fit-content;
+  width: fit-content;
+  font-size: 1.44rem;
 }
 
 .button a {
