@@ -1,20 +1,9 @@
 "use strict";
-// import {
-//   init_cart,
-//   add_to_cart,
-//   remove_duplicates,
-//   count_items,
-//   increase_item,
-//   decrease_item,
-//   clear_cart,
-//   delete_item,
-//   count,
-//   show_current_items,
-// } from "./cart.js";
 
-// import "../cart.js";
-import { load_html } from "../html_components.js";
+import { load_html, load_html_links_header } from "../html_components.js";
 import { breadcrumb } from "./breadcrumb.js";
+import { focused_element } from "../functions/accesability.js";
+import { get_products } from "../functions/get_products.js";
 const this_item = {
   id: null,
   title: null,
@@ -23,18 +12,42 @@ const this_item = {
 };
 
 document.addEventListener("DOMContentLoaded", function () {
-  load_html()
-    .then(() => {
-      init_cart("dd");
+  let load;
+  window.location.pathname === "/shop.html" ? (load = load_html) : (load = load_html_links_header);
+  load().then(() => {
+    init_cart("dd");
+    focused_element();
+    const aside = document.querySelector("aside");
+    const hide = document.querySelector(".continue");
+    const show_cart = document.querySelector("#cart_btn");
+    console.log(show_cart);
+    console.log(aside);
+    hide.addEventListener("click", (event) => {
+      aside.classList.remove("show");
+      console.log(event.target);
+    });
+    show_cart.addEventListener("click", (event) => {
+      console.log(event);
+      show_current_items();
+      aside.classList.add("show");
+    });
 
-      const hide = document.querySelector(".continue");
+    const filter_btns = document.querySelectorAll(".navbar .filter");
+    console.log("FFFFFFFFFFFFF", filter_btns);
 
-      hide.addEventListener("click", () => {
-        const aside = document.querySelector("aside");
-        aside.classList.remove("show");
-      });
-    })
-    .then(() => {});
+    filter_btns.forEach((filter_btn) => {
+      if (window.location.pathname === "/shop.html") {
+        console.log(window.location.pathname);
+        filter_btn.addEventListener("click", get_products);
+      } else {
+        const category = filter_btn.dataset.filter;
+        sessionStorage.setItem("category", category);
+        filter_btn.addEventListener("click", () => {
+          window.location.href = "/shop.html";
+        });
+      }
+    });
+  });
 });
 
 export let count = {};
@@ -127,7 +140,6 @@ export function init_cart(key) {
     localStorage.setItem(key, JSON.stringify([]));
     console.log("created cart", localStorage.getItem(key));
   }
-  console.log("current cart", localStorage.getItem(key));
 }
 
 // export function items_total(key) {

@@ -23,25 +23,20 @@ const this_item = {
 };
 
 document.addEventListener("DOMContentLoaded", function () {
+  // load_html().then(() => {
   //Repeating content in carts
   build_page();
+  breadcrumb(sessionStorage.getItem("category"));
   document.querySelector(".add_cart").addEventListener("click", () => {
     add_to_cart("dd", this_item);
     console.log("THIS FUCKING ITEM!!!!!!!!!!!!", this_item);
     show_current_items();
   });
-
-  document.querySelector(".clear_cart").addEventListener("click", () => {
-    clear_cart();
-  });
 });
 
 async function build_page() {
   let item = await load_item();
-  console.log(item.description);
-  console.log(item.category);
-  console.log(item.title);
-  console.log(item.title);
+
   document.querySelector(".item_title").innerText = item.title;
   document.querySelector(".item_image").src = item.image;
   document.querySelector(".item_image").alt = item.title;

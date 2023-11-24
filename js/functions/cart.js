@@ -87,7 +87,7 @@ export function init_cart(key) {
     localStorage.setItem(key, JSON.stringify([]));
     console.log("created cart", localStorage.getItem(key));
   }
-  console.log("current cart", localStorage.getItem(key));
+
 }
 
 // export function items_total(key) {
