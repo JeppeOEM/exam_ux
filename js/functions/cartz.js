@@ -20,24 +20,24 @@ document.addEventListener("DOMContentLoaded", function () {
     const aside = document.querySelector("aside");
     const hide = document.querySelector(".continue");
     const show_cart = document.querySelector("#cart_btn");
-    console.log(show_cart);
-    console.log(aside);
+    show_cart;
+    aside;
     hide.addEventListener("click", (event) => {
       aside.classList.remove("show");
-      console.log(event.target);
+      event.target;
     });
     show_cart.addEventListener("click", (event) => {
-      console.log(event);
+      event;
       show_current_items();
       aside.classList.add("show");
     });
 
     const filter_btns = document.querySelectorAll(".navbar .filter");
-    console.log("FFFFFFFFFFFFF", filter_btns);
+    "FFFFFFFFFFFFF", filter_btns;
 
     filter_btns.forEach((filter_btn) => {
       if (window.location.pathname === "/shop.html") {
-        console.log(window.location.pathname);
+        window.location.pathname;
         filter_btn.addEventListener("click", get_products);
       } else {
         const category = filter_btn.dataset.filter;
@@ -64,7 +64,7 @@ export async function show_current_items(init = false) {
   update_count_html(count);
   if (init) {
   } else {
-    console.log(aside, "show aside");
+    aside, "show aside";
     aside.classList.add("show");
   }
   const minus = document.querySelectorAll(".minus");
@@ -130,7 +130,7 @@ export async function show_current_items(init = false) {
         ele.parentNode.removeChild(ele);
       });
     } catch {
-      console.log("nothing to remove");
+      ("nothing to remove");
     }
   }
 }
@@ -138,7 +138,11 @@ export async function show_current_items(init = false) {
 export function init_cart(key) {
   if (!localStorage.getItem(key)) {
     localStorage.setItem(key, JSON.stringify([]));
-    console.log("created cart", localStorage.getItem(key));
+    "created cart", localStorage.getItem(key);
+  }
+  sessionStorage.clear();
+  if (!sessionStorage.getItem("current_sorting")) {
+    sessionStorage.setItem("current_sorting", JSON.stringify({ type: "alphabetic", direction: 1 }));
   }
 }
 
@@ -151,8 +155,8 @@ export function init_cart(key) {
 
 export function add_to_cart(key, item) {
   const item_list = get_cart(key);
-  console.log(item_list);
-  console.log(key, item);
+  item_list;
+  key, item;
   item_list.push(item);
   localStorage.setItem(key, JSON.stringify(item_list));
 }
@@ -163,7 +167,7 @@ export function get_cart(key) {
 
 export function decrease_item(id, key, counted) {
   // the items id is is used as an key in the count object
-  console.log(id, key);
+  id, key;
   let items = localStorage.getItem(key);
   items = JSON.parse(items);
 
@@ -188,25 +192,25 @@ export function decrease_item(id, key, counted) {
     // splice(starting index, number of indexes)
     items.splice(index, 1);
     localStorage.setItem(key, JSON.stringify(items));
-    console.log(items);
+    items;
 
     return items;
   }
 }
 
 export function increase_item(id, key) {
-  console.log(id, key);
+  id, key;
   let items = localStorage.getItem(key);
   items = JSON.parse(items);
-  console.log(items.length);
+  items.length;
   //Implicit return/statement evaluated and returned
   const item = items.find((item) => item.id === parseInt(id));
-  console.log(item);
+  item;
   //creates a independent/deep copy of the object
   const deep_copy = JSON.parse(JSON.stringify(item));
   //inserts copy at the start of the array
   items.unshift(deep_copy);
-  console.log(items.length);
+  items.length;
   localStorage.setItem(key, JSON.stringify(items));
   return items;
 }

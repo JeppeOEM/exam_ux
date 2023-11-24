@@ -1,6 +1,6 @@
 export function breadcrumb(category) {
   let sub;
-  console.log("breadcrumb", category);
+  "breadcrumb", category;
 
   if (category === "men's clothing") {
     sub = "Men /";
@@ -47,7 +47,7 @@ export function breadcrumb(category) {
     path.appendChild(subLink);
   }
   function no_sub_category() {
-    console.log("no sub");
+    ("no sub");
     path.innerHTML = "";
     path.appendChild(allLink);
     const category_link = document.createElement("a");

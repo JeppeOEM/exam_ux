@@ -4,7 +4,7 @@ import { add_to_cart, show_current_items } from "../functions/cartz.js";
 import { breadcrumb } from "../functions/breadcrumb.js";
 import { is_logged_in } from "../functions/is_logged_in.js";
 import { load_html } from "../html_components.js";
-import { get_products } from "../functions/get_products.js";
+import { get_products, sorted_list, insert_items } from "../functions/get_products.js";
 
 let this_item = {
   id: 12,
@@ -24,7 +24,21 @@ addEventListener("DOMContentLoaded", (event) => {
 
   document.querySelector(".add_cart").addEventListener("click", () => {
     add_to_cart("dd", this_item);
-    console.log(this_item);
+    this_item;
     show_current_items();
   });
+
+  let selects = document.querySelectorAll(".select");
+  selects.forEach((select) => {
+    select.addEventListener("change", () => {
+      select.name;
+      select.value;
+      const items = JSON.parse(sessionStorage.getItem("current_items"));
+      items, "items to sort nowwwwwwwwwwwwww";
+      let sorted_items = sorted_list(items, select.name, parseInt(select.value));
+      insert_items(sorted_items);
+    });
+  });
+
+  // list, type, (direction = 1);
 });

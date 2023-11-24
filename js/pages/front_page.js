@@ -7,5 +7,5 @@ addEventListener("DOMContentLoaded", () => {
   is_logged_in();
   // items_total("dd");
 
-  console.log(get_cart("dd"));
+  get_cart("dd");
 });

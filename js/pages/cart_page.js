@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   document.querySelector(".add_cart").addEventListener("click", () => {
     add_to_cart("dd", this_item);
-    console.log(this_item);
+    this_item;
     show_current_items();
   });
 
@@ -30,7 +30,7 @@ function build_items() {
   const template = document.querySelector("template");
   const items = get_cart("dd");
   const items_per_key = count_items(items);
-  console.log(items_per_key);
+  items_per_key;
   const keys = Object.keys(items_per_key);
   const filtered_list = remove_duplicates(items);
 

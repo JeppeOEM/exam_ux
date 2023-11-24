@@ -55,13 +55,20 @@
 }
 
 select {
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
-  color: #000;
-  cursor: pointer;
-  padding: 5px;
-  border-radius: 5px;
+  width: 100%;
+  border: 0px;
+  background: #fff;
+}
+
+.sort {
+  display: flex;
+  flex-direction: row;
+}
+.sort p {
+  white-space: nowrap;
+}
+.sort * {
+  padding: 10px 20px;
 }
 
 .category {
@@ -83,9 +90,6 @@ select {
   }
 }
 @media only screen and (max-width: 490px) {
-  .sort {
-    padding: 10px 20px;
-  }
   .filters {
     flex-direction: column;
     justify-content: flex-start;

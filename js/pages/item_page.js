@@ -29,7 +29,6 @@ document.addEventListener("DOMContentLoaded", function () {
   breadcrumb(sessionStorage.getItem("category"));
   document.querySelector(".add_cart").addEventListener("click", () => {
     add_to_cart("dd", this_item);
-    console.log("THIS FUCKING ITEM!!!!!!!!!!!!", this_item);
     show_current_items();
   });
 });
@@ -56,9 +55,9 @@ async function build_page() {
 }
 async function load_item() {
   let item_id = localStorage.getItem("item_id");
-  console.log(item_id);
+  item_id;
   let response = await fetch(`https://fakestoreapi.com/products/${item_id}`);
   let json = await response.json();
-  console.log(json);
+  json;
   return json;
 }

@@ -77,7 +77,7 @@ export async function show_current_items(init = false) {
         ele.parentNode.removeChild(ele);
       });
     } catch {
-      console.log("nothing to remove");
+      ("nothing to remove");
     }
   }
 }
@@ -85,9 +85,8 @@ export async function show_current_items(init = false) {
 export function init_cart(key) {
   if (!localStorage.getItem(key)) {
     localStorage.setItem(key, JSON.stringify([]));
-    console.log("created cart", localStorage.getItem(key));
+    "created cart", localStorage.getItem(key);
   }
-
 }
 
 // export function items_total(key) {
@@ -109,7 +108,7 @@ export function get_cart(key) {
 
 export function decrease_item(id, key, counted) {
   // the items id is is used as an key in the count object
-  console.log(id, key);
+  id, key;
   let items = localStorage.getItem(key);
   items = JSON.parse(items);
 
@@ -134,25 +133,25 @@ export function decrease_item(id, key, counted) {
     // splice(starting index, number of indexes)
     items.splice(index, 1);
     localStorage.setItem(key, JSON.stringify(items));
-    console.log(items);
+    items;
 
     return items;
   }
 }
 
 export function increase_item(id, key) {
-  console.log(id, key);
+  id, key;
   let items = localStorage.getItem(key);
   items = JSON.parse(items);
-  console.log(items.length);
+  items.length;
   //Implicit return/statement evaluated and returned
   const item = items.find((item) => item.id === parseInt(id));
-  console.log(item);
+  item;
   //creates a independent/deep copy of the object
   const deep_copy = JSON.parse(JSON.stringify(item));
   //inserts copy at the start of the array
   items.unshift(deep_copy);
-  console.log(items.length);
+  items.length;
   localStorage.setItem(key, JSON.stringify(items));
   return items;
 }
