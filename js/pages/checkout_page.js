@@ -13,18 +13,11 @@ import {
 } from "../functions/cart.js";
 
 // import "../cart.js";
-import { load_html } from "../html_components.js";
-import { breadcrumb } from "../functions/breadcrumb.js";
-const this_item = {
-  id: null,
-  title: null,
-  price: null,
-  image: null,
-};
+import { load_html_checkout } from "../html_components.js";
 
 document.addEventListener("DOMContentLoaded", function () {
-  load_html().then(() => {
-    show_current_items(true);
+  load_html_checkout().then(() => {
+    show_current_items();
 
     // const hide = document.querySelector(".continue");
 

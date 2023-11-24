@@ -59,7 +59,6 @@ export async function show_current_items(init = false) {
   update_count_html(count);
   if (init) {
   } else {
-    aside, "show aside";
     aside.classList.add("show");
   }
   const minus = document.querySelectorAll(".minus");
@@ -101,10 +100,11 @@ export async function show_current_items(init = false) {
       const clone = template.content.cloneNode(true);
 
       //id's must start with a letter
+      console.log(obj);
       clone.querySelector(".cart_item").id = "c" + obj.id;
       clone.querySelector(".cart_item").setAttribute("data-category", obj.category);
       clone.querySelector(".name").textContent = obj.title;
-      clone.querySelector(".product_image").src = obj.image;
+      clone.querySelector(".product_image").src = obj.img;
       clone.querySelector(".product_image").alt = obj.title;
       clone.querySelector(".price").textContent = obj.price;
       clone.querySelector(".delete_item").addEventListener("click", (event) => {
@@ -133,10 +133,6 @@ export async function show_current_items(init = false) {
 export function init_cart(key) {
   if (!localStorage.getItem(key)) {
     localStorage.setItem(key, JSON.stringify([]));
-  }
-  sessionStorage.clear();
-  if (!sessionStorage.getItem("current_sorting")) {
-    sessionStorage.setItem("current_sorting", JSON.stringify({ type: "alphabetic", direction: 1 }));
   }
 }
 

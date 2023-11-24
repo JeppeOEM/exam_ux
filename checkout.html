@@ -5,26 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Single item</title>
     <link rel="stylesheet" href="sass/base.css" />
+
     <link rel="stylesheet" href="sass/header.css" />
     <link rel="stylesheet" href="sass/checkout.css" />
     <script type="module" src="js/html_components.js"></script>
-
     <script type="module" src="js/pages/checkout_page.js"></script>
+
   </head>
-  <body><button class="add_cart">add to cart</button>
+  <body>
     <!-- imported header header.html -->
-    <header id="header">                      </header>
+    <header id="header"> </header>
     <main>
       <section class="item_section">
-        <span class="breadcrumb"></span>
-
-        <h5>Item added to basket</h5>
-                              <button class="add_cart">add to cart</button>
+        <h1>Products</h1>
         <section id="cart">
           <template>
             <article class="cart_item" data-category="">
               <figure>
-                
                 <img tabindex="-1" class="product_image" src="" alt="" />
                 <div tabindex="-1" class="push_down">
                   <h5 class="name text_left"></h5>
@@ -40,19 +37,12 @@
             </article>
           </template>
         </section>
-
-        <div class="button">
-          <a tabindex="0" href="/checkout.html">Go to checkout</a>
-        </div>
-        <div tabindex="-1" class="button">
-          <button tabindex="0" class="continue">Continue shopping</button>
-        </div>
           </section>
         </div>
       </section>
       <p class="total"></p>
       <!-- imported cart cart.html -->
-      <aside id="cart"></aside>
+      <!-- <aside id="cart"></aside> -->
     </main>
     <!-- imported footer footer.html -->
     <footer id="footer"></footer>

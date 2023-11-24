@@ -1,4 +1,4 @@
-#product-grid {
+#product_grid {
   padding: 0px 20px;
   height: 100%;
   display: grid;
@@ -79,7 +79,7 @@ select {
   body {
     background-color: lightblue;
   }
-  #product-grid {
+  #product_grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
@@ -99,7 +99,7 @@ select {
     max-height: 120px;
     max-width: 120px;
   }
-  #product-grid {
+  #product_grid {
     padding: 0px 20px;
     height: 100%;
     display: grid;

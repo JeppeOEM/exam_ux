@@ -1,19 +1,16 @@
 export let count = {};
 
-export async function show_current_items(init = false) {
+export async function show_current_items() {
   const cart = localStorage.getItem("dd");
   let items = JSON.parse(cart);
 
   count = count_items(items);
-  const aside = document.querySelector("aside");
+          
   const filtered_list = remove_duplicates(items);
 
   await clone_items(filtered_list);
   update_count_html(count);
-  if (init) {
-  } else {
-    aside.classList.add("show");
-  }
+
   const minus = document.querySelectorAll(".minus");
   const plus = document.querySelectorAll(".plus");
   minus.forEach((btn) => {
@@ -139,7 +136,6 @@ export function decrease_item(id, key, counted) {
 }
 
 export function increase_item(id, key) {
-
   let items = localStorage.getItem(key);
   items = JSON.parse(items);
 

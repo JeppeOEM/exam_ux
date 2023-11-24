@@ -16,7 +16,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   document.querySelector(".add_cart").addEventListener("click", () => {
     add_to_cart("dd", this_item);
-
     show_current_items();
   });
 

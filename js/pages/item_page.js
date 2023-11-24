@@ -13,7 +13,7 @@ import {
 } from "../functions/cart.js";
 
 // import "../cart.js";
-import { load_html } from "../html_components.js";
+
 import { breadcrumb } from "../functions/breadcrumb.js";
 const this_item = {
   id: null,
@@ -29,7 +29,9 @@ document.addEventListener("DOMContentLoaded", function () {
   breadcrumb(sessionStorage.getItem("category"));
   document.querySelector(".add_cart").addEventListener("click", () => {
     add_to_cart("dd", this_item);
+    const aside = document.querySelector("aside");
     show_current_items();
+    aside.classList.add("show");
   });
 });
 

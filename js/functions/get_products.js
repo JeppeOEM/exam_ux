@@ -1,9 +1,7 @@
 import { breadcrumb } from "../functions/breadcrumb.js";
 
 export async function get_products(event, category, load = "") {
-
   if (load === "load_category") {
-
     //if sessionStorage.getItem() is empty null is returned
     //but converts to a string automatically when passed on to this function
     if (category == "null") {
@@ -28,6 +26,7 @@ export async function get_products(event, category, load = "") {
     let response = await fetch(`https://fakestoreapi.com/products${dynamic_category}`);
     item_array = await response.json();
     let sorting = JSON.parse(sessionStorage.getItem("current_sorting"));
+    console.log("sorting from coolie", sorting);
     item_array = sorted_list(item_array, sorting["type"], sorting["direction"]);
   }
   item_array = await insert_items(item_array);
@@ -65,7 +64,7 @@ async function fetch_clothing() {
 }
 
 async function clone_items(json) {
-  const product_grid = document.querySelector("#product-grid");
+  const product_grid = document.querySelector("#product_grid");
   const template = document.querySelector("template");
   remove_elements("grid_item");
   json.forEach((obj) => {
@@ -114,7 +113,7 @@ export function sorted_list(list, type, direction = 1) {
   } else if (type === "price") {
     sorted = list.sort(price);
   }
-
+  console.log(type, direction);
   sessionStorage.setItem("current_sorting", JSON.stringify({ type: type, direction: direction }));
   return sorted;
 
@@ -131,6 +130,24 @@ export function sorted_list(list, type, direction = 1) {
       return -1 * direction;
     } else {
       return 1 * direction;
+    }
+  }
+}
+
+export function get_previous_sorting() {
+  if (!sessionStorage.getItem("current_sorting")) {
+    sessionStorage.setItem("current_sorting", JSON.stringify({ type: "alphabetic", direction: 1 }));
+  } else {
+    const sorting = JSON.parse(sessionStorage.getItem("current_sorting"));
+    console.log(sorting);
+    if (sorting["type"] === "alphabetic" && sorting["direction"] === 1) {
+      document.getElementById("alphabetic").value = 1;
+    } else if (sorting["type"] === "alphabetic" && sorting["direction"] === -1) {
+      document.getElementById("alphabetic").value = -1;
+    } else if (sorting["type"] === "price" && sorting["direction"] === 1) {
+      document.getElementById("price").value = 1;
+    } else if (sorting["type"] === "price" && sorting["direction"] === -1) {
+      document.getElementById("price").value = -1;
     }
   }
 }
