@@ -77,7 +77,7 @@ export async function show_current_items(init = false) {
         ele.parentNode.removeChild(ele);
       });
     } catch {
-      ("nothing to remove");
+      console.log("nothing to remove");
     }
   }
 }
@@ -108,7 +108,7 @@ export function get_cart(key) {
 
 export function decrease_item(id, key, counted) {
   // the items id is is used as an key in the count object
-  id, key;
+
   let items = localStorage.getItem(key);
   items = JSON.parse(items);
 
@@ -133,20 +133,19 @@ export function decrease_item(id, key, counted) {
     // splice(starting index, number of indexes)
     items.splice(index, 1);
     localStorage.setItem(key, JSON.stringify(items));
-    items;
 
     return items;
   }
 }
 
 export function increase_item(id, key) {
-  id, key;
+
   let items = localStorage.getItem(key);
   items = JSON.parse(items);
-  items.length;
+
   //Implicit return/statement evaluated and returned
   const item = items.find((item) => item.id === parseInt(id));
-  item;
+
   //creates a independent/deep copy of the object
   const deep_copy = JSON.parse(JSON.stringify(item));
   //inserts copy at the start of the array

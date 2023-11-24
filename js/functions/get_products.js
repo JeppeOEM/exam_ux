@@ -1,20 +1,16 @@
 import { breadcrumb } from "../functions/breadcrumb.js";
 
 export async function get_products(event, category, load = "") {
-  category;
 
   if (load === "load_category") {
-    "Value of category before condition:", category;
+
     //if sessionStorage.getItem() is empty null is returned
     //but converts to a string automatically when passed on to this function
     if (category == "null") {
       category = "all";
-      "Value of category after condition:", category;
       sessionStorage.setItem("category", "all");
-      category;
     }
   } else {
-    category;
     category = event.target.dataset.filter;
   }
   let dynamic_category = "/";
@@ -36,9 +32,8 @@ export async function get_products(event, category, load = "") {
   }
   item_array = await insert_items(item_array);
   sessionStorage.setItem("category", category);
-  "ITEM ARRAY MOFOOOOOOOOOO", item_array;
+
   sessionStorage.setItem("current_items", JSON.stringify(item_array));
-  "CURRENT FUCKING ITEMS", sessionStorage.getItem("current_items");
   return item_array;
 }
 
@@ -62,17 +57,14 @@ export async function insert_items(item_array) {
 async function fetch_clothing() {
   const response_men = await fetch(`https://fakestoreapi.com/products/category/men's clothing/`);
   const response_women = await fetch(`https://fakestoreapi.com/products/category/women's clothing/`);
-  response_men;
-  response_women;
+
   const json_men = await response_men.json();
   const json_women = await response_women.json();
   const combined = [...json_men, ...json_women];
-  "before", combined;
   return combined;
 }
 
 async function clone_items(json) {
-  "EL JSON", json;
   const product_grid = document.querySelector("#product-grid");
   const template = document.querySelector("template");
   remove_elements("grid_item");
@@ -98,7 +90,7 @@ function remove_elements(class_name) {
       ele.parentNode.removeChild(ele);
     });
   } catch {
-    ("nothing to remove");
+    console.log("nothing to remove");
   }
 }
 

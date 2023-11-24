@@ -1,12 +1,11 @@
 export function focused_element() {
   document.addEventListener("keypress", function (event) {
-    ("dddd");
+
     if (event.key === "Enter") {
       // Call your function here
       get_focused();
     }
   });
-  ("lol");
 
   function get_focused() {
     const focus = document.activeElement;
@@ -15,13 +14,13 @@ export function focused_element() {
       const btn = focus.querySelector("button");
       const dropdownContent = focus.querySelector(".dropdown-content");
       dropdownContent.style.display = "block";
-      btn, "CLICKED";
+
     }
 
     if (focus.tagName === "LI") {
       const btn = focus.querySelector("button");
       btn.click();
-      btn, "CLICKED";
+;
     }
   }
 

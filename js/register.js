@@ -4,8 +4,7 @@ document.querySelector(".register").addEventListener("submit", function (event) 
   let get_email = formData.get("email");
   let get_password = formData.get("password");
   let retype_password = formData.get("retype_password");
-  get_email;
-  get_password;
+
   // let is_email_registered = email_check(email);
   // (is_email_registered);
   let is_validated = validate_credentials(get_password, get_email, retype_password);
@@ -18,10 +17,10 @@ document.querySelector(".register").addEventListener("submit", function (event) 
 });
 
 async function email_check(mail) {
-  mail;
+
   let response = await fetch(`http://localhost:3000/users?email=${mail}`);
   let json = await response.json();
-  json;
+
 }
 
 function validate_credentials(password, email, retyped_password) {
@@ -69,16 +68,16 @@ async function save_user(email, password) {
   try {
     const response = await fetch("http://localhost:3000/users", options);
     response = await response.status();
-    "resp", response;
+
   } catch (error) {
-    error;
+    console.log(error);
   }
 }
 
 async function login(email, password) {
   const response = await fetch("http://localhost:3000/users");
   const login = await response.json();
-  login;
+
 }
 
 function log_out() {

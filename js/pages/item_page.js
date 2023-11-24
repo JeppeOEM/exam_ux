@@ -55,9 +55,9 @@ async function build_page() {
 }
 async function load_item() {
   let item_id = localStorage.getItem("item_id");
-  item_id;
+
   let response = await fetch(`https://fakestoreapi.com/products/${item_id}`);
   let json = await response.json();
-  json;
+
   return json;
 }

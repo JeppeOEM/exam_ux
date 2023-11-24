@@ -24,15 +24,14 @@ addEventListener("DOMContentLoaded", (event) => {
 
   document.querySelector(".add_cart").addEventListener("click", () => {
     add_to_cart("dd", this_item);
-    this_item;
+
     show_current_items();
   });
 
   let selects = document.querySelectorAll(".select");
   selects.forEach((select) => {
     select.addEventListener("change", () => {
-      select.name;
-      select.value;
+
       const items = JSON.parse(sessionStorage.getItem("current_items"));
       items, "items to sort nowwwwwwwwwwwwww";
       let sorted_items = sorted_list(items, select.name, parseInt(select.value));
