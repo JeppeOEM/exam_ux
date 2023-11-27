@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
   breadcrumb(sessionStorage.getItem("category"));
   document.querySelector(".add_cart").addEventListener("click", () => {
     add_to_cart("dd", this_item);
-    const aside = document.querySelector("aside");
+    const aside = document.querySelector("#cart");
     show_current_items();
     aside.classList.add("show");
   });

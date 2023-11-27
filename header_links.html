@@ -7,32 +7,32 @@
     </div>
 
     <ul>
-      <li tabindex="0">
-        <button tabindex="-1" class="filter" data-filter="all">All Products</button>
+      <li class="filter" tabindex="0">
+        <button tabindex="-1" data-filter="all">All Products</button>
       </li>
-      <li tabindex="0">
+      <li class="filter" tabindex="0">
         <div class="dropdown" tabindex="-1">
           <button tabindex="0" class="dropdown_btn" aria-haspopup="true" aria-expanded="false">
             Dropdown
             <i class="fa fa-caret-down"></i>
           </button>
           <div tabindex="-1" class="dropdown-content">
-            <button tabindex="0" class="filter" data-filter="clothing">All Clothing</button>
-            <button tabindex="0" class="filter" data-filter="men's clothing">Men's Clothing</button>
-            <button tabindex="0" class="filter" data-filter="women's clothing">Women's Clothing</button>
+            <button tabindex="0" data-filter="clothing">All Clothing</button>
+            <button tabindex="0" data-filter="men's clothing">Men's Clothing</button>
+            <button tabindex="0" data-filter="women's clothing">Women's Clothing</button>
           </div>
         </div>
       </li>
 
-      <li tabindex="0">
-        <button tabindex="-1" class="filter" data-filter="electronics">Electronics</button>
+      <li class="filter" tabindex="0">
+        <button tabindex="-1" data-filter="electronics">Electronics</button>
       </li>
-      <li tabindex="0">
-        <button tabindex="-1" class="filter" data-filter="jewelery">Jewelry</button>
+      <li class="filter" tabindex="0">
+        <button tabindex="-1" data-filter="jewelery">Jewelry</button>
       </li>
       <li tabindex="-1">
         <div tabindex="-1" class="cart-wrapper">
-          <figure>
+          <span class="flex_horizontal">
             <button>
               <img class="user_icon" src="img/user.svg" alt="User dropdown" aria-label="User" />
             </button>
@@ -44,7 +44,7 @@
                 alt="Go to checkout symbol"
                 aria-label="Go to checkout" />
             </button>
-          </figure>
+          </span>
 
           <button class="hamburger_btn" aria-label="Open menu">
             <img tabindex="0" class="hamburger" src="img/bars-solid.svg" alt="Dropdown menu" />

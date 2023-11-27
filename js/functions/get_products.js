@@ -16,7 +16,7 @@ export async function get_products(event, category, load = "") {
     sessionStorage.setItem("category", `${category}`);
     dynamic_category = `/category/${category}`;
   }
-
+  document.querySelector("#category").innerText = category;
   breadcrumb(category);
   let item_array;
   if (category === "clothing") {
@@ -73,7 +73,7 @@ async function clone_items(json) {
     clone.querySelector(".grid_item").setAttribute("data-category", obj.category);
     clone.querySelector(".name").textContent = obj.title;
     clone.querySelector(".product_image").src = obj.image;
-    clone.querySelector(".product_image").alt = obj.title;
+    clone.querySelector(".product_image").alt = "product image";
     clone.querySelector(".price").textContent = obj.price;
 
     // clone.querySelector(".description").textContent = obj.description;

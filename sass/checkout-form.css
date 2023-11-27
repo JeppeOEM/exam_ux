@@ -1,0 +1,75 @@
+.input {
+  display: flex;
+  flex-direction: column;
+}
+
+.btn_border {
+  margin-right: 20px;
+  margin-top: 20px;
+  padding: 10px;
+  border: solid 1px;
+  top: 0;
+  right: 0;
+  position: absolute;
+}
+
+.change_data {
+  color: black;
+}
+
+.pen_icon {
+  width: 15px;
+}
+
+.total_price {
+  margin-top: 0px;
+}
+
+.step {
+  position: relative;
+  margin-right: 10px;
+  background: white;
+  margin-bottom: 20px;
+}
+
+.flex_inline {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex_inline .zip {
+  width: 150px;
+  margin-right: 10px;
+}
+
+.flex_inline .city {
+  width: 340px;
+}
+
+.checkout_steps {
+  display: flex;
+  flex-direction: column;
+}
+
+#saved {
+  color: black;
+}
+
+.showdata {
+  display: block;
+  all: unset;
+}
+
+.radio_btns {
+  justify-content: flex-start;
+}
+.radio_btns .radio_btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10px 0px;
+  border-bottom: solid 1px;
+}
+.radio_btns .radio_btn span {
+  width: 100px;
+}/*# sourceMappingURL=checkout-form.css.map */

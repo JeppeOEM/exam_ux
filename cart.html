@@ -1,27 +1,39 @@
-<h5>Item added to basket</h5>
 <section id="cart">
   <template class="cart_template">
     <article class="cart_item" data-category="">
-      <figure>
-        <img tabindex="-1" class="product_image" src="" alt="" />
+      <div class="flex_horizontal">
+        <figure>
+          <img tabindex="-1" class="product_image" src="" alt="" />
+        </figure>
         <div tabindex="-1" class="push_down">
+          <!-- name of item insertered -->
           <h5 class="name text_left"></h5>
-          <p class="text_left">price: <span class="price"></span></p>
+
+          <div class="flex_horizontal border_top">
+            <p class="text_left">Total Price:</p>
+            <p class="price h5-font"></p>
+            <p>&nbsp;$</p>
+            <span tabindex="1" class="item_buttons">
+              <button tabindex="0" class="minus" aria-label="decrease item amount">-</button>
+              <span tabindex="-1" aria-atomic="true" aria-label="item amount" class="amount"></span>
+              <button tabindex="0" class="plus" aria-label="decrease item amount">+</button>
+            </span>
+            <button tabindex="0" class="delete_item" aria-label="decrease item amount">🗑️</button>
+          </div>
         </div>
-      </figure>
-      <button tabindex="0" class="delete_item" aria-label="decrease item amount">🗑️</button>
-      <span tabindex="1" class="item_buttons">
-        <button tabindex="0" class="minus" aria-label="decrease item amount">-</button>
-        <span tabindex="-1" aria-atomic="true" aria-label="item amount" class="amount"></span>
-        <button tabindex="0" class="plus" aria-label="decrease item amount">+</button>
-      </span>
+      </div>
+      <div class="flex_horizontal border_top"></div>
     </article>
   </template>
 </section>
-
-<div class="button">
-  <a tabindex="0" href="/checkout.html">Go to checkout</a>
-</div>
-<div tabindex="-1" class="button">
-  <button tabindex="0" class="continue">Continue shopping</button>
+<div class="sticky">
+  <div class="button">
+    <a tabindex="0" href="/checkout.html">Go to checkout</a>
+  </div>
+  <div tabindex="-1" class="button">
+    <button tabindex="0" class="continue">Continue shopping</button>
+  </div>
+  <div>
+    <p class="checkout_price"></p>
+  </div>
 </div>

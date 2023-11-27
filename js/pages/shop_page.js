@@ -22,6 +22,9 @@ addEventListener("DOMContentLoaded", (event) => {
   get_previous_sorting();
   breadcrumb(sessionStorage.getItem("category"));
 
+  console.log(category, "category !!!!!!!!!!!!!!");
+
+
   let selects = document.querySelectorAll(".select");
   selects.forEach((select) => {
     select.addEventListener("change", () => {

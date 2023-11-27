@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
   load().then(() => {
     init_cart("dd");
     focused_element();
-    const aside = document.querySelector("aside");
+    const aside = document.querySelector("#cart");
     const hide = document.querySelector(".continue");
     const show_cart = document.querySelector("#cart_btn");
 
@@ -47,20 +47,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
 export let count = {};
 
-export async function show_current_items(init = false) {
+export async function show_current_items() {
   const cart = localStorage.getItem("dd");
   let items = JSON.parse(cart);
 
   count = count_items(items);
-  const aside = document.querySelector("aside");
+  const aside = document.querySelector("#cart");
   const filtered_list = remove_duplicates(items);
 
   await clone_items(filtered_list);
-  update_count_html(count);
-  if (init) {
-  } else {
-    aside.classList.add("show");
-  }
+  update_count_html();
+
   const minus = document.querySelectorAll(".minus");
   const plus = document.querySelectorAll(".plus");
   minus.forEach((btn) => {
@@ -85,12 +82,32 @@ export async function show_current_items(init = false) {
     });
   });
 
-  function update_count_html() {
+  async function update_count_html() {
+    const checkout_price = [];
     for (let key in count) {
+      const { id, price } = await total_item_price(key);
+      const total = count[key] * price;
       const amount = document.querySelector(`#c${key} .amount`);
       amount.innerText = count[key];
+      const total_price = document.querySelector(`#c${id} .price`);
+      total_price.innerText = total;
+      checkout_price.push(parseFloat(total));
     }
+    let sum = 0;
+    for (let i = 0; i < checkout_price.length; i++) {
+      sum += checkout_price[i];
+    }
+    //toFixed = remove decimals and convert to string
+    sum = sum.toFixed(2);
+    document.querySelector(".checkout_price").innerText = sum;
   }
+
+  async function total_item_price(item_id) {
+    const response = await fetch(`https://fakestoreapi.com/products/${item_id}`);
+    const item = await response.json();
+    return { id: item.id, price: item.price };
+  }
+
   async function clone_items(json) {
     const product_grid = document.querySelector("#cart");
     const template = document.querySelector(".cart_template");
@@ -100,13 +117,12 @@ export async function show_current_items(init = false) {
       const clone = template.content.cloneNode(true);
 
       //id's must start with a letter
-      console.log(obj);
       clone.querySelector(".cart_item").id = "c" + obj.id;
       clone.querySelector(".cart_item").setAttribute("data-category", obj.category);
       clone.querySelector(".name").textContent = obj.title;
       clone.querySelector(".product_image").src = obj.img;
       clone.querySelector(".product_image").alt = obj.title;
-      clone.querySelector(".price").textContent = obj.price;
+      // clone.querySelector(".price").textContent = obj.price;
       clone.querySelector(".delete_item").addEventListener("click", (event) => {
         const selected = event.target.closest("[id]");
         let id = selected.id;
@@ -231,6 +247,9 @@ export function count_items(items) {
 
   return counts;
 }
+
+export function sum_price(items) {}
+
 export function remove_duplicates(items) {
   let array = [];
 

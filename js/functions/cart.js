@@ -5,11 +5,11 @@ export async function show_current_items() {
   let items = JSON.parse(cart);
 
   count = count_items(items);
-          
+  const aside = document.querySelector("#cart");
   const filtered_list = remove_duplicates(items);
 
   await clone_items(filtered_list);
-  update_count_html(count);
+  update_count_html();
 
   const minus = document.querySelectorAll(".minus");
   const plus = document.querySelectorAll(".plus");
@@ -35,15 +35,35 @@ export async function show_current_items() {
     });
   });
 
-  function update_count_html() {
+  async function update_count_html() {
+    const checkout_price = [];
     for (let key in count) {
+      const { id, price } = await total_item_price(key);
+      const total = count[key] * price;
       const amount = document.querySelector(`#c${key} .amount`);
       amount.innerText = count[key];
+      const total_price = document.querySelector(`#c${id} .price`);
+      total_price.innerText = total;
+      checkout_price.push(parseFloat(total));
     }
+    let sum = 0;
+    for (let i = 0; i < checkout_price.length; i++) {
+      sum += checkout_price[i];
+    }
+    //toFixed = remove decimals and convert to string
+    sum = sum.toFixed(2);
+    document.querySelector(".checkout_price").innerText = sum;
   }
+
+  async function total_item_price(item_id) {
+    const response = await fetch(`https://fakestoreapi.com/products/${item_id}`);
+    const item = await response.json();
+    return { id: item.id, price: item.price };
+  }
+
   async function clone_items(json) {
     const product_grid = document.querySelector("#cart");
-    const template = document.querySelector("template");
+    const template = document.querySelector(".cart_template");
     remove_elements("cart_item");
 
     json.forEach((obj) => {
@@ -53,9 +73,9 @@ export async function show_current_items() {
       clone.querySelector(".cart_item").id = "c" + obj.id;
       clone.querySelector(".cart_item").setAttribute("data-category", obj.category);
       clone.querySelector(".name").textContent = obj.title;
-      clone.querySelector(".product_image").src = obj.image;
+      clone.querySelector(".product_image").src = obj.img;
       clone.querySelector(".product_image").alt = obj.title;
-      clone.querySelector(".price").textContent = obj.price;
+      // clone.querySelector(".price").textContent = obj.price;
       clone.querySelector(".delete_item").addEventListener("click", (event) => {
         const selected = event.target.closest("[id]");
         let id = selected.id;

@@ -1,4 +1,9 @@
-button, a {
+header button {
+  color: white;
+  cursor: pointer;
+}
+
+header a {
   color: white;
   cursor: pointer;
 }
@@ -104,4 +109,30 @@ img.user_icon {
 
 .dropdown:hover .dropdown-content {
   display: block;
+}
+
+.hamburger_btn {
+  display: none;
+}
+
+.hamburger {
+  display: none;
+}
+
+@media only screen and (max-width: 731px) {
+  .navbar {
+    justify-content: space-between;
+  }
+  .filter {
+    display: none;
+  }
+  .dropdown_btn {
+    display: none;
+  }
+  .hamburger_btn {
+    display: block;
+  }
+  .hamburger {
+    display: block;
+  }
 }/*# sourceMappingURL=header.css.map */

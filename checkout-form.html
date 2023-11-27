@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Single item</title>
+    <link rel="stylesheet" href="sass/base.css" />
+    <link rel="stylesheet" href="sass/header.css" />
+    <link rel="stylesheet" href="sass/cart.css" />
+    <link rel="stylesheet" href="sass/checkout.css" />
+    <link rel="stylesheet" href="sass/checkout-form.css" />
+    <script type="module" src="js/html_components.js"></script>
+    <script type="module" src="js/pages/checkout_form_page.js"></script>
+  </head>
+  <body>
+    <!-- imported header header.html -->
+    <header id="header"></header>
+    <main>
+      <div class="main_content">
+        <div class="checkout_steps">
+          <section class="step">
+            <h3 class="products">1) Address</h3>
+            <form id="address_form" method="post">
+              <fieldset class="fieldset">
+                <legend>Delivery address</legend>
+                <div class="input">
+                  <label for="email">Email</label>
+                  <input type="email" name="email" class="email" required />
+                </div>
+                <div class="input">
+                  <label for="first_name">First name</label>
+                  <input name="first_name" class="first_name" type="text" required />
+                </div>
+                <div class="input">
+                  <label for="last_name">Last name</label>
+                  <input name="last_name" class="last_name" type="text" required />
+                </div>
+                <div class="input">
+                  <label for="address">Address</label>
+                  <input name="address" class="address" type="text" required />
+                </div>
+                <span class="flex_inline">
+                  <div class="input">
+                    <label for="zip">Zip code</label>
+                    <input class="zip" name="zip" class="zip" type="text" required />
+                  </div>
+                  <div class="input">
+                    <label for="city">City</label>
+                    <input class="city" name="city" class="city" type="text" required />
+                  </div>
+                </span>
+                <div class="input">
+                  <label for="mobile">Mobile</label>
+                  <input name="mobile" class="mobile" type="tel" required />
+                </div>
+                <input type="checkbox" class="billing_check" name="billing" checked />
+                <label class="billing_check" for="billing">Use delivery address as billing address</label>
+                <div class="billing"></div>
+              </fieldset>
+            </form>
+            <aside id="saved" class="hide" aria-label="confirmed and saved address information">
+              <p class="first_name"></p>
+              <p class="last_name"></p>
+              <p class="email"></p>
+              <p class="address"></p>
+              <p class="zip"></p>
+              <p class="city"></p>
+              <p class="mobile"></p>
+              <span class="btn_border">
+                <a href="/checkout-form.html" id="change_data">edit</a>
+                <img class="pen_icon" src="../img/pen.svg" alt="pen icon" />
+              </span>
+            </aside>
+          </section>
+          <section class="step">
+            <h3>2) Delivery</h3>
+            <div class="no_address">
+              <p>Fill out and submit your address to see delivery options.</p>
+            </div>
+            <div class="address_confirmed">
+              <form id="post" action="">
+                <fieldset class="flex_column radio_btns">
+                  <span class="radio_btn">
+                    <span>
+                      <input id="dhl" type="radio" />
+                      <label for="bring">DHL</label>
+                    </span>
+                    <p>5-7 days</p>
+                    <p class="cost">1$</p>
+                  </span>
+                  <span class="radio_btn">
+                    <span>
+                      <input id="post_nord" type="radio" />
+                      <label for="bring">Post Nord</label>
+                    </span>
+
+                    <p>2-3 days</p>
+                    <p class="cost">4$</p>
+                  </span>
+                  <span class="radio_btn">
+                    <span>
+                      <input id="bring" type="radio" />
+                      <label for="bring">Bring</label>
+                    </span>
+                    <p>2-4 days</p>
+                    <p class="cost">2$</p>
+                  </span>
+                </fieldset>
+              </form>
+            </div>
+          </section>
+          <section class="step">
+            <h3>3) Payment solution</h3>
+            <div class="no_address">
+              <p>Fill out and submit your address to see payment solutions.</p>
+            </div>
+            <div class="address_confirmed">
+              <form action="/process-payment" method="post">
+                <label for="cardholderName">Cardholder Name:</label>
+                <input type="text" id="cardholderName" name="cardholderName" required />
+
+                <label for="cardNumber">Card Number:</label>
+                <input
+                  type="text"
+                  id="cardNumber"
+                  name="cardNumber"
+                  pattern="[0-9]{16}"
+                  title="Enter a 16-digit card number"
+                  required />
+
+                <label for="expirationDate">Expiration Date (MM/YYYY):</label>
+                <input
+                  type="text"
+                  id="expirationDate"
+                  name="expirationDate"
+                  pattern="(0[1-9]|1[0-2])\/[0-9]{4}"
+                  title="Enter a valid expiration date in MM/YYYY format"
+                  required />
+
+                <label for="cvv">CVV:</label>
+                <input type="text" id="cvv" name="cvv" pattern="[0-9]{3,4}" title="Enter a 3 or 4-digit CVV" required />
+
+                <input type="submit" value="Submit" />
+              </form>
+            </div>
+          </section>
+        </div>
+
+        <section class="total_price">
+          <p>Delevery</p>
+          <hr />
+          <div class="flex_horizontal space_between">
+            <p class="h5-font bold">Price (incl. tax):&nbsp;</p>
+            <span class="flex_horizontal">
+              <p class="checkout_price"></p>
+              <p>$</p>
+            </span>
+          </div>
+
+          <div class="button">
+            <button type="submit" id="confirm" form="address_form">Confirm address</button>
+          </div>
+        </section>
+      </div>
+
+      <p class="total"></p>
+      <!-- imported cart cart.html -->
+      <!-- <aside id="cart"></aside> -->
+    </main>
+    <!-- imported footer footer.html -->
+    <footer id="footer"></footer>
+  </body>
+</html>

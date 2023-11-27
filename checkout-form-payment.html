@@ -10,15 +10,39 @@
     <link rel="stylesheet" href="sass/checkout.css" />
     <link rel="stylesheet" href="sass/checkout-form.css" />
     <script type="module" src="js/html_components.js"></script>
-    <script type="module" src="js/pages/checkout_page.js"></script>
+    <script type="module" src="js/pages/checkout_form_payment_page.js"></script>
   </head>
   <body>
     <!-- imported header header.html -->
     <header id="header"></header>
     <main>
       <div class="main_content">
-        <div>
-          
+        <div class="checkout_steps">
+          <section class="step">
+            <h3 class="products">1) Address</h3>
+
+            <aside id="saved" class="hide" aria-label="confirmed and saved address information">
+              <p id="first_name"></p>
+              <p id="last_name"></p>
+              <p id="email"></p>
+              <p id="address"></p>
+              <p id="zip"></p>
+              <p id="city"></p>
+              <p id="mobile"></p>
+              <button id="change_data">Change data</button>
+            </aside>
+          </section>
+          <section class="step">
+            <h3>2) Delivery information</h3>
+            <form action="">
+              <label for="bring"></label>
+              <input type="radio" />
+            </form>
+          </section>
+          <section class="step">
+            <h3>3) Payment solution</h3>
+            <p>Fill out and submit your address to see payment solutions.</p>
+          </section>
         </div>
 
         <section class="total_price">
@@ -32,7 +56,7 @@
             </span>
           </div>
           <div class="button">
-            <a href="/checkout-form.html">To checkout</a>
+            <button type="submit" id="confirm" form="address_form">Confirm address</button>
           </div>
         </section>
       </div>

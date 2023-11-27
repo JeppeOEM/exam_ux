@@ -32,7 +32,6 @@ hr {
 }
 
 .button {
-  padding: 20px 0px;
   width: 100%;
 }
 
@@ -44,6 +43,9 @@ hr {
   border-radius: 5px;
   color: white;
   transition: 0.3s;
+  display: block;
+  padding: 15px 0px;
+  width: 100%;
 }
 .button a:hover {
   background-color: #144A7F;
@@ -68,12 +70,6 @@ hr {
   width: -moz-fit-content;
   width: fit-content;
   font-size: 1.44rem;
-}
-
-.button a {
-  display: block;
-  padding: 20px 0px;
-  width: 100%;
 }
 
 .breadcrumb {
