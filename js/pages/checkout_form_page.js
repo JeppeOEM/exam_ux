@@ -50,32 +50,34 @@ confirm_btn.addEventListener("submit", (event) => {
   city_saved.innerText = city.value;
   mobile_saved.innerText = mobile.value;
 });
+listeners();
+function listeners() {
+  const inputs = document.querySelectorAll("input");
+  inputs.forEach((input) => {
+    input.addEventListener("input", (event) => {
+      console.log(event.target.className);
+      console.log(event.target.value);
+      console.log(event.target.type);
+      if (event.target.type === "radio") {
+        sessionStorage.setItem("radio", event.target.className);
+        console.log("hit");
+      } else if (event.target.type === "checkbox") {
+        console.log("checkbox!!!!!");
+        console.log(event.target.checked);
+        event.target.checked ? hide_billing() : load_billing();
+        sessionStorage.setItem("radio", event.target.className);
+      } else if (event.target.type !== "radio" && event.target.type !== "checkbox") {
+        console.log(event.target.closest("#billing"));
+        sessionStorage.setItem(event.target.className, event.target.value);
 
-const inputs = document.querySelectorAll("input");
-inputs.forEach((input) => {
-  input.addEventListener("input", (event) => {
-    console.log(event.target.id);
-    console.log(event.target.value);
-    console.log(event.target.type);
-    if (event.target.type === "radio") {
-      sessionStorage.setItem("radio", event.target.id);
-      console.log("hit");
-    } else if (event.target.type === "checkbox") {
-      console.log("checkbox!!!!!");
-      console.log(event.target.checked);
-      event.target.checked ? hide_billing() : load_billing();
-      sessionStorage.setItem("radio", event.target.id);
-    } else if (event.target.type !== "radio" && event.target.type !== "checkbox") {
-      console.log(event.target.closest("#billing"));
-      sessionStorage.setItem(event.target.id, event.target.value);
-      event.target.closest("#billing")
-        ? sessionStorage.setItem(event.target.id, event.target.value)
-        : sessionStorage.setItem(event.target.id + "_billing", event.target.value);
-    }
+        event.target.closest("#billing")
+          ? sessionStorage.setItem(event.target.className, event.target.value)
+          : sessionStorage.setItem(event.target.className + "_billing", event.target.value);
+      }
+    });
   });
-});
-// });
-
+  // });
+}
 function restore_form(form, billing = "") {
   const target_form = document.querySelector(`#${form}`);
   target_form.querySelector(".email").value = sessionStorage.getItem(`email${billing}`) || "";
@@ -86,6 +88,16 @@ function restore_form(form, billing = "") {
   target_form.querySelector(".city").value = sessionStorage.getItem("city") || "";
   target_form.querySelector(".mobile").value = sessionStorage.getItem("mobile") || "";
 }
+
+// function restore_form() {
+//   document.querySelector(".email").value = sessionStorage.getItem(`email`) || "";
+//   document.querySelector(".first_name").value = sessionStorage.getItem("first_name") || "";
+//   document.querySelector(".last_name").value = sessionStorage.getItem("last_name") || "";
+//   document.querySelector(".address").value = sessionStorage.getItem("address") || "";
+//   document.querySelector(".zip").value = sessionStorage.getItem("zip") || "";
+//   document.querySelector(".city").value = sessionStorage.getItem("city") || "";
+//   document.querySelector(".mobile").value = sessionStorage.getItem("mobile") || "";
+// }
 
 // Get the element by its ID
 
