@@ -1,16 +1,5 @@
 "use strict";
-import {
-  init_cart,
-  add_to_cart,
-  remove_duplicates,
-  count_items,
-  increase_item,
-  decrease_item,
-  clear_cart,
-  delete_item,
-  count,
-  show_current_items,
-} from "../functions/cart.js";
+import { show_current_items } from "../functions/cart.js";
 
 // import "../cart.js";
 import { load_html_checkout } from "../html_components.js";

@@ -35,6 +35,10 @@ h4 {
   font-size: 1.44rem;
 }
 
+.h4-font {
+  font-size: 1.44rem;
+}
+
 h5 {
   font-size: 1.15rem;
 }
@@ -90,16 +94,22 @@ button {
   background: white;
 }
 
+fieldset input {
+  padding: 7px;
+}
+
 .button {
   width: 100%;
 }
 
 .button button {
+  display: block;
+  margin-top: 20px;
   background-color: #082644;
   width: 100%;
   padding: 15px 0px;
   text-align: center;
-  border-radius: 5px;
+  border-radius: 2px;
   color: white;
   transition: 0.3s;
 }
@@ -115,11 +125,28 @@ button {
   width: 100%;
   padding: 15px 0px;
   text-align: center;
-  border-radius: 5px;
+  border-radius: 2px;
   color: white;
   transition: 0.3s;
 }
 .button a:hover {
+  background-color: #144A7F;
+  cursor: pointer;
+}
+
+.button input[type=submit] {
+  display: block;
+  margin-top: 20px;
+  background-color: #082644;
+  width: 100%;
+  padding: 15px 0px;
+  text-align: center;
+  border-radius: 2px;
+  color: white;
+  transition: 0.3s;
+  border: none;
+}
+.button input[type=submit]:hover {
   background-color: #144A7F;
   cursor: pointer;
 }
@@ -129,7 +156,7 @@ button {
 }
 
 fieldset {
-  all: unset;
+  border: 0px;
 }
 
 .hide {
@@ -142,6 +169,10 @@ fieldset {
 
 .showblock {
   display: block;
+}
+
+.input {
+  margin: 10px 0px;
 }
 
 @media only screen and (max-width: 757px) {

@@ -1,19 +1,16 @@
-.hero {
-  background-image: url("../img/hero.jpg");
-  height: 90vh;
-  width: 100%;
-  padding: 0 70px;
-  background-size: cover;
-  background-position: top 65% right 30%;
+.flex_main {
   display: flex;
-  align-items: flex-start;
   justify-content: center;
-  flex-direction: column;
-  z-index: 1;
 }
-.hero h4 {
-  padding-bottom: 15px;
+
+.login {
+  width: 400px;
 }
+
+.fieldset_login input {
+  width: 100%;
+}
+
 .categories-wrapper {
   display: flex;
   justify-content: center;

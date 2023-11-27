@@ -81,6 +81,13 @@ figure {
   height: fit-content;
   width: 350px;
 }
+.total_price div {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.total_price .button {
+  margin-top: 20px;
+}
 
 .item_section {
   margin-right: 10px;

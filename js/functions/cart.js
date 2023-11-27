@@ -53,6 +53,7 @@ export async function show_current_items() {
     //toFixed = remove decimals and convert to string
     sum = sum.toFixed(2);
     document.querySelector(".checkout_price").innerText = sum;
+    localStorage.setItem("checkout", sum);
   }
 
   async function total_item_price(item_id) {

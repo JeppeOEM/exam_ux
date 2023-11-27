@@ -6,7 +6,6 @@
     <title>Single item</title>
     <link rel="stylesheet" href="sass/base.css" />
     <link rel="stylesheet" href="sass/header.css" />
-    <link rel="stylesheet" href="sass/cart.css" />
     <link rel="stylesheet" href="sass/checkout.css" />
     <link rel="stylesheet" href="sass/checkout-form.css" />
     <script type="module" src="js/html_components.js"></script>
@@ -22,7 +21,7 @@
             <h3 class="products">1) Address</h3>
             <form id="address_form" method="post">
               <fieldset class="fieldset">
-                <legend>Delivery address</legend>
+                <legend class="h4-font">Delivery address</legend>
                 <div class="input">
                   <label for="email">Email</label>
                   <input type="email" name="email" class="email" required />
@@ -59,15 +58,30 @@
               </fieldset>
             </form>
             <aside id="saved" class="hide" aria-label="confirmed and saved address information">
-              <p class="first_name"></p>
-              <p class="last_name"></p>
-              <p class="email"></p>
-              <p class="address"></p>
-              <p class="zip"></p>
-              <p class="city"></p>
-              <p class="mobile"></p>
+              <section class="flex_horizontal">
+                <article class="flex_columns delivery">
+                  <h5>Delivery Address</h5>
+                  <p class="first_name"></p>
+                  <p class="last_name"></p>
+                  <p class="email"></p>
+                  <p class="address"></p>
+                  <p class="zip"></p>
+                  <p class="city"></p>
+                  <p class="mobile"></p>
+                </article>
+                <article class="flex_columns billing">
+                  <h5>Billing Address</h5>
+                  <p class="first_name"></p>
+                  <p class="last_name"></p>
+                  <p class="email"></p>
+                  <p class="address"></p>
+                  <p class="zip"></p>
+                  <p class="city"></p>
+                  <p class="mobile"></p>
+                </article>
+              </section>
               <span class="btn_border">
-                <a href="/checkout-form.html" id="change_data">edit</a>
+                <button id="change_data">edit</button>
                 <img class="pen_icon" src="../img/pen.svg" alt="pen icon" />
               </span>
             </aside>
@@ -79,18 +93,18 @@
             </div>
             <div class="address_confirmed">
               <form id="post" action="">
-                <fieldset class="flex_column radio_btns">
+                <fieldset class="postal flex_column radio_btns">
                   <span class="radio_btn">
                     <span>
-                      <input id="dhl" type="radio" />
+                      <input value="3" class="post_form" id="dhl" type="radio" />
                       <label for="bring">DHL</label>
                     </span>
                     <p>5-7 days</p>
-                    <p class="cost">1$</p>
+                    <p class="cost">3$</p>
                   </span>
                   <span class="radio_btn">
                     <span>
-                      <input id="post_nord" type="radio" />
+                      <input value="4" class="post_form" id="post_nord" type="radio" />
                       <label for="bring">Post Nord</label>
                     </span>
 
@@ -99,7 +113,7 @@
                   </span>
                   <span class="radio_btn">
                     <span>
-                      <input id="bring" type="radio" />
+                      <input value="2" class="post_form" id="bring" type="radio" />
                       <label for="bring">Bring</label>
                     </span>
                     <p>2-4 days</p>
@@ -109,54 +123,57 @@
               </form>
             </div>
           </section>
-          <section class="step">
+          <section class="step payment">
             <h3>3) Payment solution</h3>
             <div class="no_address">
               <p>Fill out and submit your address to see payment solutions.</p>
             </div>
             <div class="address_confirmed">
-              <form action="/process-payment" method="post">
-                <label for="cardholderName">Cardholder Name:</label>
-                <input type="text" id="cardholderName" name="cardholderName" required />
-
-                <label for="cardNumber">Card Number:</label>
-                <input
-                  type="text"
-                  id="cardNumber"
-                  name="cardNumber"
-                  pattern="[0-9]{16}"
-                  title="Enter a 16-digit card number"
-                  required />
-
-                <label for="expirationDate">Expiration Date (MM/YYYY):</label>
-                <input
-                  type="text"
-                  id="expirationDate"
-                  name="expirationDate"
-                  pattern="(0[1-9]|1[0-2])\/[0-9]{4}"
-                  title="Enter a valid expiration date in MM/YYYY format"
-                  required />
-
-                <label for="cvv">CVV:</label>
-                <input type="text" id="cvv" name="cvv" pattern="[0-9]{3,4}" title="Enter a 3 or 4-digit CVV" required />
-
-                <input type="submit" value="Submit" />
+              <form id="pay" class="payment_form" method="post">
+                <fieldset class="payment_solution flex_column radio_btns">
+                  <span class="radio_btn">
+                    <span>
+                      <input class="pay_form" name="credit" id="credit" type="radio" />
+                      <label for="credit">Credit card</label>
+                    </span>
+                  </span>
+                  <span class="radio_btn">
+                    <span>
+                      <input class="pay_form" name="mobile_pay" id="mobile_pay" type="radio" />
+                      <label for="mobile_pay">Mobile pay</label>
+                    </span>
+                  </span>
+                </fieldset>
               </form>
             </div>
           </section>
         </div>
 
         <section class="total_price">
-          <p>Delevery</p>
-          <hr />
           <div class="flex_horizontal space_between">
-            <p class="h5-font bold">Price (incl. tax):&nbsp;</p>
+            <p>Delivery:&nbsp;</p>
             <span class="flex_horizontal">
-              <p class="checkout_price"></p>
-              <p>$</p>
+              <p class="delivery_price">0</p>
+              <p>&nbsp;$</p>
             </span>
           </div>
 
+          <div class="flex_horizontal space_between">
+            <p>Items:&nbsp;</p>
+            <span class="flex_horizontal">
+              <p class="checkout_price"></p>
+              <p>&nbsp;$</p>
+            </span>
+          </div>
+          <hr />
+
+          <div class="flex_horizontal space_between">
+            <p class="h5-font bold">Total (incl. tax):&nbsp;</p>
+            <span class="flex_horizontal">
+              <p class=" sum_price"></p>
+              <p>&nbsp;$</p>
+            </span>
+          </div>
           <div class="button">
             <button type="submit" id="confirm" form="address_form">Confirm address</button>
           </div>
@@ -169,5 +186,46 @@
     </main>
     <!-- imported footer footer.html -->
     <footer id="footer"></footer>
+
+    <!-- The Modal -->
+    <div class="overlay" id="modal_overlay">
+      <div class="modal">
+        <form class="payment_form" method="post">
+          <span id="close">X</span>
+          <legend class="h4-font">Credit card details</legend>
+          <fieldset class="flex_column">
+            <label for="card_number">Card Number:</label>
+            <input
+              type="text"
+              id="card_number"
+              name="card_number"
+              pattern="[0-9]{16}"
+              title="Enter a 16-digit card number"
+              required />
+            <span class="flex_horizontal">
+              <span class="flex_column pad">
+                <label for="expiration">Expiration Date </label>
+                <input
+                  type="text"
+                  id="expiration"
+                  name="expiration"
+                  pattern="(0[1-9]|1[0-2])\/[0-9]{4}"
+                  title="Enter a valid expiration date in MM/YYYY format"
+                  placeholder="MM/YYYY"
+                  required />
+              </span>
+
+              <span class="flex_column">
+                <label class="cvv_label" for="cvv">CVV:</label>
+                <input type="text" id="cvv" name="cvv" pattern="[0-9]{3,4}" title="Enter a 3 or 4-digit CVV" required />
+              </span>
+            </span>
+            <div class="button">
+              <button class="button pay" type="submit" value="Submit">Pay</button>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </div>
   </body>
 </html>

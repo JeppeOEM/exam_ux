@@ -6,54 +6,68 @@
     <title>Document</title>
     <link rel="stylesheet" href="sass/base.css" />
     <link rel="stylesheet" href="sass/index.css" />
-    <link rel="stylesheet" href="sass/header.css" />
-    <script type="module" src="js/login/backend.js" defer></script>
     <script type="module" src="js/pages/front_page.js"></script>
-    <script type="module" src="js/cart.js"></script>
     <script type="module" src="js/register.js" defer></script>
   </head>
-  <!-- imported header header.html -->
-  <header id="header"></header>
-  <body>
-    <main>
-      <section class="hero">
-        <h4>smaller headline</h4>
-        <h2>a bit bigger</h2>
-        <h1>Big text here</h1>
-        <p>small call to action text</p>
-        <button>Shop now</button>
 
-        <div class="categories-wrapper">
+  <body>
+    <main class="flex_main">
+      <section class="login">
+        <h2>Login to enter webshop</h2>
+        <form class="login" method="POST">
+          <fieldset class="fieldset_login">
+            <label for="login_email">Email:</label>
+            <input class="input" name="login_email" type="email" placeholder="Email" required />
+            <label for="login_password">Password:</label>
+            <input class="input" name="login_password" type="password" placeholder="Password" required />
+            <div class="button">
+              <input type="submit" value="Login" />
+            </div>
+          </fieldset>
+          <p>Dont have an account? <u>Register here</u></p>
+        </form>
+        <!-- <div class="categories-wrapper">
           <section class="categories">
             <article class="category">category 1</article>
             <article class="category">category 2</article>
             <article class="category">category 3</article>
             <article class="category">category 4</article>
           </section>
-        </div>
+        </div> -->
 
-        <form id="contactForm" method="POST">
+        <!-- <form id="contactForm" method="POST">
           <label for="name">Name:</label>
           <input class="input" name="login_email" type="email" placeholder="email" required />
           <input class="input" name="login_password" type="password" placeholder="password" required />
           <button type="submit">Submit</button>
-        </form>
+        </form> -->
 
         <form class="register" method="POST">
-          <input class="input" name="email" type="email" placeholder="email" required />
-          <input class="input" name="password" type="password" placeholder="password" required />
-          <input class="input" name="retype_password" type="password" placeholder="password" required />
-          <input type="submit" value="Register" />
+          <fieldset class="flex_column">
+            <span class="flex_column">
+              <label for="email">Email:</label>
+              <input class="input" name="email" type="email" placeholder="Email" required />
+            </span>
+            <span class="flex_column">
+              <label for="password">Password</label>
+              <input class="input" name="password" type="password" placeholder="Password" required />
+            </span>
+            <span class="flex_column">
+              <label for="retype_password">Confirm password</label>
+              <input class="input" name="retype_password" type="password" placeholder="Confirm password" required />
+              <div class="button">
+                <input type="submit" value="Register" />
+              </div>
+            </span>
+          </fieldset>
         </form>
       </section>
-      <section>
+      <!-- <section>
         <form class="login" method="POST">
           <input class="input" name="login_password" type="password" placeholder="password" required />
           <input type="submit" value="login" />
         </form>
-      </section>
-
-      <button id="cart">add to cart</button>
+      </section> -->
     </main>
     <footer id="footer"></footer>
   </body>
