@@ -16,11 +16,42 @@
     <!-- imported header header.html -->
     <header id="header"></header>
     <main>
+      <h1 class="products">Products</h1>
       <div class="main_content">
-        <div>
-          
-        </div>
+        <section class="item_section">
+          <section id="cart">
+            <template class="cart_template">
+              <article class="cart_item" data-category="">
+                <div class="flex_switch">
+                  <figure>
+                    <img tabindex="-1" class="product_image" src="" alt="" />
+                  </figure>
+                  <div tabindex="-1" class="push_down">
+                    <!-- name of item insertered -->
+                    <h5 class="name text_left"></h5>
 
+                    <div class="flex_switch space_between border_top">
+                      <span class="flex_item1 flex_horizontal">
+                        <p class="text_left">Total Price:</p>
+                        <p class="price h5-font"></p>
+                        <p>&nbsp;$</p>
+                      </span>
+                      <span class="flex_horizontal space_between">
+                        <span tabindex="1" class="flex_item2 item_buttons">
+                          <button tabindex="0" class="minus" aria-label="decrease item amount">-</button>
+                          <span tabindex="-1" aria-atomic="true" aria-label="item amount" class="amount"></span>
+                          <button tabindex="0" class="plus" aria-label="decrease item amount">+</button>
+                        </span>
+                        <button tabindex="0" class="delete_item" aria-label="decrease item amount">🗑️</button>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="flex_horizontal border_top"></div>
+              </article>
+            </template>
+          </section>
+        </section>
         <section class="total_price">
           <p>Delevery</p>
           <hr />

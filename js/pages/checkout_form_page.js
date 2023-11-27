@@ -1,5 +1,6 @@
 // document.addEventListener("DOMContentLoaded", () => {
 let address_confirmed;
+let billing_active;
 restore_form("address_form");
 show_html();
 
@@ -9,22 +10,6 @@ confirm_btn.addEventListener("submit", (event) => {
 
   // event.stopImmediatePropagation();
   // event.stopPropagation();
-  const email = document.querySelector(".email");
-  const first_name = document.querySelector(".first_name");
-  const last_name = document.querySelector(".last_name");
-  const address = document.querySelector(".address");
-  const zip = document.querySelector(".zip");
-  const city = document.querySelector(".city");
-  const mobile = document.querySelector(".mobile");
-
-  // Example: Accessing values
-  console.log("Email:", email.value);
-  console.log("First Name:", first_name.value);
-  console.log("Last Name:", last_name.value);
-  console.log("Address:", address.value);
-  console.log("Zip Code:", zip.value);
-  console.log("City:", city.value);
-  console.log("Mobile:", mobile.value);
 
   document.querySelector("#address_form").classList.add("hide");
   const saved = document.querySelector("#saved");
@@ -32,52 +17,45 @@ confirm_btn.addEventListener("submit", (event) => {
   address_confirmed = true;
   show_html();
   restore_radio_btn();
+  get_form_data("address_form");
+  function get_form_data(the_form) {
+    let form = document.querySelector(`#${the_form}`);
+    const email = form.querySelector(".email");
+    const first_name = form.querySelector(".first_name");
+    const last_name = form.querySelector(".last_name");
+    const address = form.querySelector(".address");
+    const zip = form.querySelector(".zip");
+    const city = form.querySelector(".city");
+    const mobile = form.querySelector(".mobile");
 
-  const email_saved = document.querySelector(".email");
-  const first_name_saved = document.querySelector(".first_name");
-  const last_name_saved = document.querySelector(".last_name");
-  const address_saved = document.querySelector(".address");
-  const zip_saved = document.querySelector(".zip");
-  const city_saved = document.querySelector(".city");
-  const mobile_saved = document.querySelector(".mobile");
+    // Example: Accessing values
+    console.log("Email:", email.value);
+    console.log("First Name:", first_name.value);
+    console.log("Last Name:", last_name.value);
+    console.log("Address:", address.value);
+    console.log("Zip Code:", zip.value);
+    console.log("City:", city.value);
+    console.log("Mobile:", mobile.value);
+    const email_saved = form.querySelector(".email");
+    const first_name_saved = form.querySelector(".first_name");
+    const last_name_saved = form.querySelector(".last_name");
+    const address_saved = form.querySelector(".address");
+    const zip_saved = form.querySelector(".zip");
+    const city_saved = form.querySelector(".city");
+    const mobile_saved = form.querySelector(".mobile");
 
-  email_saved.innerText = email.value;
-  first_name_saved.innerText = first_name.value;
-  last_name_saved.innerText = last_name.value;
-  first_name_saved.innerText = first_name.value;
-  address_saved.innerText = address.value;
-  zip_saved.innerText = zip.value;
-  city_saved.innerText = city.value;
-  mobile_saved.innerText = mobile.value;
+    email_saved.innerText = email.value;
+    first_name_saved.innerText = first_name.value;
+    last_name_saved.innerText = last_name.value;
+    first_name_saved.innerText = first_name.value;
+    address_saved.innerText = address.value;
+    zip_saved.innerText = zip.value;
+    city_saved.innerText = city.value;
+    mobile_saved.innerText = mobile.value;
+  }
 });
 listeners();
-function listeners() {
-  const inputs = document.querySelectorAll("input");
-  inputs.forEach((input) => {
-    input.addEventListener("input", (event) => {
-      console.log(event.target.className);
-      console.log(event.target.value);
-      console.log(event.target.type);
-      if (event.target.type === "radio") {
-        sessionStorage.setItem("radio", event.target.className);
-        console.log("hit");
-      } else if (event.target.type === "checkbox") {
-        console.log("checkbox!!!!!");
-        console.log(event.target.checked);
-        event.target.checked ? hide_billing() : load_billing();
-        sessionStorage.setItem("radio", event.target.className);
-      } else if (event.target.type !== "radio" && event.target.type !== "checkbox") {
-        console.log(event.target.closest("#billing"));
-        sessionStorage.setItem(event.target.className, event.target.value);
 
-        event.target.closest("#billing")
-          ? sessionStorage.setItem(event.target.className, event.target.value)
-          : sessionStorage.setItem(event.target.className + "_billing", event.target.value);
-      }
-    });
-  });
-  // });
-}
 function restore_form(form, billing = "") {
   const target_form = document.querySelector(`#${form}`);
   target_form.querySelector(".email").value = sessionStorage.getItem(`email${billing}`) || "";
@@ -140,6 +118,7 @@ function restore_radio_btn() {
 }
 
 function load_billing() {
+  billing_active = true;
   const billing = document.querySelector(".billing");
   const form = document.createElement("form");
   const fieldset = document.querySelector(".fieldset");
@@ -157,7 +136,49 @@ function load_billing() {
 }
 
 function hide_billing() {
+  billing_active = false;
   document.querySelector("#billing").remove();
 }
 
-// });
+function listeners() {
+  const inputs = document.querySelectorAll("input");
+  inputs.forEach((input) => {
+    input.addEventListener("input", (event) => {
+      console.log(event.target.className);
+      console.log(event.target.value);
+      console.log(event.target.type);
+      if (event.target.type === "radio") {
+        sessionStorage.setItem("radio", event.target.className);
+        console.log("hit");
+      } else if (event.target.type === "checkbox") {
+        console.log("checkbox!!!!!");
+        console.log(event.target.checked);
+        event.target.checked ? hide_billing() : load_billing();
+        sessionStorage.setItem("radio", event.target.className);
+      } else if (event.target.type !== "radio" && event.target.type !== "checkbox") {
+        sessionStorage.setItem(event.target.className, event.target.value);
+      }
+    });
+  });
+}
+
+function remove_billing() {
+  const billing = document.querySelector("#billing");
+  const inputs = billing.querySelectorAll("input");
+  inputs.forEach((input) => {
+    input.removeEventListener("input", (event) => {
+      sessionStorage.setItem(event.target.className + "_billing", event.target.value);
+    });
+  });
+}
+
+function billing_listeners() {
+  const billing = document.querySelector("#billing");
+  const inputs = billing.querySelectorAll("input");
+  inputs.forEach((input) => {
+    input.addEventListener("input", (event) => {
+      sessionStorage.setItem(event.target.className + "_billing", event.target.value);
+      sessionStorage.getItem(event.target.className + "_billing");
+    });
+  });
+}
