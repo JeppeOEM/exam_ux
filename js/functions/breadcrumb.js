@@ -14,7 +14,7 @@ export function breadcrumb(category) {
   // Create elements
   const allLink = document.createElement("a");
   allLink.id = "all";
-  allLink.href = "index.html";
+  allLink.href = "shop.html";
   allLink.textContent = "All products";
   allLink.addEventListener("click", () => {
     sessionStorage.setItem("category", null);

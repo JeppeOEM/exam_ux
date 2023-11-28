@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="sass/item.css" />
     <link rel="stylesheet" href="sass/cart.css" />
     <link rel="stylesheet" href="sass/header.css" />
+    <link rel="stylesheet" href="sass/footer.css" />
     <script type="module" src="js/html_components.js"></script>
     <script type="module" src="js/pages/item_page.js"></script>
     <script type="module" src="js/functions/cartz.js"></script>
@@ -19,22 +20,28 @@
       <section class="item_section">
         <span class="breadcrumb"></span>
         <div class="wrapper">
-          <figure>
-            <img class="item_image" src="" alt="" />
-          </figure>
-          <section class="text_content">
-            <h4 class="item_title"></h4>
-            <hr />
-            <h5>Price: <span class="item_price"></span> $</h5>
-            <span
-              >Rating: <span class="item_rate"></span><span> out of 5</span> (<span class="item_count"></span>)</span
-            >
+          <div class="fit_content">
+            <figure>
+              <img class="item_image" src="" alt="" />
+            </figure>
+          </div>
+          <div class="full_hw">
+            <section class="text_content">
+              <h4 class="item_title"></h4>
+              <hr />
+              <h5>Price: <span class="h5-font item_price"></span> $</h5>
+              <p class="accent">
+                Rating: <span class="item_rate"></span><span> out of 5</span> (<span class="item_count"></span>)
+              </p>
 
-            <p class="item_description"></p>
-            <div class="button">
-              <button class="add_cart">add to cart</button>
-            </div>
-          </section>
+              <p class="item_description"></p>
+              <div class="flex_grow">
+                <div class="button">
+                  <button class="add_cart">add to cart</button>
+                </div>
+              </div>
+            </section>
+          </div>
         </div>
       </section>
       <p class="total"></p>

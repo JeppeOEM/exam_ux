@@ -15,10 +15,6 @@ body {
   margin-top: 70px;
 }
 
-.grid_item {
-  background-color: white;
-}
-
 h1 {
   font-size: 2.49rem;
 }
@@ -60,6 +56,10 @@ a {
   text-decoration: none;
 }
 
+.accent {
+  color: red;
+}
+
 .bold {
   font-weight: bold;
 }
@@ -86,8 +86,27 @@ a {
   justify-content: space-between;
 }
 
+.flex_center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex_grow {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column-reverse;
+}
+
 select {
   cursor: pointer;
+}
+select:hover {
+  color: red;
+}
+
+select option {
+  color: #272f36;
 }
 
 button {
@@ -169,6 +188,9 @@ fieldset input {
 .breadcrumb a {
   color: black;
 }
+.breadcrumb a:hover {
+  color: red;
+}
 
 fieldset {
   border: 0px;
@@ -220,5 +242,10 @@ fieldset {
   }
   .small {
     font-size: 0.8rem;
+  }
+}
+@media only screen and (max-width: 567px) {
+  .breadcrumb {
+    white-space: unset;
   }
 }/*# sourceMappingURL=base.css.map */

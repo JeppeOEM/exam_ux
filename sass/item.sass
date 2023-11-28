@@ -1,8 +1,32 @@
+@import 'variables'
+.wrapper
+    padding: 0px 40px
+    margin-bottom: 40px
+.wrapper .fit_content
+    background-color: $white
+    min-width:500px
+    min-height:600px
+    margin-right: 10px
+    display: flex
+    justify-content: center
+    align-items: center
+
+// .wrapper
+//     background-color: $white
+
+
+.full_hw
+    display: flex
+    min-height:600px
+
 .text_content
-    width: 33%
+    flex-grow: 1
     display: flex
     flex-direction: column
     padding: 10px 0px
+    background-color: $white
+    padding: 20px
+    margin-left: 10px
 
 .text_content > *
     padding: 5px 0px
@@ -26,46 +50,88 @@ hr
     max-height: 500px
     max-width: 500px
 
-.button
-    // padding: 20px 0px
-    width: 100%
+// .button
 
-.button a
-    background-color: $dark_blue
-    width: 100%
-    padding: 15px 0px
-    text-align: center
-    border-radius: 5px
-    color: white
-    transition: 0.3s
-    display: block
-    padding: 15px 0px
-    width: 100%
-    &:hover
+//     width: 100%
 
-          background-color: $blue
-          cursor: pointer
+// .button a
+//     background-color: $dark_blue
+//     width: 100%
+//     padding: 15px 0px
+//     text-align: center
+//     border-radius: 5px
+//     color: white
+//     transition: 0.3s
+//     display: block
+//     padding: 15px 0px
+//     width: 100%
+//     &:hover
 
-.button button
-    background-color: $dark_blue
-    width: 100%
-    padding: 15px 0px
-    text-align: center
-    border-radius: 5px
-    color: white
-    transition: 0.3s
-    &:hover
+//           background-color: $blue
+//           cursor: pointer
 
-          background-color: $blue
-          cursor: pointer
+// .button button
+//     background-color: $dark_blue
+//     width: 100%
+//     padding: 15px 0px
+//     text-align: center
+//     border-radius: 5px
+//     color: white
+//     transition: 0.3s
+//     &:hover
 
-.item_buttons button
-    width: fit-content
-    font-size: 1.44rem
+//           background-color: $blue
+//           cursor: pointer
 
-
-
+// .item_buttons button
+//     width: fit-content
+//     font-size: 1.44rem
 
 
 .breadcrumb
-  padding-left: 200px
+  padding-bottom: 20px
+  padding-left: 20px
+
+
+
+
+
+@media only screen and (max-width: 1020px) 
+    .wrapper
+        flex-direction: column
+    .wrapper .fit_content
+        background-color: $white
+        min-width: unset
+        min-height: unset
+        margin-right: 0px
+        width: 100%
+        margin-bottom: 20px
+
+    .full_hw
+        min-height: unset
+    .text_content
+            margin-left: 0px
+
+
+
+
+@media only screen and (max-width: 550px) 
+    .item_image
+        padding:40px
+        max-height: 400px
+        max-width: 300px
+
+
+@media only screen and (max-width: 400px) 
+    .item_image
+        padding:40px
+        max-height: 300px
+        max-width: 250px
+
+
+
+
+
+
+// @media only screen and (max-width: 571px) 
+

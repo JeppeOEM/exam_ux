@@ -1,3 +1,4 @@
+@import 'variables'
 
 aside
   position: fixed
@@ -9,7 +10,7 @@ aside
   display: flex
   flex-direction: column
   z-index: 3
-  background-color: white
+  background-color: $white
   transition: right 0.3s ease
   overflow-y: auto 
   overflow-x: auto 
@@ -23,7 +24,7 @@ aside
   position: sticky
   top: 0
   z-index: 3
-  background-color: white
+  background-color: $white
   padding: 20px
   .button
     padding-bottom: 10px
@@ -35,12 +36,12 @@ aside
 
 .product_image
   max-width: 65px
-  margin-right: 20px
+
 
 
 aside .cart_item
   padding: 20px
-  background-color: grey
+  background-color: $grey
 aside article
     display: flex
     flex-direction: row
@@ -77,8 +78,7 @@ aside figure
 .item_buttons .minus
   font-size: 2.5rem
 
-.text_left
-  font-size: 1.15rem
+
 
 .border_top
   border-top: solid 1px

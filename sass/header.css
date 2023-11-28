@@ -92,6 +92,10 @@ img.user_icon {
   z-index: 1;
 }
 
+.filter:hover {
+  color: red;
+}
+
 .dropdown-content a {
   float: none;
   color: black;
@@ -112,7 +116,7 @@ img.user_icon {
 
 .nonclick {
   padding: 12px 16px;
-  color: white;
+  color: red;
 }
 
 .dropdown-content a:hover {

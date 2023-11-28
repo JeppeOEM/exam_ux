@@ -19,8 +19,9 @@ body
     margin: 0 auto
     padding: 4rem 0
     margin-top: 70px    
-.grid_item
-    background-color: white
+
+
+        
 // 1.250 Major third scale 
 
 h1
@@ -49,6 +50,8 @@ span,p
 a
     text-decoration: none
 
+.accent
+    color: $accent
 
 .bold
     font-weight: bold
@@ -69,9 +72,23 @@ a
 .space_between
     justify-content: space-between
 
+.flex_center
+    display: flex
+    justify-content: center
+    align-items: center
+
+.flex_grow
+    display: flex
+    flex-grow: 1
+    flex-direction: column-reverse
 select
     cursor: pointer
+    &:hover
+        color:$accent
+select option 
+    color: $black_blue
 
+  
 button
      background: inherit
      color: white
@@ -123,6 +140,8 @@ fieldset input
   
 .breadcrumb  a
         color: black
+        &:hover
+            color: $accent
 
 
 
@@ -166,3 +185,6 @@ fieldset
 
     .small
         font-size: 0.8rem  
+@media only screen and (max-width: 567px) 
+    .breadcrumb
+        white-space: unset
