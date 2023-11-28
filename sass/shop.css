@@ -41,10 +41,6 @@
   text-align: left;
 }
 
-.breadcrumb {
-  margin: 0px 20px;
-}
-
 .filters {
   padding: 20px 0px;
   padding-right: 20px;
@@ -57,7 +53,7 @@
 select {
   width: 100%;
   border: 0px;
-  background: #fff;
+  background: #F5F5F5;
 }
 
 .sort {
@@ -89,7 +85,7 @@ select {
     max-width: 190px;
   }
 }
-@media only screen and (max-width: 490px) {
+@media only screen and (max-width: 571px) {
   .filters {
     flex-direction: column;
     justify-content: flex-start;

@@ -86,8 +86,14 @@ a {
   justify-content: space-between;
 }
 
+select {
+  cursor: pointer;
+}
+
 button {
-  all: unset;
+  background: inherit;
+  color: white;
+  border: unset;
   cursor: pointer;
 }
 
@@ -101,6 +107,10 @@ fieldset input {
 
 .button {
   width: 100%;
+}
+
+.dropdown-content .filter {
+  color: white;
 }
 
 .button button {
@@ -177,6 +187,11 @@ fieldset {
 
 .input {
   margin: 10px 0px;
+}
+
+.breadcrumb {
+  white-space: nowrap;
+  margin: 0px 20px;
 }
 
 @media only screen and (max-width: 757px) {

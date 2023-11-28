@@ -1,3 +1,6 @@
+@import 'variables';
+
+
 #product_grid
     padding: 0px 20px
     height: 100%
@@ -7,7 +10,7 @@
     grid-template-columns: repeat(3,1fr)
 
 .grid_item
-    border: 2px solid #ccc   
+    border: 2px solid $grey 
     padding: 20px
     text-align: center
 
@@ -40,8 +43,7 @@
 .text_left
     text-align: left
 
-.breadcrumb
-    margin: 0px 20px
+
 
 .filters
     padding: 20px 0px
@@ -55,7 +57,7 @@ select
 
     width: 100%
     border: 0px
-    background:  #fff
+    background: $background-white
 
 .sort
     display: flex
@@ -85,7 +87,7 @@ select
             max-height: 190px
             max-width: 190px
 
-@media only screen and (max-width: 490px) 
+@media only screen and (max-width: 571px) 
 
     .filters
         flex-direction: column

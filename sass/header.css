@@ -1,4 +1,4 @@
-header button {
+header > button {
   color: white;
   cursor: pointer;
 }
@@ -6,6 +6,11 @@ header button {
 header a {
   color: white;
   cursor: pointer;
+}
+
+.logo {
+  color: white;
+  padding-left: 20px;
 }
 
 .navbar {
@@ -123,7 +128,7 @@ img.user_icon {
   .navbar {
     justify-content: space-between;
   }
-  .filter {
+  .hide_mobile {
     display: none;
   }
   .dropdown_btn {

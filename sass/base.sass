@@ -68,9 +68,13 @@ a
 .space_between
     justify-content: space-between
 
+select
+    cursor: pointer
 
 button
-     all: unset
+     background: inherit
+     color: white
+     border: unset
      cursor: pointer
 
 .white
@@ -83,7 +87,13 @@ fieldset input
 .button
     width: 100%
 
+.dropdown-content .filter
+    color: white
+
+
 @mixin button-styles
+
+
   display: block
   margin-top: 20px
   background-color: #082644
@@ -129,7 +139,9 @@ fieldset
 .input
     margin: 10px 0px
 
-
+.breadcrumb
+    white-space: nowrap
+    margin: 0px 20px
 
 @media only screen and (max-width: 757px) 
     h1

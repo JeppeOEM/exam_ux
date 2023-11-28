@@ -1,7 +1,6 @@
 export function breadcrumb(category) {
   let sub;
 
-
   if (category === "men's clothing") {
     sub = "Men /";
   } else if (category === "women's clothing") {
@@ -27,7 +26,7 @@ export function breadcrumb(category) {
     const clothingLink = document.createElement("a");
     clothingLink.id = "clothing";
     clothingLink.href = "shop.html";
-    clothingLink.textContent = "clothing";
+    clothingLink.textContent = "Clothing";
     clothingLink.addEventListener("click", () => {
       sessionStorage.setItem("category", `${category}`);
     });
@@ -52,7 +51,8 @@ export function breadcrumb(category) {
     const category_link = document.createElement("a");
     category_link.id = "clothing";
     category_link.href = "shop.html";
-    category_link.textContent = ` / ${category}`;
+
+    category_link.textContent = ` / ${category.charAt(0).toUpperCase() + category.slice(1)}`;
     category_link.addEventListener("click", () => {
       sessionStorage.setItem("category", `${category}`);
     });
