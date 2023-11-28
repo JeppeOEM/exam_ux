@@ -9,6 +9,21 @@
       "id": 2,
       "password": "ddPassword1!",
       "email": "a@a.dk"
+    },
+    {
+      "email": "zzdd@dzzd.dk",
+      "password": "12345678dD!",
+      "id": 3
+    },
+    {
+      "email": "dd@ddxxxxxxx.dk",
+      "password": "12345678dD!",
+      "id": 4
+    },
+    {
+      "email": "dd@dd.dk",
+      "password": "ddPassword1!",
+      "id": 5
     }
   ]
 }

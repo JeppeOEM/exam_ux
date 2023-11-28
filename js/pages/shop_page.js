@@ -1,5 +1,5 @@
 "use strict";
-import { add_to_cart, show_current_items } from "../functions/cartz.js";
+import { add_to_cart, show_current_items, init_cart } from "../functions/cartz.js";
 
 import { breadcrumb } from "../functions/breadcrumb.js";
 import { is_logged_in } from "../functions/is_logged_in.js";
@@ -15,15 +15,14 @@ let this_item = {
 };
 
 addEventListener("DOMContentLoaded", (event) => {
-  // is_logged_in();
-
+  is_logged_in();
+  // init_cart();
   const category = sessionStorage.getItem("category");
   get_products(event, category, "load_category");
   get_previous_sorting();
   breadcrumb(sessionStorage.getItem("category"));
 
   console.log(category, "category !!!!!!!!!!!!!!");
-
 
   let selects = document.querySelectorAll(".select");
   selects.forEach((select) => {

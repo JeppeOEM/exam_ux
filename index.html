@@ -7,25 +7,30 @@
     <link rel="stylesheet" href="sass/base.css" />
     <link rel="stylesheet" href="sass/index.css" />
     <script type="module" src="js/pages/front_page.js"></script>
-    <script type="module" src="js/register.js" defer></script>
+    <!-- <script type="module" src="js/register.js" defer></script> -->
   </head>
 
   <body>
     <main class="flex_main">
-      <section class="login">
+      <section id="login">
         <h2>Login to enter webshop</h2>
-        <form class="login" method="POST">
+        <form id="login_form" class="login" method="POST">
           <fieldset class="fieldset_login">
             <label for="login_email">Email:</label>
             <input class="input" name="login_email" type="email" placeholder="Email" required />
             <label for="login_password">Password:</label>
             <input class="input" name="login_password" type="password" placeholder="Password" required />
             <div class="button">
-              <input type="submit" value="Login" />
+              <input id="sign_in" type="submit" value="Login" />
             </div>
           </fieldset>
-          <p>Dont have an account? <u>Register here</u></p>
         </form>
+        <div class="center register_text">
+          <p>Dont have an account?&nbsp;</p>
+          <button class="register_btn"><u>Register here</u></button>
+        </div>
+      </section>
+      <section id="register" class="hide">
         <!-- <div class="categories-wrapper">
           <section class="categories">
             <article class="category">category 1</article>
@@ -41,8 +46,8 @@
           <input class="input" name="login_password" type="password" placeholder="password" required />
           <button type="submit">Submit</button>
         </form> -->
-
-        <form class="register" method="POST">
+        <h2>Register an account</h2>
+        <form id="register_form" class="register" method="POST">
           <fieldset class="flex_column">
             <span class="flex_column">
               <label for="email">Email:</label>
@@ -61,6 +66,10 @@
             </span>
           </fieldset>
         </form>
+        <div class="center login_text">
+          <p>Allready have an account?&nbsp;</p>
+          <button class="login_btn"><u>Login here</u></button>
+        </div>
       </section>
       <!-- <section>
         <form class="login" method="POST">

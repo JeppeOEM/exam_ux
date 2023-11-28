@@ -13,7 +13,7 @@ import {
 } from "../functions/cart.js";
 
 // import "../cart.js";
-
+import { is_logged_in } from "../functions/is_logged_in.js";
 import { breadcrumb } from "../functions/breadcrumb.js";
 const this_item = {
   id: null,
@@ -23,6 +23,7 @@ const this_item = {
 };
 
 document.addEventListener("DOMContentLoaded", function () {
+  is_logged_in();
   // load_html().then(() => {
   //Repeating content in carts
   build_page();
@@ -57,7 +58,6 @@ async function build_page() {
 }
 async function load_item() {
   let item_id = localStorage.getItem("item_id");
-
   let response = await fetch(`https://fakestoreapi.com/products/${item_id}`);
   let json = await response.json();
 

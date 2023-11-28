@@ -1,9 +1,19 @@
+.center {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+
 .flex_main {
   display: flex;
   justify-content: center;
 }
 
-.login {
+#login {
+  width: 400px;
+}
+
+#register {
   width: 400px;
 }
 
@@ -36,4 +46,12 @@
 .category:hover {
   color: red;
   box-shadow: 30px 30px 50px rgba(0, 0, 0, 0.5);
+}
+
+h2 {
+  margin-bottom: 20px;
+}
+
+.button input[type=submit] {
+  margin-top: 10px;
 }/*# sourceMappingURL=index.css.map */
