@@ -16,7 +16,12 @@ export async function get_products(event, category, load = "") {
     sessionStorage.setItem("category", `${category}`);
     dynamic_category = `/category/${category}`;
   }
-  document.querySelector("#category").innerText = category.charAt(0).toUpperCase() + category.slice(1);
+  let category_html;
+  category.toLowerCase() === "all"
+    ? (category_html = "All products")
+    : (category_html = category.charAt(0).toUpperCase() + category.slice(1));
+
+  document.querySelector("#category").innerText = category_html;
   breadcrumb(category);
   let item_array;
   if (category === "clothing") {

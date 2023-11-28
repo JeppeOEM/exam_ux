@@ -111,12 +111,13 @@ fieldset input {
 
 .dropdown-content .filter {
   color: white;
+  width: 100%;
 }
 
 .button button {
   display: block;
   margin-top: 20px;
-  background-color: #082644;
+  background-color: #051E34;
   width: 100%;
   padding: 15px 0px;
   text-align: center;
@@ -133,7 +134,7 @@ fieldset input {
 .button a {
   display: block;
   margin-top: 20px;
-  background-color: #082644;
+  background-color: #051E34;
   width: 100%;
   padding: 15px 0px;
   text-align: center;
@@ -150,7 +151,7 @@ fieldset input {
 .button input[type=submit] {
   display: block;
   margin-top: 20px;
-  background-color: #082644;
+  background-color: #051E34;
   width: 100%;
   padding: 15px 0px;
   text-align: center;

@@ -51,7 +51,6 @@ export function breadcrumb(category) {
     const category_link = document.createElement("a");
     category_link.id = "clothing";
     category_link.href = "shop.html";
-
     category_link.textContent = ` / ${category.charAt(0).toUpperCase() + category.slice(1)}`;
     category_link.addEventListener("click", () => {
       sessionStorage.setItem("category", `${category}`);

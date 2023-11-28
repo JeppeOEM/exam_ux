@@ -13,6 +13,7 @@
             <i class="fa fa-caret-down"></i>
           </button>
           <div tabindex="-1" class="dropdown-content">
+            <p class="nonclick">Clothing</p>
             <button tabindex="0" class="filter" data-filter="clothing">All Clothing</button>
             <button tabindex="0" class="filter" data-filter="men's clothing">Men's Clothing</button>
             <button tabindex="0" class="filter" data-filter="women's clothing">Women's Clothing</button>
@@ -29,9 +30,13 @@
       <li tabindex="-1">
         <div tabindex="-1" class="cart-wrapper">
           <span class="flex_horizontal">
-            <button>
+            <button class="dropdown_user">
               <img class="user_icon" src="img/user.svg" alt="User dropdown" aria-label="User" />
             </button>
+            <div tabindex="0" class="dropdown_logout hide">
+              <img class="user_icon" src="img/user.svg" alt="User dropdown" aria-label="User" />
+              <button tabindex="-1">Log out</button>
+            </div>
             <button class="cart_btn">
               <img
                 id="cart_btn"

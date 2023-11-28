@@ -17,6 +17,18 @@ document.addEventListener("DOMContentLoaded", function () {
   load().then(() => {
     init_cart("dd");
     focused_element();
+
+    document.querySelector(".dropdown_user").addEventListener("click", () => {
+      const element = document.querySelector(".dropdown_logout");
+      element.classList.toggle("hide");
+    });
+    document.querySelector(".dropdown_logout").addEventListener("click", function () {
+      this.classList.toggle("hide");
+    });
+    // document.querySelector(".dropdown_user").addEventListener("click", () => {
+    //   alert("ssssss");
+    // });
+
     const aside = document.querySelector("#cart");
     const hide = document.querySelector(".continue");
     const show_cart = document.querySelector("#cart_btn");

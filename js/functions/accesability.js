@@ -1,6 +1,7 @@
 export function focused_element() {
-  document.addEventListener("keypress", function (event) {
 
+
+  document.addEventListener("keypress", function (event) {
     if (event.key === "Enter") {
       // Call your function here
       get_focused();
@@ -14,13 +15,17 @@ export function focused_element() {
       const btn = focus.querySelector("button");
       const dropdownContent = focus.querySelector(".dropdown-content");
       dropdownContent.style.display = "block";
+    }
 
+    if (focus.tagName === "LI" && focus.querySelector(".user_btn")) {
+      const btn = focus.querySelector("button");
+      const dropdownContent = focus.querySelector(".dropdown_logout");
+      dropdownContent.style.display = "block";
     }
 
     if (focus.tagName === "LI") {
       const btn = focus.querySelector("button");
       btn.click();
-;
     }
   }
 
