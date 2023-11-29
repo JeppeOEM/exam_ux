@@ -14,6 +14,7 @@ const this_item = {
 document.addEventListener("DOMContentLoaded", function () {
   let load;
   window.location.pathname === "/shop.html" ? (load = load_html) : (load = load_html_links_header);
+  load = load_html;
   load().then(() => {
     init_cart("dd");
     focused_element();
@@ -44,20 +45,27 @@ document.addEventListener("DOMContentLoaded", function () {
       aside.classList.add("show");
       body.classList.add("body_overflow");
     });
-
     const filter_btns = document.querySelectorAll(".navbar .filter");
-
-    filter_btns.forEach((filter_btn) => {
-      if (window.location.pathname === "/shop.html") {
+    if (window.location.pathname === "/shop.html") {
+      filter_btns.forEach(function (filter_btn) {
         filter_btn.addEventListener("click", get_products);
-      } else {
+      });
+    } else {
+      filter_btns.forEach(function (filter_btn) {
         const category = filter_btn.dataset.filter;
-        sessionStorage.setItem("category", category);
+        console.log(filter_btn);
+        console.log(category);
+        // sessionStorage.setItem("category", category);
         filter_btn.addEventListener("click", () => {
+          console.log("llllll");
+          console.log(filter_btn);
+          const category = filter_btn.dataset.filter;
+          console.log(category);
+          sessionStorage.setItem("category", category);
           window.location.href = "/shop.html";
         });
-      }
-    });
+      });
+    }
   });
 });
 
@@ -271,9 +279,7 @@ export function sum_price(items) {}
 
 export function remove_duplicates(items) {
   let array = [];
-
   let obj = {};
-
   for (let i in items) {
     let title = items[i]["id"];
 
