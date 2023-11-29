@@ -22,7 +22,7 @@ export async function get_products(event, category, load = "") {
     : (category_html = category.charAt(0).toUpperCase() + category.slice(1));
 
   document.querySelector("#category").innerText = category_html;
-  breadcrumb(category);
+  breadcrumb_links(category);
   let item_array;
   if (category === "clothing") {
     item_array = await fetch_clothing();
@@ -39,6 +39,22 @@ export async function get_products(event, category, load = "") {
 
   sessionStorage.setItem("current_items", JSON.stringify(item_array));
   return item_array;
+}
+
+async function breadcrumb_links(category) {
+  let b = await breadcrumb(category);
+  // console.log(b);
+  console.log(b.innerHTML);
+  // console.log(b.querySelector("button"));
+  const breadcrumb_btns = b.querySelectorAll(".breadcrumb_btn");
+  breadcrumb_btns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      console.log(btn);
+      console.log("get_p", btn.dataset.filter);
+      // sessionStorage.setItem("category", btn.dataset.filter);
+      // console.log(sessionStorage.getItem("category"));
+    });
+  });
 }
 
 export async function insert_items(item_array) {

@@ -12,10 +12,7 @@ const this_item = {
 };
 
 document.addEventListener("DOMContentLoaded", function () {
-  let load;
-  window.location.pathname === "/shop.html" ? (load = load_html) : (load = load_html_links_header);
-  load = load_html;
-  load().then(() => {
+  load_html().then(() => {
     init_cart("dd");
     focused_element();
 
