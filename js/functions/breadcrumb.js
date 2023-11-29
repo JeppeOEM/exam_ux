@@ -1,9 +1,6 @@
 export async function breadcrumb_links(category) {
-  let b = await breadcrumb(category);
-  // console.log(b);
-  console.log(b.innerHTML);
-  // console.log(b.querySelector("button"));
-  const breadcrumb_btns = b.querySelectorAll(".breadcrumb_btn");
+  let bread = await breadcrumb(category);
+  const breadcrumb_btns = bread.querySelectorAll(".breadcrumb_btn");
   if (window.location.pathname === "/shop.html") {
     breadcrumb_btns.forEach((btn) => {
       console.log(btn);
@@ -31,9 +28,9 @@ export async function breadcrumb(category) {
   let sub;
 
   if (category === "men's clothing") {
-    sub = "Men /";
+    sub = "/Men";
   } else if (category === "women's clothing") {
-    sub = "Women /";
+    sub = "/Women";
   } else if (category === "all" || category == "null") {
     category = "";
   }
@@ -44,7 +41,7 @@ export async function breadcrumb(category) {
   const allLink = document.createElement("button");
   allLink.classList = "breadcrumb_btn";
   // allLink.href = "shop.html";
-  allLink.textContent = "All products ";
+  allLink.innerText = "All products";
   allLink.dataset.filter = "all";
   // allLink.addEventListener("click", () => {
   //   sessionStorage.setItem("category", null);
@@ -57,7 +54,7 @@ export async function breadcrumb(category) {
     clothingLink.classList = "breadcrumb_btn";
     // clothingLink.id = "clothing";
     // clothingLink.href = "shop.html";
-    clothingLink.textContent = "Clothing";
+    clothingLink.textContent = "/Clothing";
     clothingLink.dataset.filter = "clothing";
     // clothingLink.addEventListener("click", () => {
     //   sessionStorage.setItem("category", `${category}`);
@@ -73,9 +70,9 @@ export async function breadcrumb(category) {
 
     // Append elements to the DOM
     path.appendChild(allLink);
-    path.appendChild(document.createTextNode(" / "));
+    // path.appendChild(document.createTextNode(" / "));
     path.appendChild(clothingLink);
-    path.appendChild(document.createTextNode(" / "));
+
     path.appendChild(subLink);
     console.log(path.innerHTML);
   }

@@ -15,6 +15,10 @@ body {
   margin-top: 70px;
 }
 
+.breadcrumb_btn {
+  color: #272f36;
+}
+
 h1 {
   font-size: 2.49rem;
 }
@@ -54,6 +58,11 @@ span, p {
 
 a {
   text-decoration: none;
+}
+
+.breadcrumb > * {
+  font-size: 1rem;
+  font-family: "Inter", serif;
 }
 
 .accent {

@@ -42,7 +42,7 @@ async function build_page() {
   const four_words = split.slice(0, 4);
   const words = four_words.join(" ");
   const item_name = document.createElement("span");
-  item_name.innerText = " / " + words;
+  item_name.innerText = "/" + words;
   breadcrumb.appendChild(item_name);
   this_item.title = item.title;
   this_item.img = item.image;
