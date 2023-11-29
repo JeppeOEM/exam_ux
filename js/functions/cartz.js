@@ -25,6 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelector(".dropdown_logout").addEventListener("click", function () {
       this.classList.toggle("hide");
     });
+
     // document.querySelector(".dropdown_user").addEventListener("click", () => {
     //   alert("ssssss");
     // });
@@ -32,13 +33,16 @@ document.addEventListener("DOMContentLoaded", function () {
     const aside = document.querySelector("#cart");
     const hide = document.querySelector(".continue");
     const show_cart = document.querySelector("#cart_btn");
+    const body = document.querySelector("body");
 
     hide.addEventListener("click", (event) => {
       aside.classList.remove("show");
+      body.classList.remove("body_overflow");
     });
     show_cart.addEventListener("click", (event) => {
       show_current_items();
       aside.classList.add("show");
+      body.classList.add("body_overflow");
     });
 
     const filter_btns = document.querySelectorAll(".navbar .filter");
@@ -111,7 +115,9 @@ export async function show_current_items() {
     }
     //toFixed = remove decimals and convert to string
     sum = sum.toFixed(2);
-    document.querySelector(".checkout_price").innerText = sum;
+    try {
+      document.querySelector(".checkout_price").innerText = sum;
+    } catch {}
   }
 
   async function total_item_price(item_id) {
@@ -160,6 +166,7 @@ export async function show_current_items() {
 
 export function init_cart(key) {
   if (!localStorage.getItem(key)) {
+    console.log("init cart hit");
     localStorage.setItem(key, JSON.stringify([]));
   }
 }

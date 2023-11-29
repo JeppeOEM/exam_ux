@@ -34,8 +34,7 @@
   justify-content: center;
   align-items: center;
 }
-
-.product_image {
+.push_away .product_image {
   padding: 20px;
 }
 

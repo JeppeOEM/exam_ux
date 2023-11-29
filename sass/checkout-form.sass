@@ -1,6 +1,14 @@
+$overlay-bg: rgba(0, 0, 0, 0.7)
+$modal-bg: #fff
+$modal-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5)
+
 .input
     display: flex
     flex-direction: column
+    input
+        font-size: 1rem
+    label
+        padding-bottom: 5px
 
 .btn_border
     margin-right: 20px
@@ -64,9 +72,7 @@
     flex-direction: column
 
 
-$overlay-bg: rgba(0, 0, 0, 0.7)
-$modal-bg: #fff
-$modal-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5)
+
 
 .overlay
   display: none
@@ -126,3 +132,10 @@ $modal-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5)
     margin-left: 10px
     h5 
         margin-bottom: 10px
+
+@media only screen and (max-width: 591px) 
+    .input
+        input
+
+            width: 100%
+

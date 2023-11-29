@@ -7,7 +7,7 @@ aside
   right: 0 
   min-height: 100%
   width: 500px
-  display: flex
+  // display: flex
   flex-direction: column
   z-index: 3
   background-color: $white
@@ -15,12 +15,20 @@ aside
   overflow-y: auto 
   overflow-x: auto 
   display: none 
+  margin-bottom: 60px
+  padding: 0px 20px
+
+
 
 
 .push_down
   width: 350px
 
+
+
+
 .sticky
+  background-color: $grey
   position: sticky
   top: 0
   z-index: 3
@@ -41,7 +49,10 @@ aside
 
 aside .cart_item
   padding: 20px
-  background-color: $grey
+  
+.cart_item
+  padding-bottom: 40px
+
 aside article
     display: flex
     flex-direction: row
@@ -64,6 +75,8 @@ aside figure
 .item_buttons
   display: flex
   padding: 0px 10px
+  justify-content: center
+  align-items: center
 
 .item_buttons button
   font-size: 2rem
@@ -78,8 +91,21 @@ aside figure
 .item_buttons .minus
   font-size: 2.5rem
 
+.cart_total
+  position: absolute
+  bottom: 0
 
 
 .border_top
+  padding-top:10px
+  margin-top: 10px
   border-top: solid 1px
 
+.body_overflow
+  overflow-x: hidden
+  overflow-y: hidden
+// article:last-child
+//   padding-bottom: 70px
+
+.product_image
+  padding-right: 20px

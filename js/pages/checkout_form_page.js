@@ -1,7 +1,7 @@
-import { is_logged_in } from "../functions/is_logged_in";
+// import { is_logged_in } from "../functions/is_logged_in";
 
 document.addEventListener("DOMContentLoaded", () => {
-  is_logged_in();
+  // is_logged_in();
   let address_confirmed;
   let billing_active;
   sum_price();

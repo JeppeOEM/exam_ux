@@ -27,7 +27,9 @@ document.addEventListener("DOMContentLoaded", function () {
   // load_html().then(() => {
   //Repeating content in carts
   build_page();
-  breadcrumb(sessionStorage.getItem("category"));
+  const category = sessionStorage.getItem("category");
+  console.log(category, "ITEM PAGE");
+  breadcrumb(category);
   document.querySelector(".add_cart").addEventListener("click", () => {
     add_to_cart("dd", this_item);
     const aside = document.querySelector("#cart");
