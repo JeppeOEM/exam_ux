@@ -1,3 +1,32 @@
+export async function breadcrumb_links(category) {
+  let b = await breadcrumb(category);
+  // console.log(b);
+  console.log(b.innerHTML);
+  // console.log(b.querySelector("button"));
+  const breadcrumb_btns = b.querySelectorAll(".breadcrumb_btn");
+  if (window.location.pathname === "/shop.html") {
+    breadcrumb_btns.forEach((btn) => {
+      console.log(btn);
+      btn.addEventListener("click", (event) => {
+        console.log(btn);
+        console.log("get_p", btn.dataset.filter);
+        sessionStorage.setItem("category", btn.dataset.filter);
+        get_products(event, btn.dataset.filter);
+      });
+    });
+  } else {
+    breadcrumb_btns.forEach((btn) => {
+      console.log(btn);
+      btn.addEventListener("click", (event) => {
+        console.log(btn);
+        console.log("link", btn.dataset.filter);
+        sessionStorage.setItem("category", btn.dataset.filter);
+        window.location.href = "/shop.html";
+      });
+    });
+  }
+}
+
 export async function breadcrumb(category) {
   let sub;
 
@@ -15,7 +44,7 @@ export async function breadcrumb(category) {
   const allLink = document.createElement("button");
   allLink.classList = "breadcrumb_btn";
   // allLink.href = "shop.html";
-  allLink.textContent = "All products";
+  allLink.textContent = "All products ";
   allLink.dataset.filter = "all";
   // allLink.addEventListener("click", () => {
   //   sessionStorage.setItem("category", null);
@@ -35,7 +64,7 @@ export async function breadcrumb(category) {
     // });
 
     const subLink = document.createElement("button");
-    // subLink.href = "shop.html";
+    subLink.classList = "breadcrumb_btn";
     subLink.textContent = sub;
     subLink.dataset.filter = sub.charAt(0).toLowerCase() + category.slice(1);
 
@@ -57,7 +86,7 @@ export async function breadcrumb(category) {
     category_link.dataset.filter = category.charAt(0).toLowerCase() + category.slice(1);
     // category_link.href = "shop.html";
     category_link.classList = "breadcrumb_btn";
-    category_link.textContent = ` / ${category.charAt(0).toLowerCase() + category.slice(1)}`;
+    category_link.textContent = ` / ${category.charAt(0).toUpperCase() + category.slice(1)}`;
     // category_link.addEventListener("click", () => {
     //   sessionStorage.setItem("category", `${category}`);
     // });

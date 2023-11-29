@@ -1,7 +1,7 @@
 "use strict";
 
 import { load_html, load_html_links_header } from "../html_components.js";
-import { breadcrumb } from "./breadcrumb.js";
+import { breadcrumb_links } from "./breadcrumb.js";
 import { focused_element } from "../functions/accesability.js";
 import { get_products } from "../functions/get_products.js";
 const this_item = {
