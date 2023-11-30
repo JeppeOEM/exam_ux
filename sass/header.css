@@ -126,7 +126,7 @@ img.user_icon {
   background-color: #051E34;
 }
 
-.dropdown:hover .dropdown-content {
+.dropdown_hover:hover .dropdown-content {
   display: block;
 }
 
@@ -135,8 +135,8 @@ img.user_icon {
   position: absolute;
   display: flex;
   flex-direction: column;
-  top: -4px;
-  left: -10px;
+  top: -6px;
+  left: -16px;
   background: #051E34;
   padding: 10px;
 }
@@ -159,8 +159,24 @@ img.user_icon {
   z-index: 1000;
 }
 
+.showmenu {
+  display: block;
+}
+
 .navbar button:hover {
   color: red;
+}
+
+.hamburger_content {
+  padding-top: 40px;
+  top: -8px;
+  left: 7px;
+}
+
+.fixed_top {
+  position: absolute;
+  top: 0px;
+  right: 0px;
 }
 
 @media only screen and (max-width: 731px) {

@@ -8,12 +8,87 @@
     <link rel="stylesheet" href="sass/header.css" />
     <link rel="stylesheet" href="sass/checkout.css" />
     <link rel="stylesheet" href="sass/checkout-form.css" />
-    <script type="module" src="js/html_components.js"></script>
     <script type="module" src="js/pages/checkout_form_page.js"></script>
+    <!-- <script type="module" src="js/functions/cartz.js"></script> -->
   </head>
   <body>
-    <!-- imported header header.html -->
-    <header id="header"></header>
+    <header id="header">
+      <div class="nav_wrapper" aria-label="Main Navigation user enter to open link">
+        <nav class="navbar">
+          <a class="logo" href="index.html"><h5>mini.shoppen</h5></a>
+
+          <ul>
+            <li class="hide_mobile" tabindex="0">
+              <button tabindex="-1" class="filter" data-filter="all">All Products</button>
+            </li>
+            <li class="hide_mobile" tabindex="0">
+              <div class="dropdown_hover" tabindex="-1">
+                <button tabindex="0" class="dropdown_btn" aria-haspopup="true" aria-expanded="false">
+                  Clothing
+                  <i class="fa fa-caret-down"></i>
+                </button>
+                <div tabindex="-1" class="dropdown-content">
+                  <p class="nonclick">Clothing</p>
+                  <button tabindex="0" class="filter" data-filter="clothing">All Clothing</button>
+                  <button tabindex="0" class="filter" data-filter="men's clothing">Men's Clothing</button>
+                  <button tabindex="0" class="filter" data-filter="women's clothing">Women's Clothing</button>
+                </div>
+              </div>
+            </li>
+
+            <li class="hide_mobile" tabindex="0">
+              <button tabindex="-1" class="filter" data-filter="electronics">Electronics</button>
+            </li>
+            <li class="hide_mobile" tabindex="0">
+              <button tabindex="-1" class="filter" data-filter="jewelery">Jewelry</button>
+            </li>
+            <li tabindex="-1">
+              <div tabindex="-1" class="cart-wrapper">
+                <span class="flex_horizontal">
+                  <button class="dropdown_user">
+                    <img class="user_icon" src="img/user.svg" alt="User dropdown" aria-label="User" />
+                  </button>
+                  <div tabindex="0" class="dropdown_logout hide">
+                    <img class="user_icon" src="img/user.svg" alt="User dropdown" aria-label="User" />
+                    <button class="log_out_btn" tabindex="-1">Log out</button>
+                  </div>
+                  <button class="cart_btn">
+                    <img
+                      id="cart_btn"
+                      class="cart_icon"
+                      src="img/basket.svg"
+                      alt="Go to checkout symbol"
+                      aria-label="Go to checkout" />
+                  </button>
+                </span>
+
+                <button class="hamburger_btn" aria-label="Open menu">
+                  <img tabindex="0" class="hamburger" src="img/bars-solid.svg" alt="Dropdown menu" />
+                </button>
+                <div class="dropdown" tabindex="-1">
+                  <div tabindex="-1" class="dropdown-content hamburger_content">
+                    <button class="fixed_top" aria-label="Open menu">
+                      <img tabindex="0" class="hamburger" src="img/bars-solid.svg" alt="Dropdown menu" />
+                    </button>
+                    <button tabindex="0" class="filter" data-filter="clothing">All Clothing</button>
+                    <button tabindex="0" class="filter" data-filter="men's clothing">Men's Clothing</button>
+                    <button tabindex="0" class="filter" data-filter="women's clothing">Women's Clothing</button>
+                    <button tabindex="0" class="filter" data-filter="jewlery">Jewelry</button>
+                    <button tabindex="0" class="filter" data-filter="electronics">Electronics</button>
+                  </div>
+                </div>
+              </div>
+              <!-- aria-atomic will read the content when an update happens -->
+              <p
+                class="logged_in"
+                class="total"
+                aria-atomic="true"
+                aria-label="total number of products in the cart"></p>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
     <main>
       <div class="main_content">
         <div class="checkout_steps">
@@ -28,32 +103,35 @@
                 </div>
                 <div class="input">
                   <label for="first_name">First name</label>
-                  <input name="first_name" class="first_name" type="text" required />
+                  <input id="first_name" name="first_name" class="first_name" type="text" required />
                 </div>
                 <div class="input">
                   <label for="last_name">Last name</label>
-                  <input name="last_name" class="last_name" type="text" required />
+                  <input id="last_name" name="last_name" class="last_name" type="text" required />
                 </div>
                 <div class="input">
                   <label for="address">Address</label>
-                  <input name="address" class="address" type="text" required />
+                  <input id="address" name="address" class="address" type="text" required />
                 </div>
-                <span class="flex_inline">
+                <span class="flex_inline form_field">
                   <div class="input">
                     <label for="zip">Zip code</label>
-                    <input class="zip" name="zip" class="zip" type="text" required />
+                    <input id="zip" class="zip" name="zip" class="zip" type="text" required />
                   </div>
                   <div class="input">
                     <label for="city">City</label>
-                    <input class="city" name="city" class="city" type="text" required />
+                    <input id="city" class="city" name="city" class="city" type="text" required />
                   </div>
                 </span>
                 <div class="input">
                   <label for="mobile">Mobile</label>
-                  <input name="mobile" class="mobile" type="tel" required />
+                  <input id="mobile" name="mobile" class="mobile" type="tel" required />
                 </div>
-                <input type="checkbox" class="billing_check" name="billing" checked />
-                <label class="billing_check" for="billing">Use delivery address as billing address</label>
+                <div class="check_flex">
+                  <input type="checkbox" class="billing_check" name="billing" checked />
+                  <label class="billing_check" for="billing">Use delivery address as billing address</label>
+                </div>
+
                 <div class="billing"></div>
               </fieldset>
             </form>
@@ -69,7 +147,7 @@
                   <p class="city"></p>
                   <p class="mobile"></p>
                 </article>
-                <article class="flex_columns billing">
+                <article class="flex_columns billing_address">
                   <h5>Billing Address</h5>
                   <p class="first_name"></p>
                   <p class="last_name"></p>
@@ -80,7 +158,7 @@
                   <p class="mobile"></p>
                 </article>
               </section>
-              <span class="btn_border">
+              <span class="btn_border edit">
                 <button id="change_data">edit</button>
                 <img class="pen_icon" src="../img/pen.svg" alt="pen icon" />
               </span>
@@ -132,13 +210,13 @@
               <form id="pay" class="payment_form" method="post">
                 <fieldset class="payment_solution flex_column radio_btns">
                   <span class="radio_btn">
-                    <span>
+                    <span class="flex_horizontal align_center">
                       <input class="pay_form" name="credit" id="credit" type="radio" />
                       <label for="credit">Credit card</label>
                     </span>
                   </span>
                   <span class="radio_btn">
-                    <span>
+                    <span class="flex_horizontal align_center">
                       <input class="pay_form" name="mobile_pay" id="mobile_pay" type="radio" />
                       <label for="mobile_pay">Mobile pay</label>
                     </span>
@@ -173,8 +251,11 @@
               <p class="h5-font">&nbsp;$</p>
             </span>
           </div>
-          <div class="button">
+          <div id="confirm_btn" class="button">
             <button type="submit" id="confirm" form="address_form">Confirm address</button>
+          </div>
+          <div id="payment_btn" class="button hide">
+            <button>Pay</button>
           </div>
         </section>
       </div>
@@ -190,7 +271,7 @@
     <div class="overlay" id="modal_overlay">
       <div class="modal">
         <form class="payment_form" method="post">
-          <span id="close">X</span>
+          <span class="h4-font" id="close">X</span>
           <legend class="h4-font">Credit card details</legend>
           <fieldset class="flex_column">
             <label for="card_number">Card Number:</label>

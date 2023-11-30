@@ -1,47 +1,82 @@
 // import { is_logged_in } from "../functions/is_logged_in";
 
+is_logged_in();
 document.addEventListener("DOMContentLoaded", () => {
-  // is_logged_in();
   let address_confirmed;
   let billing_active;
   sum_price();
   restore_form("address_form");
   show_html();
+  header_selectors();
   const address_form = document.querySelector("#address_form");
   const change_data = document.querySelector("#change_data");
+  const saved = document.querySelector("#saved");
+  // const confirm_btn = document("#confirm_btn");
+  // const payment_btn = document("#payment_btn");
   change_data.addEventListener("click", (event) => {
-    address_form.classList.add("showblock");
+    address_form.classList.remove("hide");
     change_data.classList.add("hide");
     document.querySelector(".btn_border").classList.add("hide");
+    saved.classList.add("hide");
+    // confirm_btn.classList.remove("hide");
+    // payment_btn.classList.add("hide");
   });
 
-  address_form.addEventListener("submit", (event) => {
-    openModal();
-    try {
-      const change_data = document.querySelector("#change_data");
-      change_data.classList.add("showblock");
-      document.querySelector(".btn_border").classList.add("showflex");
-    } catch {}
-
+  address_form.addEventListener("submit", function (event) {
+    const checkbox = document.querySelector(".billing_check");
     event.preventDefault();
 
-    // event.stopImmediatePropagation();
-    // event.stopPropagation();
-
+    if (checkbox.checked) {
+      const html = "<h5>Billing Address</h5><p>Same as delivery</p>";
+      document.querySelector(".billing_address").innerHTML = html;
+      console.log("Checkbox is checked");
+    } else {
+      console.log("Checkbox is not checked");
+    }
+    // credit_modal();
+    try {
+      const change_data = document.querySelector("#change_data");
+      change_data.classList.toggle("showblock");
+      document.querySelector(".btn_border").classList.add("showflex");
+    } catch {
+      console.log("could not toggle showblock on #change_data");
+    }
     document.querySelector("#address_form").classList.add("hide");
     const saved = document.querySelector("#saved");
-    saved.classList.add("showdata");
+    saved.classList.remove("hide");
     address_confirmed = true;
     show_html();
     restore_radio_btn();
     get_form_data("address_form", "saved");
+    //hide the confirm button and put in pay button
+    document.querySelector("#confirm").classList.add("hide");
+    document.querySelector("#payment_btn").classList.remove("hide");
   });
 
-  const close_btn = document.querySelector("#close");
-  console.log(close_btn);
-  close_btn.addEventListener("click", (event) => {
-    // document.getElementById("modal_overlay").style.display = "none";
-    closeModal();
+  document.querySelector("#payment_btn").addEventListener("click", () => {
+    let error = null;
+    const credit = document.querySelector("#credit");
+    const mobile_pay = document.querySelector("#mobile_pay");
+    const dhl = document.querySelector("#dhl");
+    const post_nord = document.querySelector("#post_nord");
+    const bring = document.querySelector("#bring");
+    if (!dhl.checked && !post_nord.checked && !bring.checked) {
+      error = "delivery provider";
+    } else if (!credit.checked && !mobile_pay.checked) {
+      error = "payment solution";
+    }
+
+    if (credit.checked && error !== null) {
+      credit_modal();
+    } else if (mobile_pay.checked && error !== null) {
+      mobile_pay_modal();
+    }
+
+    const close_btn = document.querySelector("#close");
+    console.log(close_btn);
+    close_btn.addEventListener("click", (event) => {
+      closeModal();
+    });
   });
 
   const pay = document.querySelector(".payment_form");
@@ -55,6 +90,9 @@ document.addEventListener("DOMContentLoaded", () => {
   listeners();
 
   function restore_form(form, billing = "") {
+    console.log(form);
+    console.log(form.id);
+
     const target_form = document.querySelector(`#${form}`);
     target_form.querySelector(".email").value = sessionStorage.getItem(`email${billing}`) || "";
     target_form.querySelector(".first_name").value = sessionStorage.getItem("first_name") || "";
@@ -141,12 +179,13 @@ document.addEventListener("DOMContentLoaded", () => {
     form.id = "billing";
     let clone = fieldset.cloneNode(true);
     form.appendChild(clone);
+    //remove billing extra cloned checkbox
     const clean = form.querySelectorAll(".billing_check");
     clean.forEach((ele) => {
       ele.remove();
     });
     clone.querySelector("legend").innerText = "Billing address";
-    sessionStorage.getItem("billing") ? form.reset() : restore_form(form, "_billing");
+    // sessionStorage.getItem("billing") ? form.reset() : restore_form(form, "_billing");
     billing.appendChild(form);
   }
 
@@ -236,8 +275,41 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-function openModal() {
+function credit_modal() {
   document.getElementById("modal_overlay").style.display = "flex";
+}
+
+function mobile_pay_modal() {
+  const mobile_pay_html = `
+  <form class='payment_form mobilepay' method='post'>
+    <span class='h4-font' id='close'>
+      X
+    </span>
+    <legend class='h4-font'>Enter mobile number</legend>
+    <fieldset class='flex_column'>
+      <label for='number'>Phone number:</label>
+      <input type='text' id='number' name='number' pattern='[0-9]{8}' title='Enter a 8-digit phone number' required />
+      <div class='button'>
+        <button class='button pay' type='submit' value='Submit'>
+          Pay
+        </button>
+      </div>
+    </fieldset>
+  </form>
+`;
+  document.getElementById("modal_overlay").style.display = "flex";
+  document.querySelector(".modal").innerHTML = mobile_pay_html;
+}
+
+function modal_error(error) {
+  const error_modal = ` <span class="h4-font" id="close">X</span>
+  <h3>You mush choose a ${error}</h3>
+  <div class="button">
+    <button>Ok</button>
+  </div>
+  `;
+  document.getElementById("modal_overlay").style.display = "flex";
+  document.querySelector(".modal").innerHTML = error_modal;
 }
 
 // Function to close the modal
@@ -250,4 +322,39 @@ function submitForm(event) {
   event.preventDefault();
   alert("Form submitted!"); // Replace this with your form submission logic
   closeModal();
+}
+function is_logged_in() {
+  const email = sessionStorage.getItem("email");
+  if (email !== null) {
+    // alert("user logged in");
+    return true;
+  } else {
+    // alert("user NOT logged in");
+    window.location.href = "/index.html";
+  }
+}
+
+function header_selectors() {
+  document.querySelector(".dropdown_user").addEventListener("click", () => {
+    const element = document.querySelector(".dropdown_logout");
+    element.classList.toggle("hide");
+  });
+  document.querySelector(".dropdown_logout").addEventListener("click", function () {
+    this.classList.toggle("hide");
+  });
+  const burger_menu = document.querySelector(".hamburger_btn");
+  const close_menu = document.querySelector(".fixed_top");
+  burger_menu.addEventListener("click", function () {
+    const menu = document.querySelector(".hamburger_content");
+    menu.classList.toggle("showmenu");
+  });
+  close_menu.addEventListener("click", function () {
+    const menu = document.querySelector(".hamburger_content");
+    menu.classList.toggle("showmenu");
+  });
+
+  document.querySelector(".log_out_btn").addEventListener("click", () => {
+    sessionStorage.clear();
+    window.location.href = "/index.html";
+  });
 }

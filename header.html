@@ -7,7 +7,7 @@
         <button tabindex="-1" class="filter" data-filter="all">All Products</button>
       </li>
       <li class="hide_mobile" tabindex="0">
-        <div class="dropdown" tabindex="-1">
+        <div class="dropdown_hover" tabindex="-1">
           <button tabindex="0" class="dropdown_btn" aria-haspopup="true" aria-expanded="false">
             Clothing
             <i class="fa fa-caret-down"></i>
@@ -35,7 +35,7 @@
             </button>
             <div tabindex="0" class="dropdown_logout hide">
               <img class="user_icon" src="img/user.svg" alt="User dropdown" aria-label="User" />
-              <button tabindex="-1">Log out</button>
+              <button class="log_out_btn" tabindex="-1">Log out</button>
             </div>
             <button class="cart_btn">
               <img
@@ -50,6 +50,18 @@
           <button class="hamburger_btn" aria-label="Open menu">
             <img tabindex="0" class="hamburger" src="img/bars-solid.svg" alt="Dropdown menu" />
           </button>
+          <div class="dropdown" tabindex="-1">
+            <div tabindex="-1" class="dropdown-content hamburger_content">
+              <button class="fixed_top" aria-label="Open menu">
+                <img tabindex="0" class="hamburger" src="img/bars-solid.svg" alt="Dropdown menu" />
+              </button>
+              <button tabindex="0" class="filter" data-filter="clothing">All Clothing</button>
+              <button tabindex="0" class="filter" data-filter="men's clothing">Men's Clothing</button>
+              <button tabindex="0" class="filter" data-filter="women's clothing">Women's Clothing</button>
+              <button tabindex="0" class="filter" data-filter="jewlery">Jewelry</button>
+              <button tabindex="0" class="filter" data-filter="electronics">Electronics</button>
+            </div>
+          </div>
         </div>
         <!-- aria-atomic will read the content when an update happens -->
         <p class="logged_in" class="total" aria-atomic="true" aria-label="total number of products in the cart"></p>

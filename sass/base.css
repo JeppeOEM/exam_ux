@@ -27,7 +27,15 @@ h2 {
   font-size: 2.07rem;
 }
 
+.h2-font {
+  font-size: 2.07rem;
+}
+
 h3 {
+  font-size: 1.73rem;
+}
+
+.h3-font {
   font-size: 1.73rem;
 }
 
@@ -63,6 +71,9 @@ a {
 .breadcrumb > * {
   font-size: 1rem;
   font-family: "Inter", serif;
+}
+.breadcrumb > *:hover {
+  color: red;
 }
 
 .accent {
@@ -105,6 +116,10 @@ a {
   display: flex;
   flex-grow: 1;
   flex-direction: column-reverse;
+}
+
+.align_center {
+  align-items: center;
 }
 
 select {

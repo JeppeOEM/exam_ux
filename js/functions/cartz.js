@@ -1,5 +1,5 @@
 "use strict";
-
+import { header_selectors } from "./header.js";
 import { load_html, load_html_links_header } from "../html_components.js";
 import { breadcrumb_links } from "./breadcrumb.js";
 import { focused_element } from "../functions/accesability.js";
@@ -15,18 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
   load_html().then(() => {
     init_cart("dd");
     focused_element();
-
-    document.querySelector(".dropdown_user").addEventListener("click", () => {
-      const element = document.querySelector(".dropdown_logout");
-      element.classList.toggle("hide");
-    });
-    document.querySelector(".dropdown_logout").addEventListener("click", function () {
-      this.classList.toggle("hide");
-    });
-
-    // document.querySelector(".dropdown_user").addEventListener("click", () => {
-    //   alert("ssssss");
-    // });
+    header_selectors();
 
     const aside = document.querySelector("#cart");
     const hide = document.querySelector(".continue");

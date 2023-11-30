@@ -23,7 +23,7 @@ export async function load_html_links_header() {
 }
 export async function load_html_checkout() {
   return Promise.all([
-    fetch("header_links.html").then((response) => response.text()),
+    fetch("header.html").then((response) => response.text()),
     fetch("footer.html").then((response) => response.text()),
   ]).then(([header_html, footer_html]) => {
     document.getElementById("header").innerHTML = header_html;

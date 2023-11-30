@@ -84,11 +84,10 @@ figure {
   width: 350px;
 }
 .total_price div {
-  margin-top: 5px;
-  margin-bottom: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 .total_price p {
-  margin-top: 5px;
   margin-bottom: 5px;
 }
 .total_price .button {

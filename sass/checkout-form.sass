@@ -1,6 +1,9 @@
+@import 'variables'
+
 $overlay-bg: rgba(0, 0, 0, 0.7)
 $modal-bg: #fff
 $modal-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5)
+
 
 .input
     display: flex
@@ -18,11 +21,13 @@ $modal-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5)
     top: 0
     right: 0
     position: absolute
-.change_data
 
-    color: black
+#change_data
+    color: $black_blue
+
 .pen_icon
-    width:15px
+    width: 25px
+    padding-left: 10px
 
 .total_price
     margin-top: 0px
@@ -61,7 +66,7 @@ $modal-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5)
         display: flex
         flex-direction: row
         justify-content: space-between
-        padding: 10px 0px
+        padding: 20px 0px
         border-bottom: solid 1px
         span
             width:100px
@@ -72,7 +77,8 @@ $modal-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5)
     flex-direction: column
 
 
-
+// .mobilepay
+//     padding:30px
 
 .overlay
   display: none
@@ -88,11 +94,13 @@ $modal-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5)
 .modal
   position: relative
   background: $modal-bg
-  padding: 20px
+  padding: 40px
   border-radius: 5px
   box-shadow: $modal-box-shadow
-
   margin: auto
+  label
+    margin-top: 10px
+    margin-bottom: 5px
 
 #close
   position: absolute
@@ -109,8 +117,7 @@ $modal-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5)
 
   legend
     margin-bottom: 10px
-  label
-    padding: 5px 0px
+
   input
     padding: 10px
     font-size: 1.15rem
@@ -124,18 +131,82 @@ $modal-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5)
         margin-left: 5px 
 
 .delivery
-    margin-right: 10px
+    margin-right: 20px
     margin-bottom: 10px
     h5
         margin-bottom: 10px
 .billing
-    margin-left: 10px
     h5 
         margin-bottom: 10px
+.billing_address
+    margin-left: 20px
+    h5
+        margin-bottom: 10px
+.step 
+    min-width:500px
+    legend
+        margin-top: 20px
+        margin-bottom: 10px
+.address_form
+    min-width: none
 
+input[type="checkbox"] 
+  min-width: 25px
+  min-height: 25px
+input[type="radio"] 
+  min-width: 15px
+  min-height: 15px
+.check_flex
+    padding-top: 10px
+    display: flex
+    align-items: center
+    label
+        padding-left: 10px
+
+.align_center
+    label
+        margin-left: 10px
+        white-space: nowrap
 @media only screen and (max-width: 591px) 
-    .input
-        input
+    .step 
+        min-width:0px
 
-            width: 100%
+    .flex_inline.form_field
+        flex-direction: column
+    .step
+        margin-right: 0px
+    .flex_inline .zip
+        width: 100%
+    .flex_inline .city
+        width:  100%
 
+@media only screen and (max-width: 417px) 
+    .input input
+        width: 300px
+    .flex_inline .input input
+        width: 300px
+
+@media only screen and (max-width: 390px) 
+    .input input
+        width: 280px
+    .flex_inline .input input
+        width: 280px
+    
+@media only screen and (max-width: 370px) 
+    .input input
+        width: 260px
+    .flex_inline .input input
+        width: 260px
+    
+@media only screen and (max-width: 350px) 
+    .input input
+        width: 240px
+    .flex_inline .input input
+        width: 240px
+
+@media only screen and (max-width: 330px) 
+    .input input
+        width: 220px
+    .flex_inline .input input
+        width: 220px
+    

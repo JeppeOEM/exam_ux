@@ -112,7 +112,7 @@ img.user_icon
 .dropdown-content a:hover
   background-color: $dark_blue
 
-.dropdown:hover .dropdown-content
+.dropdown_hover:hover .dropdown-content
   display: block
 
 .dropdown_logout
@@ -120,8 +120,8 @@ img.user_icon
   position: absolute
   display: flex
   flex-direction: column
-  top:-4px
-  left: -10px
+  top: -6px
+  left: -16px
   background: $dark_blue
   padding:10px
   img
@@ -138,11 +138,24 @@ img.user_icon
     display: none
 .filter
   z-index: 1000
-
+.showmenu
+  display: block
 
 .navbar button
   &:hover
     color: $accent
+
+
+.hamburger_content
+
+  padding-top: 40px
+  top: -8px
+  left: 7px
+.fixed_top
+  position: absolute
+  top: 0px
+  right: 0px
+
 @media only screen and (max-width: 731px) 
   .navbar
    justify-content: space-between  

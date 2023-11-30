@@ -11,8 +11,9 @@ const this_item = {
   image: null,
 };
 
+is_logged_in();
+
 document.addEventListener("DOMContentLoaded", function () {
-  is_logged_in();
   // load_html().then(() => {
   //Repeating content in carts
   const category = sessionStorage.getItem("category");

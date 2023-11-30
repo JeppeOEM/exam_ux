@@ -1,8 +1,8 @@
 // import { is_logged_in } from "../login/backend.js";
 
 document.addEventListener("DOMContentLoaded", () => {
-  // is_logged_in();
-  // items_total("dd");
+  //clear session category when logging in again
+  sessionStorage.setItem("category", "all");
   document.querySelector("#register_form").addEventListener("submit", function (event) {
     event.preventDefault();
     const formData = new FormData(this);
