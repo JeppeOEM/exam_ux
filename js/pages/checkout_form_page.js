@@ -8,18 +8,21 @@ document.addEventListener("DOMContentLoaded", () => {
   restore_form("address_form");
   show_html();
   header_selectors();
-  const address_form = document.querySelector("#address_form");
+
   const change_data = document.querySelector("#change_data");
   const saved = document.querySelector("#saved");
-  // const confirm_btn = document("#confirm_btn");
-  // const payment_btn = document("#payment_btn");
+  const confirm_btn = document.querySelector("#confirm_btn");
+  const payment_btn = document.querySelector("#payment_btn");
   change_data.addEventListener("click", (event) => {
     address_form.classList.remove("hide");
     change_data.classList.add("hide");
     document.querySelector(".btn_border").classList.add("hide");
     saved.classList.add("hide");
-    // confirm_btn.classList.remove("hide");
-    // payment_btn.classList.add("hide");
+    confirm_btn.classList.remove("hide");
+    confirm_btn.classList.add("showblock");
+    payment_btn.classList.add("hide");
+    address_confirmed = false;
+    show_html();
   });
 
   address_form.addEventListener("submit", function (event) {
@@ -49,7 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
     restore_radio_btn();
     get_form_data("address_form", "saved");
     //hide the confirm button and put in pay button
-    document.querySelector("#confirm").classList.add("hide");
+    document.querySelector("#confirm_btn").classList.add("hide");
     document.querySelector("#payment_btn").classList.remove("hide");
   });
 

@@ -6,7 +6,7 @@
 .wrapper .fit_content {
   background-color: white;
   min-width: 500px;
-  min-height: 600px;
+  min-height: 630px;
   margin-right: 10px;
   display: flex;
   justify-content: center;
@@ -15,7 +15,7 @@
 
 .full_hw {
   display: flex;
-  min-height: 600px;
+  min-height: 630px;
 }
 
 .text_content {
