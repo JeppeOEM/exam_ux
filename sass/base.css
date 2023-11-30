@@ -92,6 +92,10 @@ a {
   color: black;
 }
 
+.relative {
+  position: relative;
+}
+
 .flex_column {
   display: flex;
   flex-direction: column;
@@ -158,6 +162,10 @@ fieldset input {
   width: 100%;
 }
 
+.filter {
+  font-family: "Inter", serif;
+}
+
 .button button {
   display: block;
   margin-top: 20px;
@@ -219,6 +227,9 @@ fieldset input {
 
 fieldset {
   border: 0px;
+}
+fieldset input {
+  font-size: 1rem;
 }
 
 .hide {

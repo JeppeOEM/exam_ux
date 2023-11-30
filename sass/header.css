@@ -1,3 +1,6 @@
+header {
+  font-display: "Inter", serif;
+}
 header button {
   color: white;
   cursor: pointer;
@@ -12,6 +15,10 @@ header a {
 .logo {
   color: white;
   padding-left: 20px;
+}
+
+.nonclick {
+  font-family: Inter;
 }
 
 .navbar {
@@ -88,10 +95,11 @@ img.user_icon {
 .dropdown-content {
   display: none;
   position: absolute;
-  top: 15px;
+  top: -20px;
   background-color: #051E34;
-  min-width: 160px;
+  min-width: 200px;
   z-index: 1;
+  left: -10px;
 }
 
 .filter:hover {
@@ -117,7 +125,7 @@ img.user_icon {
 }
 
 .nonclick {
-  padding: 12px 16px;
+  padding: 21px 16px;
   color: red;
   font-size: 1.15rem;
 }

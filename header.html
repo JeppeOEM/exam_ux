@@ -6,7 +6,7 @@
       <li class="hide_mobile" tabindex="0">
         <button tabindex="-1" class="filter" data-filter="all">All Products</button>
       </li>
-      <li class="hide_mobile" tabindex="0">
+      <li class="hide_mobile relative close_here" tabindex="0">
         <div class="dropdown_hover" tabindex="-1">
           <button tabindex="0" class="dropdown_btn" aria-haspopup="true" aria-expanded="false">
             Clothing
@@ -16,7 +16,7 @@
             <p class="nonclick">Clothing</p>
             <button tabindex="0" class="filter" data-filter="clothing">All Clothing</button>
             <button tabindex="0" class="filter" data-filter="men's clothing">Men's Clothing</button>
-            <button tabindex="0" class="filter" data-filter="women's clothing">Women's Clothing</button>
+            <button tabindex="0" class="filter close_dropdown" data-filter="women's clothing">Women's Clothing</button>
           </div>
         </div>
       </li>
@@ -35,7 +35,7 @@
             </button>
             <div tabindex="0" class="dropdown_logout hide">
               <img class="user_icon" src="img/user.svg" alt="User dropdown" aria-label="User" />
-              <button class="log_out_btn" tabindex="-1">Log out</button>
+              <button class="log_out_btn close_dropdown" tabindex="0" tabindex="-1">Log out</button>
             </div>
             <button class="cart_btn">
               <img

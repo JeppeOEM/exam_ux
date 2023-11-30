@@ -1,5 +1,5 @@
 // import { is_logged_in } from "../functions/is_logged_in";
-
+// import { focused_element } from "../functions/accesability";
 is_logged_in();
 document.addEventListener("DOMContentLoaded", () => {
   let address_confirmed;
@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   restore_form("address_form");
   show_html();
   header_selectors();
+  focused_element();
 
   const change_data = document.querySelector("#change_data");
   const saved = document.querySelector("#saved");
@@ -359,5 +360,84 @@ function header_selectors() {
   document.querySelector(".log_out_btn").addEventListener("click", () => {
     sessionStorage.clear();
     window.location.href = "/index.html";
+  });
+}
+
+export function focused_element() {
+  document.addEventListener("keypress", function (event) {
+    event.preventDefault();
+    console.log(event);
+    if (event.key === "Enter") {
+      get_focused(event);
+    } else {
+      console.log(event);
+    }
+  });
+
+  function get_focused(event) {
+    const focus = document.activeElement;
+
+    if (focus.tagName === "LI" && focus.querySelector(".dropdown_btn")) {
+      const btn = focus.querySelector("button");
+      const dropdownContent = focus.querySelector(".dropdown-content");
+      dropdownContent.style.display = "block";
+      console.log(focus);
+      console.log(focus.classList);
+    } else if (focus.tagName === "LI" && focus.querySelector(".user_btn")) {
+      const btn = focus.querySelector("button");
+      const dropdownContent = focus.querySelector(".dropdown_logout");
+      dropdownContent.style.display = "block";
+    } else if (focus.tagName === "LI") {
+      const btn = focus.querySelector("button");
+      btn.click();
+    } else if (focus.tagName === "SELECT") {
+      console.log(focus);
+      // const select = focus.querySelector(".select");
+      focus.click();
+    } else if (focus.tagName === "ARTICLE") {
+      focus.click();
+    } else if (focus.tagName === "ARTICLE") {
+      focus.click();
+    } else if (focus.type === "radio") {
+      console.log(focus);
+      console.log("is input");
+      focus.click();
+    } else {
+      if (focus.type === "checkbox") {
+        console.log(focus, "ccccccccc");
+        // event.preventDefault();
+        focus.checked = !focus.checked;
+      }
+      console.log(focus.checked);
+      console.log(focus.classList);
+      // const close_dropdown = focus.querySelector(".close_dropdown");
+      // if (close_dropdown) {
+      //   document.addEventListener("keydown", function (event) {
+      //     if (event.key === "Tab") {
+      //       console.log("Tab key pressed!");
+      //       console.log(document.closest(".close_here"));
+      //     }
+      //   });
+      // }
+    }
+    // } else {
+    //   console.log(focus);
+    //   // const select = focus.querySelector(".select");
+    //   focus.click();
+    // }
+  }
+
+  document.addEventListener("keydown", function (event) {
+    // Check if the pressed key is Enter (keyCode 13)
+    if (event.key === "Enter") {
+      // Trigger the click event on the button with the specified ID
+      get_focused();
+    }
+  });
+
+  const nav_items = document.querySelectorAll("nav li");
+
+  nav_items.forEach((list) => {
+    const btn = list.querySelector("button");
   });
 }
