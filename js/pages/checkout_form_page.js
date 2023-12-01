@@ -1,8 +1,5 @@
-// import { is_logged_in } from "../functions/is_logged_in";
-// import { focused_element } from "../functions/accesability";
-// import { header_selectors } from "../functions/header";
-
 import { load_html_checkout } from "../html_components.js";
+
 document.addEventListener("DOMContentLoaded", () => {
   is_logged_in();
   load_html_checkout().then(() => {
@@ -10,9 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let billing_active;
     sum_price();
     restore_form("address_form");
-    show_html();
-    header_selectors();
-    // focused_element();
+    // show_html();
 
     const change_data = document.querySelector("#change_data");
     const saved = document.querySelector("#saved");
@@ -203,15 +198,9 @@ document.addEventListener("DOMContentLoaded", () => {
       const inputs = document.querySelectorAll("input");
       inputs.forEach((input) => {
         input.addEventListener("input", (event) => {
-          console.log(event.target.className);
-          console.log(event.target.value);
-          console.log(event.target.type);
           if (event.target.type === "radio") {
             sessionStorage.setItem("radio", event.target.className);
-            console.log("hit");
           } else if (event.target.type === "checkbox") {
-            console.log("checkbox!!!!!");
-            console.log(event.target.checked);
             event.target.checked ? hide_billing() : load_billing();
             sessionStorage.setItem("radio", event.target.className);
           } else if (event.target.type !== "radio" && event.target.type !== "checkbox") {
@@ -230,15 +219,6 @@ document.addEventListener("DOMContentLoaded", () => {
       const zip = form.querySelector(".zip");
       const city = form.querySelector(".city");
       const mobile = form.querySelector(".mobile");
-
-      // Example: Accessing values
-      console.log("Email:", email.value);
-      console.log("First Name:", first_name.value);
-      console.log("Last Name:", last_name.value);
-      console.log("Address:", address.value);
-      console.log("Zip Code:", zip.value);
-      console.log("City:", city.value);
-      console.log("Mobile:", mobile.value);
 
       let saved = document.querySelector(`#${saved_data}`);
       const email_saved = saved.querySelector(".email");
@@ -305,6 +285,7 @@ document.addEventListener("DOMContentLoaded", () => {
     credit_form.addEventListener("submit", (event) => {
       event.preventDefault();
       console.log("submitted");
+      success_modal();
       localStorage.clear();
 
       // Add your form submission logic here
@@ -337,7 +318,7 @@ document.addEventListener("DOMContentLoaded", () => {
       event.preventDefault();
       console.log("submitted");
       success_modal();
-
+      localStorage.clear();
       // Add your form submission logic here
     });
   }
@@ -384,131 +365,14 @@ document.addEventListener("DOMContentLoaded", () => {
   function is_logged_in() {
     const email = sessionStorage.getItem("email");
     if (email !== null) {
-      // alert("user logged in");
+
       return true;
     } else {
-      // alert("user NOT logged in");
+
       window.location.href = "/index.html";
     }
-  }
-
-  function header_selectors() {
-    document.querySelector(".dropdown_user").addEventListener("click", () => {
-      const element = document.querySelector(".dropdown_logout");
-      element.classList.toggle("hide");
-    });
-    document.querySelector(".dropdown_logout").addEventListener("click", function () {
-      this.classList.toggle("hide");
-    });
-    const burger_menu = document.querySelector(".hamburger_btn");
-    const close_menu = document.querySelector(".fixed_top");
-    burger_menu.addEventListener("click", function () {
-      const menu = document.querySelector(".hamburger_content");
-      menu.classList.toggle("showmenu");
-    });
-    close_menu.addEventListener("click", function () {
-      const menu = document.querySelector(".hamburger_content");
-      menu.classList.toggle("showmenu");
-    });
-
-    document.querySelector(".log_out_btn").addEventListener("click", () => {
-      sessionStorage.clear();
-      window.location.href = "/index.html";
-    });
-  }
-
-  function focused_element() {
-    document.addEventListener("keypress", function (event) {
-      console.log(event);
-      if (event.key === "Enter") {
-        get_focused(event);
-      } else {
-        console.log(event);
-      }
-    });
-
-    function get_focused(event) {
-      const focus = document.activeElement;
-
-      if (focus.tagName === "LI" && focus.querySelector(".dropdown_btn")) {
-        const btn = focus.querySelector("button");
-        const dropdownContent = focus.querySelector(".dropdown-content");
-        dropdownContent.style.display = "block";
-        console.log(focus);
-        console.log(focus.classList);
-      } else if (focus.tagName === "LI" && focus.querySelector(".user_btn")) {
-        const btn = focus.querySelector("button");
-        const dropdownContent = focus.querySelector(".dropdown_logout");
-        dropdownContent.style.display = "block";
-      } else if (focus.tagName === "LI") {
-        const btn = focus.querySelector("button");
-        btn.click();
-      } else if (focus.tagName === "SELECT") {
-        console.log(focus);
-        // const select = focus.querySelector(".select");
-        focus.click();
-      } else if (focus.tagName === "ARTICLE") {
-        focus.click();
-      } else if (focus.tagName === "ARTICLE") {
-        focus.click();
-      } else if (focus.type === "radio") {
-        console.log(focus);
-        console.log("is input");
-        focus.click();
-      } else if ((focus.tagName === "INPUT" && focus.type === "radio") || focus.type === "checkbox") {
-        console.log("radio");
-
-        //   console.log(focus, "ccccccccc");
-        //   const checkbox = document.querySelector(".billing_check");
-
-        //   // hide_billing();
-        //   if (checkbox.checked === true) {
-        //     console.log("true");
-        //     checkbox.click();
-        //     checkbox.checked = false;
-        //   } else {
-        //     console.log("false");
-        //     checkbox.click();
-        //     checkbox.checked = true;
-        //   }
-        // }
-
-        // focus.click();
-        // console.log(focus);
-        // console.log(focus.checked);
-        // console.log(focus.classList);
-        // const close_dropdown = focus.querySelector(".close_dropdown");
-        // if (close_dropdown) {
-        //   document.addEventListener("keydown", function (event) {
-        //     if (event.key === "Tab") {
-        //       console.log("Tab key pressed!");
-        //       console.log(document.closest(".close_here"));
-        //     }
-        //   });
-        // }
-      } else if (focus.tagName !== "INPUT") {
-        console.log(focus);
-
-        focus.click();
-      }
-    }
-
-    document.addEventListener("keydown", function (event) {
-      // Check if the pressed key is Enter (keyCode 13)
-      if (event.key === "Enter") {
-        // Trigger the click event on the button with the specified ID
-        get_focused();
-      }
-    });
-
-    const nav_items = document.querySelectorAll("nav li");
-
-    nav_items.forEach((list) => {
-      const btn = list.querySelector("button");
-    });
   }
 });
-
 
 //not implemented code
 function remove_billing() {
