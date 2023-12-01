@@ -15,7 +15,7 @@ addEventListener("DOMContentLoaded", (event) => {
   console.log(category, "SHOP PAGE");
   get_previous_sorting();
 
-  // breadcrumb_links(sessionStorage.getItem("category"));
+
 
   console.log(category, "category !!!!!!!!!!!!!!");
 
@@ -25,13 +25,11 @@ addEventListener("DOMContentLoaded", (event) => {
       console.log(this);
       deselect(this);
       const items = JSON.parse(sessionStorage.getItem("current_items"));
-      items, "items to sort nowwwwwwwwwwwwww";
       let sorted_items = sorted_list(items, select.name, parseInt(select.value));
       insert_items(sorted_items);
     });
   });
 
-  // list, type, (direction = 1);
 });
 
 function deselect(current_select) {
@@ -42,20 +40,3 @@ function deselect(current_select) {
   }
 }
 
-// async function breadcrumb_links(category) {
-//   let b = await breadcrumb(category);
-//   // console.log(b);
-//   console.log(b.innerHTML);
-//   // console.log(b.querySelector("button"));
-//   const breadcrumb_btns = b.querySelectorAll(".breadcrumb_btn");
-
-//   breadcrumb_btns.forEach((btn) => {
-//     console.log(btn);
-//     btn.addEventListener("click", () => {
-//       console.log(btn);
-//       console.log("get_p", btn.dataset.filter);
-//       sessionStorage.setItem("category", btn.dataset.filter);
-//       console.log(sessionStorage.getItem("category"), "category");
-//     });
-//   });
-// }

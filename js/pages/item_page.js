@@ -14,8 +14,7 @@ const this_item = {
 is_logged_in();
 
 document.addEventListener("DOMContentLoaded", function () {
-  // load_html().then(() => {
-  //Repeating content in carts
+
   const category = sessionStorage.getItem("category");
   breadcrumb_links(category);
   build_page();

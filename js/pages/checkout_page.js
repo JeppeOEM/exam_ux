@@ -13,11 +13,5 @@ document.addEventListener("DOMContentLoaded", function () {
     focused_element();
     header_selectors();
 
-    // const hide = document.querySelector(".continue");
-
-    // hide.addEventListener("click", () => {
-    //   const aside = document.querySelector("aside");
-    //   aside.classList.remove("show");
-    // });
   });
 });

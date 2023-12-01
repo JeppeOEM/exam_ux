@@ -69,18 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const dhl = document.querySelector("#dhl");
       const post_nord = document.querySelector("#post_nord");
       const bring = document.querySelector("#bring");
-      // console.log(
-      //   bring.checked,
-      //   "bring",
-      //   mobile_pay.checked,
-      //   "mobile",
-      //   dhl.checked,
-      //   "dhl",
-      //   post_nord.checked,
-      //   "post",
-      //   credit.checked,
-      //   "credit"
-      // );
+
       if (dhl.checked === false && post_nord.checked === false && bring.checked === false) {
         error = "delivery provider";
       } else if (credit.checked === false && mobile_pay.checked === false) {
@@ -132,8 +121,6 @@ document.addEventListener("DOMContentLoaded", () => {
     //   document.querySelector(".mobile").value = sessionStorage.getItem("mobile") || "";
     // }
 
-    // Get the element by its ID
-
     function show_html() {
       const show_html = document.querySelectorAll(".address_confirmed");
       const hide_html = document.querySelectorAll(".no_address");
@@ -141,7 +128,6 @@ document.addEventListener("DOMContentLoaded", () => {
         if (address_confirmed) {
           html.style.display = "block";
         } else {
-          // If the condition is false, hide the element
           html.style.display = "none";
         }
       });
@@ -198,7 +184,7 @@ document.addEventListener("DOMContentLoaded", () => {
       form.id = "billing";
       let clone = fieldset.cloneNode(true);
       form.appendChild(clone);
-      //remove billing extra cloned checkbox
+      //remove extra cloned checkbox
       const clean = form.querySelectorAll(".billing_check");
       clean.forEach((ele) => {
         ele.remove();
@@ -235,26 +221,6 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
 
-    function remove_billing() {
-      const billing = document.querySelector("#billing");
-      const inputs = billing.querySelectorAll("input");
-      inputs.forEach((input) => {
-        input.removeEventListener("input", (event) => {
-          sessionStorage.setItem(event.target.className + "_billing", event.target.value);
-        });
-      });
-    }
-
-    function billing_listeners() {
-      const billing = document.querySelector("#billing");
-      const inputs = billing.querySelectorAll("input");
-      inputs.forEach((input) => {
-        input.addEventListener("input", (event) => {
-          sessionStorage.setItem(event.target.className + "_billing", event.target.value);
-          sessionStorage.getItem(event.target.className + "_billing");
-        });
-      });
-    }
     function get_form_data(the_form, saved_data) {
       let form = document.querySelector(`#${the_form}`);
       const email = form.querySelector(".email");
@@ -542,3 +508,26 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
+
+//not implemented code
+function remove_billing() {
+  const billing = document.querySelector("#billing");
+  const inputs = billing.querySelectorAll("input");
+  inputs.forEach((input) => {
+    input.removeEventListener("input", (event) => {
+      sessionStorage.setItem(event.target.className + "_billing", event.target.value);
+    });
+  });
+}
+
+function billing_listeners() {
+  const billing = document.querySelector("#billing");
+  const inputs = billing.querySelectorAll("input");
+  inputs.forEach((input) => {
+    input.addEventListener("input", (event) => {
+      sessionStorage.setItem(event.target.className + "_billing", event.target.value);
+      sessionStorage.getItem(event.target.className + "_billing");
+    });
+  });
+}

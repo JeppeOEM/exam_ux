@@ -1,15 +1,8 @@
 "use strict";
 import { header_selectors } from "./header.js";
-import { load_html, load_html_links_header } from "../html_components.js";
-import { breadcrumb_links } from "./breadcrumb.js";
+import { load_html } from "../html_components.js";
 import { focused_element } from "../functions/accesability.js";
 import { get_products } from "../functions/get_products.js";
-const this_item = {
-  id: null,
-  title: null,
-  price: null,
-  image: null,
-};
 
 document.addEventListener("DOMContentLoaded", function () {
   load_html().then(() => {
@@ -159,12 +152,6 @@ export function init_cart(key) {
   }
 }
 
-// export function items_total(key) {
-//   const items = get_cart(key);
-//   const len = items.length;
-//   const total = document.querySelector(".total");
-//   total.innerText = len;
-// }
 
 export function add_to_cart(key, item) {
   const item_list = get_cart(key);
