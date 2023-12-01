@@ -9,14 +9,19 @@ body {
   background-color: #F5F5F5;
   font-family: "Inter", serif;
   color: #272f36;
+  position: relative;
+}
+
+main {
   max-width: 1100px;
-  margin: 0 auto;
+  margin: 0px auto;
   padding-top: 70px;
+  padding-bottom: 300px;
   margin-top: 70px;
 }
 
 .breadcrumb_btn {
-  color: #272f36;
+  color: #1717a7;
 }
 
 h1 {
@@ -73,11 +78,11 @@ a {
   font-family: "Inter", serif;
 }
 .breadcrumb > *:hover {
-  color: red;
+  color: blue;
 }
 
 .accent {
-  color: red;
+  color: #1717a7;
 }
 
 .bold {
@@ -85,11 +90,17 @@ a {
 }
 
 .plus {
-  color: black;
+  color: #272f36;
+}
+.plus:hover {
+  color: blue;
 }
 
 .minus {
-  color: black;
+  color: #272f36;
+}
+.minus:hover {
+  color: blue;
 }
 
 .relative {
@@ -130,7 +141,7 @@ select {
   cursor: pointer;
 }
 select:hover {
-  color: red;
+  color: blue;
 }
 
 select option {
@@ -157,19 +168,14 @@ fieldset input {
   width: 100%;
 }
 
-.dropdown-content .filter {
-  color: white;
-  width: 100%;
-}
-
-.filter {
-  font-family: "Inter", serif;
+.darkblue {
+  color: #0f416d;
 }
 
 .button button {
   display: block;
   margin-top: 20px;
-  background-color: #051E34;
+  background-color: #272f36;
   width: 100%;
   padding: 15px 0px;
   text-align: center;
@@ -186,7 +192,7 @@ fieldset input {
 .button a {
   display: block;
   margin-top: 20px;
-  background-color: #051E34;
+  background-color: #272f36;
   width: 100%;
   padding: 15px 0px;
   text-align: center;
@@ -203,7 +209,7 @@ fieldset input {
 .button input[type=submit] {
   display: block;
   margin-top: 20px;
-  background-color: #051E34;
+  background-color: #272f36;
   width: 100%;
   padding: 15px 0px;
   text-align: center;
@@ -222,7 +228,33 @@ fieldset input {
   color: black;
 }
 .breadcrumb a:hover {
-  color: red;
+  color: blue;
+}
+
+.button button.button2 {
+  display: block;
+  margin-top: 20px;
+  background-color: #272f36;
+  width: 100%;
+  padding: 15px 0px;
+  text-align: center;
+  border-radius: 2px;
+  color: white;
+  transition: 0.3s;
+  font-size: 1.15rem;
+  background-color: white;
+  border: solid 2px #272f36;
+  color: #272f36;
+}
+.button button.button2:hover {
+  background-color: #144A7F;
+  cursor: pointer;
+}
+
+.button button.button2:hover {
+  background-color: #144A7F;
+  color: white;
+  cursor: pointer;
 }
 
 fieldset {

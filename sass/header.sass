@@ -10,6 +10,15 @@ header a
     cursor: pointer
     font-size: 1.15rem
 
+
+.nav_style
+  width: 1100px
+  display: flex
+  flex-direction: row
+  justify-content: space-between
+  align-items: center
+
+
 .logo
   color: white
   padding-left: 20px
@@ -19,6 +28,7 @@ header a
 
 
 .navbar 
+  padding: 10px 0px
   display: flex
   align-items: center
   justify-content: center
@@ -28,7 +38,7 @@ header a
   width: 100%
   top: 0
   left: 0
-  background-color: $blue
+  background-color: $black_blue
 
   ul 
     list-style: none
@@ -62,6 +72,7 @@ img.user_icon
   cursor: pointer
 
 .cart-wrapper
+  padding-right:40px
   position: relative
   display: flex
   flex-direction: row
@@ -87,12 +98,9 @@ img.user_icon
   top:-20px
   background-color: $dark_blue
   min-width: 200px
-  z-index: 1
+  z-index: 3
   left: -10px
 
-.filter
-  &:hover
-    color: $accent
 
 .dropdown-content a
   float: none
@@ -105,14 +113,14 @@ img.user_icon
 .dropdown-content button
   float: none
   color: black
-  padding: 12px 16px
+  margin: 12px 16px
   text-decoration: none
   display: block
   text-align: left
 
 .nonclick
   padding: 21px 16px
-  color: $accent
+  color: $white
   font-size: 1.15rem
 
 .dropdown-content a:hover
@@ -121,6 +129,9 @@ img.user_icon
 .dropdown_hover:hover .dropdown-content
   display: block
 
+.dropdown-content .filter
+    color: white
+    // width: 100%
 .dropdown_logout
   cursor: pointer
   position: absolute
@@ -143,15 +154,18 @@ img.user_icon
 .hamburger
     display: none
 .filter
-  z-index: 1000
+  z-index: 2
 .showmenu
   display: block
 
-.navbar button
-  &:hover
-    color: $accent
+// .navbar button
+//   &:hover
+//     color: $accent
 
 
+
+.filter
+    font-family: "Inter", serif
 .hamburger_content
 
   padding-top: 40px
@@ -162,7 +176,24 @@ img.user_icon
   top: 0px
   right: 0px
 
-@media only screen and (max-width: 731px) 
+
+.underline
+  text-decoration: none
+  position: relative
+  display: inline-block
+
+  &:hover::after
+    content: ''
+    display: block
+    width: 100%
+    padding-top:1px
+    height: 1px
+    background-color: $white
+    position: absolute
+    bottom: 0
+    left: 0
+
+@media only screen and (max-width: 871px) 
   .navbar
    justify-content: space-between  
   .hide_mobile
@@ -173,4 +204,11 @@ img.user_icon
     display: block
   .hamburger
     display: block
+
+@media only screen and (max-width: 441px) 
+  .nav_styles
+    padding: 120px
+  .logo
+    margin-left: 0px 
+
 

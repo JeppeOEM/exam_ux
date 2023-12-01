@@ -14,6 +14,7 @@ aside {
   display: none;
   margin-bottom: 60px;
   padding: 0px 20px;
+  border-left: solid 1px #ccc;
 }
 
 .push_down {
@@ -108,7 +109,6 @@ aside figure {
 }
 
 .body_overflow {
-  overflow-x: hidden;
   overflow-y: hidden;
 }
 

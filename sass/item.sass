@@ -3,6 +3,7 @@
     padding: 0px 40px
     margin-bottom: 40px
 .wrapper .fit_content
+    border: solid 2px $grey
     background-color: $white
     min-width:500px
     min-height:630px
@@ -19,12 +20,13 @@
     min-height:630px
 
 .text_content
+    border: solid 2px $grey
     flex-grow: 1
     display: flex
     flex-direction: column
     padding: 10px 0px
     background-color: $white
-    padding: 20px
+    padding: 30px
     margin-left: 10px
 
 .text_content > *
@@ -39,6 +41,7 @@ hr
 .item_section
     display: flex
     flex-direction: column
+
     // justify-content: center
     // align-items: center
 
@@ -48,7 +51,7 @@ hr
     justify-content: center
     align-items: center
 .item_image
-    padding:40px
+    padding:20px
     max-height: 500px
     max-width: 500px
 
@@ -100,6 +103,7 @@ hr
 
 
 
+
 @media only screen and (max-width: 1020px) 
     .wrapper
         flex-direction: column
@@ -124,6 +128,11 @@ hr
         padding:40px
         max-height: 400px
         max-width: 300px
+
+    .wrapper
+        padding: 0px 30px
+    .breadcrumb
+        padding-left: 10px
 
 
 @media only screen and (max-width: 400px) 

@@ -100,7 +100,7 @@ export async function show_current_items() {
       const amount = document.querySelector(`#c${key} .amount`);
       amount.innerText = count[key];
       const total_price = document.querySelector(`#c${id} .price`);
-      total_price.innerText = total;
+      total_price.innerText = total.toFixed(2);
       checkout_price.push(parseFloat(total));
     }
     let sum = 0;

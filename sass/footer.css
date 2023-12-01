@@ -1,19 +1,28 @@
 footer {
-  padding: 0;
+  padding: 20px;
   margin: 0;
   background: blue;
 }
 
 .social_icon {
   width: 30px;
-  margin-right: 10px;
+  margin-right: 40px;
 }
 
 .footer_section {
-  padding: 20px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: baseline;
+  font-size: 1rem;
 }
 .footer_section > * {
-  padding: 10px 0px;
+  padding: 5px 0px;
+}
+
+.right_side > * {
+  padding: 20px;
 }
 
 footer {
@@ -22,6 +31,10 @@ footer {
   padding: 20px;
   box-sizing: border-box;
   position: absolute;
-  bottom: -300px;
+  bottom: 0px;
   width: 100vw;
+}
+
+a {
+  all: unset;
 }/*# sourceMappingURL=footer.css.map */

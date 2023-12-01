@@ -1,71 +1,71 @@
 <div class="nav_wrapper" aria-label="Main Navigation user enter to open link">
   <nav class="navbar">
-    <a class="logo" href="index.html"><h5>mini.shoppen</h5></a>
+    <div class="nav_style">
+      <a class="logo" href="shop.html"><h3>mini.shoppen</h3></a>
 
-    <ul>
-      <li class="hide_mobile" tabindex="0">
-        <button tabindex="-1" class="filter" data-filter="all">All Products</button>
-      </li>
-      <li class="hide_mobile relative close_here" tabindex="0">
-        <div class="dropdown_hover" tabindex="-1">
-          <button tabindex="0" class="dropdown_btn" aria-haspopup="true" aria-expanded="false">
-            Clothing
-            <i class="fa fa-caret-down"></i>
+      <ul class="hide_mobile">
+        <li class="hide_mobile" tabindex="0">
+          <button tabindex="-1" class="filter underline" data-filter="all">All Products</button>
+        </li>
+        <li class="hide_mobile relative close_here" tabindex="0">
+          <div class="dropdown_hover" tabindex="-1">
+            <button tabindex="0" class="dropdown_btn" aria-haspopup="true" aria-expanded="false">
+              Clothing
+              <i class="fa fa-caret-down"></i>
+            </button>
+            <div tabindex="-1" class="dropdown-content">
+              <p class="nonclick">Clothing</p>
+              <button tabindex="0" class="filter underline" data-filter="clothing">All Clothing</button>
+              <button tabindex="0" class="filter underline" data-filter="men's clothing">Men's Clothing</button>
+              <button tabindex="0" class="filter close_dropdown underline" data-filter="women's clothing">
+                Women's Clothing
+              </button>
+            </div>
+          </div>
+        </li>
+
+        <li class="hide_mobile" tabindex="0">
+          <button tabindex="-1" class="filter underline" data-filter="electronics">Electronics</button>
+        </li>
+        <li class="hide_mobile" tabindex="0">
+          <button tabindex="-1" class="filter underline" data-filter="jewelery">Jewelry</button>
+        </li>
+      </ul>
+      <div tabindex="-1" class="cart-wrapper">
+        <span class="flex_horizontal">
+          <button class="dropdown_user">
+            <img class="user_icon" src="img/user.svg" alt="User dropdown" aria-label="User" />
           </button>
-          <div tabindex="-1" class="dropdown-content">
-            <p class="nonclick">Clothing</p>
+          <div tabindex="0" class="dropdown_logout hide">
+            <img class="user_icon" src="img/user.svg" alt="User dropdown" aria-label="User" />
+            <button class="log_out_btn close_dropdown" tabindex="0" tabindex="-1">Log out</button>
+          </div>
+          <button class="cart_btn">
+            <img
+              id="cart_btn"
+              class="cart_icon"
+              src="img/basket.svg"
+              alt="Go to checkout symbol"
+              aria-label="Go to checkout" />
+          </button>
+        </span>
+
+        <button class="hamburger_btn" aria-label="Open menu">
+          <img tabindex="0" class="hamburger" src="img/bars-solid.svg" alt="Dropdown menu" />
+        </button>
+        <div class="dropdown" tabindex="-1">
+          <div tabindex="-1" class="dropdown-content hamburger_content">
+            <button class="fixed_top" aria-label="Open menu">
+              <img tabindex="0" class="hamburger" src="img/bars-solid.svg" alt="Dropdown menu" />
+            </button>
             <button tabindex="0" class="filter" data-filter="clothing">All Clothing</button>
             <button tabindex="0" class="filter" data-filter="men's clothing">Men's Clothing</button>
-            <button tabindex="0" class="filter close_dropdown" data-filter="women's clothing">Women's Clothing</button>
+            <button tabindex="0" class="filter" data-filter="women's clothing">Women's Clothing</button>
+            <button tabindex="0" class="filter" data-filter="jewlery">Jewelry</button>
+            <button tabindex="0" class="filter" data-filter="electronics">Electronics</button>
           </div>
         </div>
-      </li>
-
-      <li class="hide_mobile" tabindex="0">
-        <button tabindex="-1" class="filter" data-filter="electronics">Electronics</button>
-      </li>
-      <li class="hide_mobile" tabindex="0">
-        <button tabindex="-1" class="filter" data-filter="jewelery">Jewelry</button>
-      </li>
-      <li tabindex="-1">
-        <div tabindex="-1" class="cart-wrapper">
-          <span class="flex_horizontal">
-            <button class="dropdown_user">
-              <img class="user_icon" src="img/user.svg" alt="User dropdown" aria-label="User" />
-            </button>
-            <div tabindex="0" class="dropdown_logout hide">
-              <img class="user_icon" src="img/user.svg" alt="User dropdown" aria-label="User" />
-              <button class="log_out_btn close_dropdown" tabindex="0" tabindex="-1">Log out</button>
-            </div>
-            <button class="cart_btn">
-              <img
-                id="cart_btn"
-                class="cart_icon"
-                src="img/basket.svg"
-                alt="Go to checkout symbol"
-                aria-label="Go to checkout" />
-            </button>
-          </span>
-
-          <button class="hamburger_btn" aria-label="Open menu">
-            <img tabindex="0" class="hamburger" src="img/bars-solid.svg" alt="Dropdown menu" />
-          </button>
-          <div class="dropdown" tabindex="-1">
-            <div tabindex="-1" class="dropdown-content hamburger_content">
-              <button class="fixed_top" aria-label="Open menu">
-                <img tabindex="0" class="hamburger" src="img/bars-solid.svg" alt="Dropdown menu" />
-              </button>
-              <button tabindex="0" class="filter" data-filter="clothing">All Clothing</button>
-              <button tabindex="0" class="filter" data-filter="men's clothing">Men's Clothing</button>
-              <button tabindex="0" class="filter" data-filter="women's clothing">Women's Clothing</button>
-              <button tabindex="0" class="filter" data-filter="jewlery">Jewelry</button>
-              <button tabindex="0" class="filter" data-filter="electronics">Electronics</button>
-            </div>
-          </div>
-        </div>
-        <!-- aria-atomic will read the content when an update happens -->
-        <p class="logged_in" class="total" aria-atomic="true" aria-label="total number of products in the cart"></p>
-      </li>
-    </ul>
+      </div>
+    </div>
   </nav>
 </div>

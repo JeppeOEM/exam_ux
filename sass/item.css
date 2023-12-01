@@ -4,6 +4,7 @@
 }
 
 .wrapper .fit_content {
+  border: solid 2px #ccc;
   background-color: white;
   min-width: 500px;
   min-height: 630px;
@@ -19,12 +20,13 @@
 }
 
 .text_content {
+  border: solid 2px #ccc;
   flex-grow: 1;
   display: flex;
   flex-direction: column;
   padding: 10px 0px;
   background-color: white;
-  padding: 20px;
+  padding: 30px;
   margin-left: 10px;
 }
 
@@ -51,7 +53,7 @@ hr {
 }
 
 .item_image {
-  padding: 40px;
+  padding: 20px;
   max-height: 500px;
   max-width: 500px;
 }
@@ -89,6 +91,12 @@ hr {
     padding: 40px;
     max-height: 400px;
     max-width: 300px;
+  }
+  .wrapper {
+    padding: 0px 30px;
+  }
+  .breadcrumb {
+    padding-left: 10px;
   }
 }
 @media only screen and (max-width: 400px) {

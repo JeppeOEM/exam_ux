@@ -255,7 +255,7 @@
             <button tabindex="0" type="submit" id="confirm" form="address_form">Confirm address</button>
           </div>
           <div id="payment_btn" class="button hide">
-            <button tabindex="0"    >Pay</button>
+            <button id="enter_payment_info" tabindex="0">Pay</button>
           </div>
         </section>
       </div>
@@ -269,9 +269,9 @@
 
     <!-- The Modal -->
     <div class="overlay" id="modal_overlay">
-      <div class="modal">
+      <div class="modal">   
         <form class="payment_form" method="post">
-          <span class="h4-font" id="close">X</span>
+          <span tabindex="0" class="h4-font" id="close">X</span>
           <legend class="h4-font">Credit card details</legend>
           <fieldset class="flex_column">
             <label for="card_number">Card Number:</label>

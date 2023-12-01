@@ -14,6 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const saved = document.querySelector("#saved");
   const confirm_btn = document.querySelector("#confirm_btn");
   const payment_btn = document.querySelector("#payment_btn");
+
   change_data.addEventListener("click", (event) => {
     address_form.classList.remove("hide");
     change_data.classList.add("hide");
@@ -56,23 +57,38 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelector("#confirm_btn").classList.add("hide");
     document.querySelector("#payment_btn").classList.remove("hide");
   });
-
-  document.querySelector("#payment_btn").addEventListener("click", () => {
-    let error = null;
+  document.querySelector("#enter_payment_info").addEventListener("click", () => {
+    console.log("clicked");
+    let error = "no error";
     const credit = document.querySelector("#credit");
     const mobile_pay = document.querySelector("#mobile_pay");
     const dhl = document.querySelector("#dhl");
     const post_nord = document.querySelector("#post_nord");
     const bring = document.querySelector("#bring");
-    if (!dhl.checked && !post_nord.checked && !bring.checked) {
+    console.log(
+      bring.checked,
+      "bring",
+      mobile_pay.checked,
+      "mobile",
+      dhl.checked,
+      "dhl",
+      post_nord.checked,
+      "post",
+      credit.checked,
+      "credit"
+    );
+    if (dhl.checked === false && post_nord.checked === false && bring.checked === false) {
       error = "delivery provider";
-    } else if (!credit.checked && !mobile_pay.checked) {
+    } else if (credit.checked === false && mobile_pay.checked === false) {
+      console.log("payment");
       error = "payment solution";
     }
 
-    if (credit.checked && error !== null) {
+    if (credit.checked && error === "no error") {
+      console.log("lol");
       credit_modal();
-    } else if (mobile_pay.checked && error !== null) {
+    } else if (mobile_pay.checked && error === "no error") {
+      console.log("lol2");
       mobile_pay_modal();
     }
 
@@ -286,7 +302,7 @@ function credit_modal() {
 function mobile_pay_modal() {
   const mobile_pay_html = `
   <form class='payment_form mobilepay' method='post'>
-    <span class='h4-font' id='close'>
+    <span tabindex="0" class='h4-font' id='close'>
       X
     </span>
     <legend class='h4-font'>Enter mobile number</legend>
@@ -306,7 +322,7 @@ function mobile_pay_modal() {
 }
 
 function modal_error(error) {
-  const error_modal = ` <span class="h4-font" id="close">X</span>
+  const error_modal = ` <span tabindex="0" class="h4-font" id="close">X</span>
   <h3>You mush choose a ${error}</h3>
   <div class="button">
     <button>Ok</button>
@@ -365,7 +381,6 @@ function header_selectors() {
 
 export function focused_element() {
   document.addEventListener("keypress", function (event) {
-    event.preventDefault();
     console.log(event);
     if (event.key === "Enter") {
       get_focused(event);
@@ -402,14 +417,28 @@ export function focused_element() {
       console.log(focus);
       console.log("is input");
       focus.click();
-    } else {
-      if (focus.type === "checkbox") {
-        console.log(focus, "ccccccccc");
-        // event.preventDefault();
-        focus.checked = !focus.checked;
-      }
-      console.log(focus.checked);
-      console.log(focus.classList);
+    } else if ((focus.tagName === "INPUT" && focus.type === "radio") || focus.type === "checkbox") {
+      console.log("radio");
+
+      //   console.log(focus, "ccccccccc");
+      //   const checkbox = document.querySelector(".billing_check");
+
+      //   // hide_billing();
+      //   if (checkbox.checked === true) {
+      //     console.log("true");
+      //     checkbox.click();
+      //     checkbox.checked = false;
+      //   } else {
+      //     console.log("false");
+      //     checkbox.click();
+      //     checkbox.checked = true;
+      //   }
+      // }
+
+      // focus.click();
+      // console.log(focus);
+      // console.log(focus.checked);
+      // console.log(focus.classList);
       // const close_dropdown = focus.querySelector(".close_dropdown");
       // if (close_dropdown) {
       //   document.addEventListener("keydown", function (event) {
@@ -419,12 +448,11 @@ export function focused_element() {
       //     }
       //   });
       // }
+    } else if (focus.tagName !== "INPUT") {
+      console.log(focus);
+
+      focus.click();
     }
-    // } else {
-    //   console.log(focus);
-    //   // const select = focus.querySelector(".select");
-    //   focus.click();
-    // }
   }
 
   document.addEventListener("keydown", function (event) {

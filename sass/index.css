@@ -1,3 +1,9 @@
+.title {
+  margin-bottom: 30px;
+  padding-bottom: 10px;
+  border-bottom: solid 2px black;
+}
+
 .center {
   margin-top: 10px;
   display: flex;
@@ -10,6 +16,8 @@
 }
 
 #login {
+  padding: 20px;
+  background-color: white;
   width: 400px;
 }
 
@@ -33,22 +41,7 @@
   justify-content: space-between;
 }
 
-.category {
-  width: 200px;
-  height: 100px;
-  margin: 10px;
-  background-color: #3498db;
-  color: #fff;
-  text-align: center;
-  box-shadow: 30px 30px 30px rgba(0, 0, 0, 0.5);
-  transition: color 0.5s ease;
-}
-.category:hover {
-  color: red;
-  box-shadow: 30px 30px 50px rgba(0, 0, 0, 0.5);
-}
-
-h2 {
+h4 {
   margin-bottom: 20px;
 }
 
@@ -57,5 +50,6 @@ h2 {
 }
 
 .register_btn {
-  color: #144A7F;
+  font-size: 1.15rem;
+  color: blue;
 }/*# sourceMappingURL=index.css.map */

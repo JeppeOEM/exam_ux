@@ -6,8 +6,6 @@ import { is_logged_in } from "../functions/is_logged_in.js";
 import { load_html } from "../html_components.js";
 import { get_products, sorted_list, insert_items, get_previous_sorting } from "../functions/get_products.js";
 
-
-
 is_logged_in();
 
 addEventListener("DOMContentLoaded", (event) => {
@@ -22,8 +20,10 @@ addEventListener("DOMContentLoaded", (event) => {
   console.log(category, "category !!!!!!!!!!!!!!");
 
   let selects = document.querySelectorAll(".select");
-  selects.forEach((select) => {
-    select.addEventListener("change", () => {
+  selects.forEach(function (select) {
+    select.addEventListener("change", function () {
+      console.log(this);
+      deselect(this);
       const items = JSON.parse(sessionStorage.getItem("current_items"));
       items, "items to sort nowwwwwwwwwwwwww";
       let sorted_items = sorted_list(items, select.name, parseInt(select.value));
@@ -33,6 +33,14 @@ addEventListener("DOMContentLoaded", (event) => {
 
   // list, type, (direction = 1);
 });
+
+function deselect(current_select) {
+  if (current_select.id === "price") {
+    document.querySelector("#alphabetic").selectedIndex = 0;
+  } else {
+    document.querySelector("#price").selectedIndex = 0;
+  }
+}
 
 // async function breadcrumb_links(category) {
 //   let b = await breadcrumb(category);

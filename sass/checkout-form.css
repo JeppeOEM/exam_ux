@@ -1,3 +1,7 @@
+.step h3 {
+  color: #0f416d;
+}
+
 .input {
   display: flex;
   flex-direction: column;
@@ -13,7 +17,7 @@
   margin-right: 20px;
   margin-top: 20px;
   padding: 10px;
-  border: solid 1px;
+  border: solid 2px;
   top: 0;
   right: 0;
   position: absolute;

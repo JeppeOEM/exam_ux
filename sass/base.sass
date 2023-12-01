@@ -15,15 +15,21 @@ body
     background-color: $background-white
     font-family: "Inter", serif
     color: $black_blue
+    position: relative
+
+
+main
     max-width: 1100px
-    margin: 0 auto
+    margin: 0px auto
     padding-top: 70px
-    margin-top: 70px    
+    padding-bottom: 300px
+    margin-top: 70px
+
 // header
 //     font-family: "Inter", serif
 
 .breadcrumb_btn
-    color: $black_blue
+    color: $accent2
         
 // 1.250 Major third scale 
 
@@ -65,16 +71,20 @@ a
         color: $accent
 
 .accent
-    color: $accent
+    color: $accent2
 
     
 .bold
     font-weight: bold
 
 .plus
-    color: black
+    color: $black_blue
+    &:hover
+        color: $accent
 .minus
-    color: black 
+    color: $black_blue
+    &:hover
+        color: $accent
 
 .relative
     position: relative
@@ -124,20 +134,14 @@ fieldset input
 .button
     width: 100%
 
-.dropdown-content .filter
-    color: white
-    width: 100%
 
-.filter
-    font-family: "Inter", serif
-
+.darkblue
+    color: $dark_blue2
 
 @mixin button-styles
-
-
   display: block
   margin-top: 20px
-  background-color: $dark_blue
+  background-color: $black_blue
   width: 100%
   padding: 15px 0px
   text-align: center
@@ -164,6 +168,19 @@ fieldset input
         color: black
         &:hover
             color: $accent
+
+
+.button button.button2
+  @include button-styles
+  background-color: $white
+  border: solid 2px $black_blue
+  color: $black_blue
+
+.button button.button2:hover
+    background-color: $blue
+    color: $white
+    cursor: pointer
+
 
 
 fieldset

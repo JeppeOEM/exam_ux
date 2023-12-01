@@ -12,6 +12,14 @@ header a {
   font-size: 1.15rem;
 }
 
+.nav_style {
+  width: 1100px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .logo {
   color: white;
   padding-left: 20px;
@@ -22,6 +30,7 @@ header a {
 }
 
 .navbar {
+  padding: 10px 0px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -30,7 +39,7 @@ header a {
   width: 100%;
   top: 0;
   left: 0;
-  background-color: #144A7F;
+  background-color: #272f36;
 }
 .navbar ul {
   list-style: none;
@@ -71,6 +80,7 @@ img.user_icon {
 }
 
 .cart-wrapper {
+  padding-right: 40px;
   position: relative;
   display: flex;
   flex-direction: row;
@@ -98,12 +108,8 @@ img.user_icon {
   top: -20px;
   background-color: #051E34;
   min-width: 200px;
-  z-index: 1;
+  z-index: 3;
   left: -10px;
-}
-
-.filter:hover {
-  color: red;
 }
 
 .dropdown-content a {
@@ -118,7 +124,7 @@ img.user_icon {
 .dropdown-content button {
   float: none;
   color: black;
-  padding: 12px 16px;
+  margin: 12px 16px;
   text-decoration: none;
   display: block;
   text-align: left;
@@ -126,7 +132,7 @@ img.user_icon {
 
 .nonclick {
   padding: 21px 16px;
-  color: red;
+  color: white;
   font-size: 1.15rem;
 }
 
@@ -136,6 +142,10 @@ img.user_icon {
 
 .dropdown_hover:hover .dropdown-content {
   display: block;
+}
+
+.dropdown-content .filter {
+  color: white;
 }
 
 .dropdown_logout {
@@ -152,7 +162,7 @@ img.user_icon {
   margin-top: 30px;
 }
 .dropdown_logout button:hover {
-  color: red;
+  color: blue;
 }
 
 .hamburger_btn {
@@ -164,15 +174,15 @@ img.user_icon {
 }
 
 .filter {
-  z-index: 1000;
+  z-index: 2;
 }
 
 .showmenu {
   display: block;
 }
 
-.navbar button:hover {
-  color: red;
+.filter {
+  font-family: "Inter", serif;
 }
 
 .hamburger_content {
@@ -187,7 +197,24 @@ img.user_icon {
   right: 0px;
 }
 
-@media only screen and (max-width: 731px) {
+.underline {
+  text-decoration: none;
+  position: relative;
+  display: inline-block;
+}
+.underline:hover::after {
+  content: "";
+  display: block;
+  width: 100%;
+  padding-top: 1px;
+  height: 1px;
+  background-color: white;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+@media only screen and (max-width: 871px) {
   .navbar {
     justify-content: space-between;
   }
@@ -202,5 +229,13 @@ img.user_icon {
   }
   .hamburger {
     display: block;
+  }
+}
+@media only screen and (max-width: 441px) {
+  .nav_styles {
+    padding: 120px;
+  }
+  .logo {
+    margin-left: 0px;
   }
 }/*# sourceMappingURL=header.css.map */

@@ -11,10 +11,10 @@
     <link rel="stylesheet" href="sass/cart.css" />
     <link rel="stylesheet" href="sass/shop.css" />
     <script type="module" src="js/pages/shop_page.js"></script>
-    <script type="module" src="js/functions/cartz.js"></script>       
+    <script type="module" src="js/functions/cartz.js"></script>
   </head>
 
-  <body class="overlay">
+  <body>
     <div id="header"></div>
     <main>
       <p class="total"></p>
@@ -24,12 +24,12 @@
         <div class="sort">
           <p>Sort by:</p>
           <select id="alphabetic" name="alphabetic" class="select">
+            <option disabled selected>Alphabetic</option>
             <option value="1">Alphabetic A-Z</option>
             <option value="-1">Alphabetic Z-A</option>
-            <option value="1">Price High-Low</option>
-            <option value="-1">Price Low-High</option>
           </select>
           <select id="price" name="price" class="select">
+            <option disabled selected>Price</option>
             <option value="-1">Price High-Low</option>
             <option value="1">Price Low-High</option>
           </select>
@@ -44,7 +44,7 @@
                 <div class="align_left">
                   <div class="col-reverse">
                     <p class="h5-font text_left">Price: <span class=" h5-font price"></span> $</p>
-                    <p class="name text_left bold "></p>
+                    <h5 class="name darkblue text_left bold "></h5>
                   </div>
                 </div>
               </div>
@@ -52,11 +52,7 @@
           </article>
         </template>
       </section>
-      <button class="t" data-filter="all">all products</button>
-      <button class="t" data-filter="men's clothing">Men's clothing</button>
-      <button class="t" data-filter="women's clothing">Women's clothing</button>
-      <button class="t" data-filter="electronics">Electronics</button>
-      <button class="t" data-filter="jewelery">Jewlery</button>
+
       <!-- imported cart cart.html -->
       <aside id="cart"></aside>
     </main>

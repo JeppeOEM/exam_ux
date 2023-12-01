@@ -31,8 +31,10 @@ export async function get_products(event, category, load = "") {
     let response = await fetch(`https://fakestoreapi.com/products${dynamic_category}`);
     item_array = await response.json();
     let sorting = JSON.parse(sessionStorage.getItem("current_sorting"));
-    console.log("sorting from coolie", sorting);
-    item_array = sorted_list(item_array, sorting["type"], sorting["direction"]);
+    if (sorting) {
+      console.log("sorting from coolie", sorting);
+      item_array = sorted_list(item_array, sorting["type"], sorting["direction"]);
+    }
   }
   item_array = await insert_items(item_array);
   sessionStorage.setItem("category", category);
@@ -141,7 +143,8 @@ export function sorted_list(list, type, direction = 1) {
 
 export function get_previous_sorting() {
   if (!sessionStorage.getItem("current_sorting")) {
-    sessionStorage.setItem("current_sorting", JSON.stringify({ type: "alphabetic", direction: 1 }));
+    console.log("no sorting detected");
+    // sessionStorage.setItem("current_sorting", JSON.stringify({ type: "alphabetic", direction: 1 }));
   } else {
     const sorting = JSON.parse(sessionStorage.getItem("current_sorting"));
     console.log(sorting);
