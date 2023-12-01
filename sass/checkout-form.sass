@@ -13,6 +13,7 @@
         padding-bottom: 5px
 
 .btn_border
+    cursor: pointer
     margin-right: 20px
     margin-top: 20px
     padding: 10px
@@ -21,8 +22,13 @@
     right: 0
     position: absolute
 
+
+
 #change_data
-    color: $black_blue
+    color: $dark_blue
+        &:hover
+            background-color: $blue
+            border: solid 2px $blue
 
 .pen_icon
     width: 25px
@@ -178,6 +184,8 @@ input[type="radio"]
         width: 100%
     .flex_inline .city
         width:  100%
+    // h3
+    //     margin-bottom: 40px
 
 @media only screen and (max-width: 417px) 
     .input input

@@ -90,6 +90,8 @@ document.addEventListener("DOMContentLoaded", () => {
     } else if (mobile_pay.checked && error === "no error") {
       console.log("lol2");
       mobile_pay_modal();
+    } else {
+      modal_error(error);
     }
 
     const close_btn = document.querySelector("#close");
@@ -323,13 +325,14 @@ function mobile_pay_modal() {
 
 function modal_error(error) {
   const error_modal = ` <span tabindex="0" class="h4-font" id="close">X</span>
-  <h3>You mush choose a ${error}</h3>
-  <div class="button">
+  <h4>You mush choose a ${error}</h4>
+  <div class="close_modal button">
     <button>Ok</button>
   </div>
   `;
   document.getElementById("modal_overlay").style.display = "flex";
   document.querySelector(".modal").innerHTML = error_modal;
+  document.querySelector(".close_modal").addEventListener("click", closeModal);
 }
 
 // Function to close the modal
