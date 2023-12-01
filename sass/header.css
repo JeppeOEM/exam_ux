@@ -161,9 +161,6 @@ img.user_icon {
 .dropdown_logout button {
   margin-top: 30px;
 }
-.dropdown_logout button:hover {
-  color: blue;
-}
 
 .hamburger_btn {
   display: none;
