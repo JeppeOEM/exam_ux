@@ -115,8 +115,28 @@ aside figure {
   padding-right: 20px;
 }
 
-@media only screen and (max-width: 655px) {
+@media only screen and (max-width: 500px) {
   aside {
     width: 100%;
+  }
+  .mobile_flex {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  aside article {
+    justify-content: center;
+  }
+  aside .push_down {
+    width: unset;
+  }
+  .mobile_col {
+    flex-direction: column;
+  }
+  .delete_item {
+    text-align: right;
+  }
+  .item_buttons {
+    justify-content: flex-start;
   }
 }/*# sourceMappingURL=cart.css.map */

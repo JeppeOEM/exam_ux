@@ -1,3 +1,4 @@
+import { get_products } from "../functions/get_products.js";
 
 export async function breadcrumb_links(category) {
   let bread = await breadcrumb(category);
@@ -38,7 +39,6 @@ export async function breadcrumb(category) {
 
   const path = document.querySelector(".breadcrumb");
 
-
   const allLink = document.createElement("button");
   allLink.classList = "breadcrumb_btn";
   allLink.innerText = "All products";
@@ -61,7 +61,6 @@ export async function breadcrumb(category) {
     path.appendChild(allLink);
     path.appendChild(clothingLink);
     path.appendChild(subLink);
-
   }
   function no_sub_category() {
     path.innerHTML = "";

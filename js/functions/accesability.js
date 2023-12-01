@@ -36,19 +36,20 @@ export function focused_element() {
     } else if (focus.tagName === "INPUT") {
       console.log(focus);
       focus.click();
-    } else {
-      // console.log(focus);
-      // console.log(focus.classList);
-      // const close_dropdown = focus.querySelector(".close_dropdown");
-      // if (close_dropdown) {
-      //   document.addEventListener("keydown", function (event) {
-      //     if (event.key === "Tab") {
-      //       console.log("Tab key pressed!");
-      //       console.log(document.closest(".close_here"));
-      //     }
-      //   });
-      // }
-    }
+    } 
+    // focus.click();
+    // console.log(focus);
+    // console.log(focus.classList);
+    // const close_dropdown = focus.querySelector(".close_dropdown");
+    // if (close_dropdown) {
+    //   document.addEventListener("keydown", function (event) {
+    //     if (event.key === "Tab") {
+    //       console.log("Tab key pressed!");
+    //       console.log(document.closest(".close_here"));
+    //     }
+    //   });
+    // }
+
     // } else {
     //   console.log(focus);
     //   // const select = focus.querySelector(".select");
