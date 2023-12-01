@@ -137,12 +137,11 @@ export function decrease_item(id, key, counted) {
     id = parseInt(id);
 
     if (item.id === id) {
-      return true; // Return true when a match is found
+      return true;
     }
-    return false; // Return false otherwise
+    return false;
   });
 
-  // findIndex will return -1 if there is not a match
   if (index !== -1) {
     if (counted[id] === 1) {
       // if one item left remove product from cart
@@ -207,23 +206,19 @@ export function count_items(items) {
 export function remove_duplicates(items) {
   let newArray = [];
 
-  // Declare an empty object
   let uniqueObject = {};
 
-  // Loop for the array elements
   for (let i in items) {
-    // Extract the title
     let objTitle = items[i]["id"];
 
-    // Use the title as the index
+    // use the title as the index
     uniqueObject[objTitle] = items[i];
   }
 
-  // Loop to push unique object into array
+  // loop to push unique object into array
   for (let i in uniqueObject) {
     newArray.push(uniqueObject[i]);
   }
 
-  // Display the unique obj ects
   return newArray;
 }

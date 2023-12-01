@@ -1,4 +1,4 @@
-// import { is_logged_in } from "../login/backend.js";
+
 
 document.addEventListener("DOMContentLoaded", () => {
   //clear session category when logging in again
@@ -10,17 +10,15 @@ document.addEventListener("DOMContentLoaded", () => {
     let get_password = formData.get("password");
     let retype_password = formData.get("retype_password");
     console.log(formData);
-    // let is_email_registered = email_check(email);
-    // (is_email_registered);
+
     let is_validated = validate_credentials(get_password, get_email, retype_password);
     if (is_validated === "log_in") {
       alert("Successfully registered");
       save_user(get_email, get_password);
-      // window.location.href = "/index.html";
     } else {
       alert(is_validated);
     }
-    // save_user(email, password);
+
   });
   const register = document.querySelector(".register_btn");
   register.addEventListener("click", (event) => {
