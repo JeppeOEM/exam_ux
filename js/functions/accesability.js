@@ -21,7 +21,6 @@ export function focused_element() {
       const btn = focus.querySelector("button");
       btn.click();
     } else if (focus.tagName === "SELECT") {
-      console.log(focus);
       // const select = focus.querySelector(".select");
       focus.click();
     } else if (focus.tagName === "ARTICLE") {

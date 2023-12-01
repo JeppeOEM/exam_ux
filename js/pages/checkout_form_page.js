@@ -57,7 +57,6 @@ document.addEventListener("DOMContentLoaded", () => {
       document.querySelector("#payment_btn").classList.remove("hide");
     });
     document.querySelector("#enter_payment_info").addEventListener("click", () => {
-      console.log("clicked");
       let error = "no error";
       const credit = document.querySelector("#credit");
       const mobile_pay = document.querySelector("#mobile_pay");
@@ -68,7 +67,6 @@ document.addEventListener("DOMContentLoaded", () => {
       if (dhl.checked === false && post_nord.checked === false && bring.checked === false) {
         error = "delivery provider";
       } else if (credit.checked === false && mobile_pay.checked === false) {
-        console.log("payment");
         error = "payment solution";
       }
 

@@ -32,7 +32,6 @@ export async function get_products(event, category, load = "") {
     item_array = await response.json();
     let sorting = JSON.parse(sessionStorage.getItem("current_sorting"));
     if (sorting) {
-      console.log("sorting from coolie", sorting);
       item_array = sorted_list(item_array, sorting["type"], sorting["direction"]);
     }
   }

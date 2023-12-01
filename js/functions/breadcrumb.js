@@ -5,20 +5,14 @@ export async function breadcrumb_links(category) {
   const breadcrumb_btns = bread.querySelectorAll(".breadcrumb_btn");
   if (window.location.pathname === "/shop.html") {
     breadcrumb_btns.forEach((btn) => {
-      console.log(btn);
       btn.addEventListener("click", (event) => {
-        console.log(btn);
-        console.log("get_p", btn.dataset.filter);
         sessionStorage.setItem("category", btn.dataset.filter);
         get_products(event, btn.dataset.filter);
       });
     });
   } else {
     breadcrumb_btns.forEach((btn) => {
-      console.log(btn);
       btn.addEventListener("click", (event) => {
-        console.log(btn);
-        console.log("link", btn.dataset.filter);
         sessionStorage.setItem("category", btn.dataset.filter);
         window.location.href = "/shop.html";
       });

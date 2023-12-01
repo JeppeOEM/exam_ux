@@ -9,7 +9,6 @@ document.addEventListener("DOMContentLoaded", () => {
     let get_email = formData.get("email");
     let get_password = formData.get("password");
     let retype_password = formData.get("retype_password");
-    console.log(formData);
 
     let is_validated = validate_credentials(get_password, get_email, retype_password);
     if (is_validated === "log_in") {
@@ -45,9 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
   async function log_in(email, password) {
     const response = await fetch("http://localhost:3000/users");
     const json = await response.json();
-
     const user = json.find((item) => item.password === String(password) && item.email === String(email));
-    console.log(user);
     if (user) {
       sessionStorage.setItem("email", user.email);
       sessionStorage.setItem("password", user.password);
