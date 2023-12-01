@@ -1,6 +1,6 @@
 // import { is_logged_in } from "../functions/is_logged_in";
-import { focused_element } from "../functions/accesability";
-import { header_selectors } from "../functions/header";
+// import { focused_element } from "../functions/accesability";
+// import { header_selectors } from "../functions/header";
 is_logged_in();
 document.addEventListener("DOMContentLoaded", () => {
   let address_confirmed;
@@ -8,8 +8,8 @@ document.addEventListener("DOMContentLoaded", () => {
   sum_price();
   restore_form("address_form");
   show_html();
-  header_selectors();
-  focused_element();
+  // header_selectors();
+  // focused_element();
 
   const change_data = document.querySelector("#change_data");
   const saved = document.querySelector("#saved");

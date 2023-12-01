@@ -1,6 +1,6 @@
 export function focused_element() {
   document.addEventListener("keypress", function (event) {
-    event.preventDefault();
+    // event.preventDefault();
     console.log(event);
     if (event.key === "Enter") {
       get_focused();
@@ -37,8 +37,8 @@ export function focused_element() {
       console.log(focus);
       focus.click();
     } else {
-      console.log(focus);
-      console.log(focus.classList);
+      // console.log(focus);
+      // console.log(focus.classList);
       // const close_dropdown = focus.querySelector(".close_dropdown");
       // if (close_dropdown) {
       //   document.addEventListener("keydown", function (event) {
