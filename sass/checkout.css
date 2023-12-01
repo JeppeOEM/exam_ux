@@ -66,16 +66,13 @@ figure {
 }
 
 .cart_item {
-  padding-bottom: 20px;
-}
-
-.cart_item {
   display: flex;
   align-items: center;
-  padding-bottom: 20px;
+  padding-bottom: 40px;
 }
 
 .total_price {
+  border: solid 2px #ccc;
   margin-top: 68px;
   margin-left: 10px;
   background: white;
@@ -95,6 +92,7 @@ figure {
 }
 
 .item_section {
+  border: solid 2px #ccc;
   margin-right: 10px;
   background: white;
 }

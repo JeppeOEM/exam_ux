@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
   build_items();
 
   document.querySelector(".add_cart").addEventListener("click", () => {
-    add_to_cart("dd", this_item);
+    add_to_cart("cart", this_item);
     show_current_items();
   });
 
@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
 function build_items() {
   const items_cart = document.querySelector("#items_cart");
   const template = document.querySelector("template");
-  const items = get_cart("dd");
+  const items = get_cart("cart");
   const items_per_key = count_items(items);
 
   const keys = Object.keys(items_per_key);

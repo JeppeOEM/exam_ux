@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
   build_page();
   console.log(category, "ITEM PAGE");
   document.querySelector(".add_cart").addEventListener("click", () => {
-    add_to_cart("dd", this_item);
+    add_to_cart("cart", this_item);
     const aside = document.querySelector("#cart");
     show_current_items();
     aside.classList.add("show");

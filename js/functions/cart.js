@@ -1,7 +1,7 @@
 export let count = {};
 
 export async function show_current_items() {
-  const cart = localStorage.getItem("dd");
+  const cart = localStorage.getItem("cart");
   let items = JSON.parse(cart);
 
   count = count_items(items);
@@ -19,7 +19,7 @@ export async function show_current_items() {
       let id = selected.id;
       //remove letter that was added before the numeric id
       id = id.substring(1);
-      items = decrease_item(id, "dd", count);
+      items = decrease_item(id, "cart", count);
       count = count_items(items);
       update_count_html();
     });
@@ -29,7 +29,7 @@ export async function show_current_items() {
       const selected = event.target.closest("[id]");
       let id = selected.id;
       id = id.substring(1);
-      items = increase_item(id, "dd", count);
+      items = increase_item(id, "cart", count);
       count = count_items(items);
       update_count_html();
     });
@@ -81,7 +81,7 @@ export async function show_current_items() {
         const selected = event.target.closest("[id]");
         let id = selected.id;
         id = id.substring(1);
-        delete_item(id, "dd");
+        delete_item(id, "cart");
       });
       // clone.querySelector(".description").textContent = obj.description;
       product_grid.appendChild(clone);

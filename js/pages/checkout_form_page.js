@@ -69,18 +69,18 @@ document.addEventListener("DOMContentLoaded", () => {
       const dhl = document.querySelector("#dhl");
       const post_nord = document.querySelector("#post_nord");
       const bring = document.querySelector("#bring");
-      console.log(
-        bring.checked,
-        "bring",
-        mobile_pay.checked,
-        "mobile",
-        dhl.checked,
-        "dhl",
-        post_nord.checked,
-        "post",
-        credit.checked,
-        "credit"
-      );
+      // console.log(
+      //   bring.checked,
+      //   "bring",
+      //   mobile_pay.checked,
+      //   "mobile",
+      //   dhl.checked,
+      //   "dhl",
+      //   post_nord.checked,
+      //   "post",
+      //   credit.checked,
+      //   "credit"
+      // );
       if (dhl.checked === false && post_nord.checked === false && bring.checked === false) {
         error = "delivery provider";
       } else if (credit.checked === false && mobile_pay.checked === false) {
@@ -89,10 +89,8 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       if (credit.checked && error === "no error") {
-        console.log("lol");
         credit_modal();
       } else if (mobile_pay.checked && error === "no error") {
-        console.log("lol2");
         mobile_pay_modal();
       } else {
         modal_error(error);
@@ -105,11 +103,6 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
 
-    const pay = document.querySelector(".payment_form");
-    pay.addEventListener("submit", (event) => {
-      event.preventDefault();
-      console.log("submitted");
-    });
     console.log(localStorage.getItem("checkout"));
     document.querySelector(".checkout_price").innerText = localStorage.getItem("checkout");
 
@@ -302,34 +295,102 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   function credit_modal() {
-    document.getElementById("modal_overlay").style.display = "flex";
-  }
+    const credit_html = `
+    <form class="payment_form" method="post" id="credit_form">
+      <span tabindex="0" class="h4-font" id="close">X</span>
+      <legend class="h4-font">Credit card details</legend>
+      <fieldset class="flex_column">
+        <label for="card_number">Card Number:</label>
+        <input
+          type="text"
+          id="card_number"
+          name="card_number"
+          pattern="[0-9]{16}"
+          title="Enter a 16-digit card number"
+          required />
+        <span class="flex_horizontal">
+          <span class="flex_column pad">
+            <label for="expiration">Expiration Date </label>
+            <input
+              type="text"
+              id="expiration"
+              name="expiration"
+              pattern="(0[1-9]|1[0-2])\/[0-9]{4}"
+              title="Enter a valid expiration date in MM/YYYY format"
+              placeholder="MM/YYYY"
+              required />
+          </span>
 
+          <span class="flex_column">
+            <label class="cvv_label" for="cvv">CVV:</label>
+            <input type="text" id="cvv" name="cvv" pattern="[0-9]{3,4}" title="Enter a 3 or 4-digit CVV" required />
+          </span>
+        </span>
+        <div class="button">
+          <button id="final" class="button pay" type="submit" value="Submit">Pay</button>
+        </div>
+      </fieldset>
+    </form>`;
+
+    document.getElementById("modal_overlay").style.display = "flex";
+    document.querySelector(".modal").innerHTML = credit_html;
+
+    const credit_form = document.querySelector("#credit_form");
+    credit_form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      console.log("submitted");
+      localStorage.clear();
+
+      // Add your form submission logic here
+    });
+  }
   function mobile_pay_modal() {
     const mobile_pay_html = `
-  <form class='payment_form mobilepay' method='post'>
-    <span tabindex="0" class='h4-font' id='close'>
-      X
-    </span>
-    <legend class='h4-font'>Enter mobile number</legend>
-    <fieldset class='flex_column'>
-      <label for='number'>Phone number:</label>
-      <input type='text' id='number' name='number' pattern='[0-9]{8}' title='Enter a 8-digit phone number' required />
-      <div class='button'>
-        <button class='button pay' type='submit' value='Submit'>
-          Pay
-        </button>
-      </div>
-    </fieldset>
-  </form>
-`;
+    <form class='payment_form mobilepay' method='post' id='mobile_form'>
+      <span tabindex="0" class='h4-font' id='close'>
+        X
+      </span>
+      <legend class='h4-font'>Enter mobile number</legend>
+      <fieldset class='flex_column'>
+        <label for='number'>Phone number:</label>
+        <input type='text' id='number' name='number' pattern='[0-9]{8}' title='Enter an 8-digit phone number' required />
+        <div class='button'>
+          <button id="final" class='button pay' type='submit' value='Submit'>
+            Pay
+          </button>
+        </div>
+      </fieldset>
+    </form>
+  `;
+
     document.getElementById("modal_overlay").style.display = "flex";
     document.querySelector(".modal").innerHTML = mobile_pay_html;
+
+    const mobile_form = document.querySelector("#mobile_form");
+    mobile_form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      console.log("submitted");
+      success_modal();
+
+      // Add your form submission logic here
+    });
+  }
+
+  function success_modal() {
+    const success = ` <span tabindex="0" class="h4-font" id="close">X</span>
+  <h4>Payment accepted</h4>
+  <div class="return button">
+    <button>Return to shop</button>
+  </div>
+  `;
+
+    document.querySelector(".modal").innerHTML = success;
+    document.querySelector(".return").addEventListener("click", return_to_shop);
   }
 
   function modal_error(error) {
     const error_modal = ` <span tabindex="0" class="h4-font" id="close">X</span>
-  <h4>You mush choose a ${error}</h4>
+  <h4>You must choose a ${error}</h4>
   <div class="close_modal button">
     <button>Ok</button>
   </div>
@@ -339,6 +400,10 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelector(".close_modal").addEventListener("click", closeModal);
   }
 
+  function return_to_shop() {
+    localStorage.clear();
+    window.location.href = "/shop.html";
+  }
   // Function to close the modal
   function closeModal() {
     document.getElementById("modal_overlay").style.display = "none";
@@ -476,5 +541,4 @@ document.addEventListener("DOMContentLoaded", () => {
   //     const btn = list.querySelector("button");
   //   });
   // }
-
 });

@@ -268,41 +268,7 @@
     <!-- The Modal -->
     <div class="overlay" id="modal_overlay">
       <div class="modal">
-        <form class="payment_form" method="post">
-          <span tabindex="0" class="h4-font" id="close">X</span>
-          <legend class="h4-font">Credit card details</legend>
-          <fieldset class="flex_column">
-            <label for="card_number">Card Number:</label>
-            <input
-              type="text"
-              id="card_number"
-              name="card_number"
-              pattern="[0-9]{16}"
-              title="Enter a 16-digit card number"
-              required />
-            <span class="flex_horizontal">
-              <span class="flex_column pad">
-                <label for="expiration">Expiration Date </label>
-                <input
-                  type="text"
-                  id="expiration"
-                  name="expiration"
-                  pattern="(0[1-9]|1[0-2])\/[0-9]{4}"
-                  title="Enter a valid expiration date in MM/YYYY format"
-                  placeholder="MM/YYYY"
-                  required />
-              </span>
-
-              <span class="flex_column">
-                <label class="cvv_label" for="cvv">CVV:</label>
-                <input type="text" id="cvv" name="cvv" pattern="[0-9]{3,4}" title="Enter a 3 or 4-digit CVV" required />
-              </span>
-            </span>
-            <div class="button">
-              <button class="button pay" type="submit" value="Submit">Pay</button>
-            </div>
-          </fieldset>
-        </form>
+       
       </div>
     </div>
   </body>
