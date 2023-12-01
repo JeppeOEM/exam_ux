@@ -1,6 +1,6 @@
 // import { is_logged_in } from "../functions/is_logged_in";
-// import { focused_element } from "../functions/accesability";
-// import { header_selectors } from "../functions/header";
+import { focused_element } from "../functions/accesability";
+import { header_selectors } from "../functions/header";
 
 import { load_html_checkout } from "../html_components.js";
 document.addEventListener("DOMContentLoaded", () => {
@@ -11,8 +11,8 @@ document.addEventListener("DOMContentLoaded", () => {
     sum_price();
     restore_form("address_form");
     show_html();
-    // header_selectors();
-    // focused_element();
+    header_selectors();
+    focused_element();
 
     const change_data = document.querySelector("#change_data");
     const saved = document.querySelector("#saved");
@@ -451,7 +451,7 @@ document.addEventListener("DOMContentLoaded", () => {
   //   });
   // }
 
-  // export function focused_element() {
+  // function focused_element() {
   //   document.addEventListener("keypress", function (event) {
   //     console.log(event);
   //     if (event.key === "Enter") {
