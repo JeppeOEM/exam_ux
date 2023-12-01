@@ -41,8 +41,7 @@
 .push_away .product_image {
   padding: 20px;
 }
-
-.push_down {
+.push_away .push_down {
   width: 100%;
   display: flex;
   flex-direction: column;

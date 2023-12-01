@@ -113,4 +113,10 @@ aside figure {
 
 .product_image {
   padding-right: 20px;
+}
+
+@media only screen and (max-width: 655px) {
+  aside {
+    width: 100%;
+  }
 }/*# sourceMappingURL=cart.css.map */
