@@ -1,11 +1,8 @@
 export function focused_element() {
   document.addEventListener("keypress", function (event) {
     // event.preventDefault();
-    console.log(event);
     if (event.key === "Enter") {
       get_focused();
-    } else {
-      console.log(event);
     }
   });
 
@@ -16,8 +13,6 @@ export function focused_element() {
       const btn = focus.querySelector("button");
       const dropdownContent = focus.querySelector(".dropdown-content");
       dropdownContent.style.display = "block";
-      console.log(focus);
-      console.log(focus.classList);
     } else if (focus.tagName === "LI" && focus.querySelector(".user_btn")) {
       const btn = focus.querySelector("button");
       const dropdownContent = focus.querySelector(".dropdown_logout");
@@ -36,7 +31,7 @@ export function focused_element() {
     } else if (focus.tagName === "INPUT") {
       console.log(focus);
       focus.click();
-    } 
+    }
     // focus.click();
     // console.log(focus);
     // console.log(focus.classList);
