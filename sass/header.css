@@ -59,13 +59,13 @@ header a {
 }
 
 img.cart_icon {
-  padding-top: 10px;
   margin: 0px 10px;
   height: 40px;
   align-self: center;
 }
 
 img.user_icon {
+  padding: 5px;
   margin: 0px 10px;
   margin-left: 10px;
   width: 30px;
@@ -190,8 +190,8 @@ img.user_icon {
 
 .fixed_top {
   position: absolute;
-  top: 0px;
-  right: 0px;
+  top: 5px;
+  right: 40px;
 }
 
 .underline {

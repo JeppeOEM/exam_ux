@@ -75,7 +75,7 @@ a {
 
 .breadcrumb > * {
   font-size: 1rem;
-  font-family: "Inter", serif;
+  color: #1717a7;
 }
 .breadcrumb > *:hover {
   color: blue;

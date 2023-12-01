@@ -21,8 +21,8 @@ footer {
   padding: 5px 0px;
 }
 
-.right_side > * {
-  padding: 20px;
+.left > * {
+  padding: 10px;
 }
 
 footer {
@@ -32,9 +32,35 @@ footer {
   box-sizing: border-box;
   position: absolute;
   bottom: 0px;
-  width: 100vw;
+  width: 100%;
 }
 
-a {
+footer a {
   all: unset;
+  cursor: pointer;
+}
+
+footer button {
+  font-size: 1rem;
+}
+
+@media only screen and (max-width: 668px) {
+  footer button {
+    font-size: 0.8rem;
+  }
+  footer p {
+    font-size: 0.8rem;
+  }
+  footer .flex_horizontal {
+    flex-direction: column;
+  }
+  .left {
+    padding: 0px;
+  }
+  footer .flex_horizontal.socials {
+    flex-direction: row;
+  }
+  main {
+    padding-bottom: 500px;
+  }
 }/*# sourceMappingURL=footer.css.map */

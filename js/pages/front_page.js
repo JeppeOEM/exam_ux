@@ -24,14 +24,12 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   const register = document.querySelector(".register_btn");
   register.addEventListener("click", (event) => {
-    console.log(event.target);
     document.querySelector("#login").classList.add("hide");
     document.querySelector("#register").classList.remove("hide");
   });
 
   const login = document.querySelector(".login_btn");
   login.addEventListener("click", (event) => {
-    console.log(event.target);
     document.querySelector("#register").classList.add("hide");
     document.querySelector("#login").classList.remove("hide");
   });
@@ -85,7 +83,7 @@ function validate_credentials(password, email, retyped_password) {
 
   let message;
   if (!re_email.test(email)) {
-    return (message = "Not valid email");
+    return (message = "Not a valid email");
   }
   if (password != retyped_password) {
     return (message = "Passwords are not the same");

@@ -22,6 +22,8 @@
 }
 
 #register {
+  padding: 20px;
+  background-color: white;
   width: 400px;
 }
 
@@ -52,4 +54,15 @@ h4 {
 .register_btn {
   font-size: 1.15rem;
   color: #1717a7;
+}
+.register_btn:hover {
+  color: blue;
+}
+
+.login_btn {
+  font-size: 1.15rem;
+  color: #1717a7;
+}
+.login_btn:hover {
+  color: blue;
 }/*# sourceMappingURL=index.css.map */
