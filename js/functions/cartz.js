@@ -39,14 +39,8 @@ document.addEventListener("DOMContentLoaded", function () {
     } else {
       filter_btns.forEach(function (filter_btn) {
         const category = filter_btn.dataset.filter;
-        console.log(filter_btn);
-        console.log(category);
-        // sessionStorage.setItem("category", category);
         filter_btn.addEventListener("click", () => {
-          console.log("llllll");
-          console.log(filter_btn);
           const category = filter_btn.dataset.filter;
-          console.log(category);
           sessionStorage.setItem("category", category);
           window.location.href = "/shop.html";
         });
