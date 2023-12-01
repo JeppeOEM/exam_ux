@@ -14,6 +14,7 @@
 }
 
 .btn_border {
+  cursor: pointer;
   margin-right: 20px;
   margin-top: 20px;
   padding: 10px;
@@ -21,11 +22,6 @@
   top: 0;
   right: 0;
   position: absolute;
-}
-
-
-#change_data {
-  color: #272f36;
 }
 
 .pen_icon {
@@ -38,6 +34,7 @@
 }
 
 .step {
+  border: solid 2px #ccc;
   position: relative;
   margin-right: 10px;
   background: white;
