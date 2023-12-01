@@ -1,5 +1,5 @@
 "use strict";
-import { add_to_cart, show_current_items, init_cart } from "../functions/cartz.js";
+import { add_to_cart, show_current_items, init_cart } from "../functions/cart_and_header.js";
 
 import { breadcrumb_links } from "../functions/breadcrumb.js";
 import { is_logged_in } from "../functions/is_logged_in.js";
@@ -15,8 +15,6 @@ addEventListener("DOMContentLoaded", (event) => {
   console.log(category, "SHOP PAGE");
   get_previous_sorting();
 
-
-
   console.log(category, "category !!!!!!!!!!!!!!");
 
   let selects = document.querySelectorAll(".select");
@@ -29,7 +27,6 @@ addEventListener("DOMContentLoaded", (event) => {
       insert_items(sorted_items);
     });
   });
-
 });
 
 function deselect(current_select) {
@@ -39,4 +36,3 @@ function deselect(current_select) {
     document.querySelector("#price").selectedIndex = 0;
   }
 }
-

@@ -1,3 +1,5 @@
+//***** DUPLICATE CODE FROM card_and_header() ****** //
+// need to be removed but cant be done yet
 export let count = {};
 
 export async function show_current_items() {

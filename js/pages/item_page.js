@@ -1,7 +1,6 @@
 "use strict";
-import { add_to_cart, show_current_items } from "../functions/cartz.js";
+import { add_to_cart, show_current_items } from "../functions/cart_and_header.js";
 
-// import "../cart.js";
 import { is_logged_in } from "../functions/is_logged_in.js";
 import { breadcrumb_links } from "../functions/breadcrumb.js";
 const this_item = {
@@ -14,7 +13,6 @@ const this_item = {
 is_logged_in();
 
 document.addEventListener("DOMContentLoaded", function () {
-
   const category = sessionStorage.getItem("category");
   breadcrumb_links(category);
   build_page();

@@ -1,8 +1,8 @@
 "use strict";
 import { header_selectors } from "./header.js";
 import { load_html } from "../html_components.js";
-import { focused_element } from "../functions/accesability.js";
-import { get_products } from "../functions/get_products.js";
+import { focused_element } from "./accesability.js";
+import { get_products } from "./get_products.js";
 
 document.addEventListener("DOMContentLoaded", function () {
   load_html().then(() => {
@@ -151,7 +151,6 @@ export function init_cart(key) {
     localStorage.setItem(key, JSON.stringify([]));
   }
 }
-
 
 export function add_to_cart(key, item) {
   const item_list = get_cart(key);
